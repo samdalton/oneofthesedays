@@ -18,6 +18,9 @@ GEM
       syntax (>= 1.0.0)
     open4 (1.0.1)
     rack (1.0.1)
+    rack-jekyll (0.3.5)
+      jekyll
+      rack
     syntax (1.0.0)
 
 PLATFORMS
@@ -26,3 +29,4 @@ PLATFORMS
 DEPENDENCIES
   jekyll (= 0.5.7)
   rack (= 1.0.1)
+  rack-jekyll

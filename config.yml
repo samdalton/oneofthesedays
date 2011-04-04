@@ -1,4 +1,4 @@
 destination: _site
 permalink: /:title
 markdown: rdiscount
-pygments: true
+pygments: false
