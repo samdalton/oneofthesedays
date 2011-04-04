@@ -1,0 +1,5 @@
+--- 
+wordpress_id: 93
+layout: post
+---
+If anyone is trying to study Japanese, and wants a list of english:hiragana:kanji readings of common words, this may help:<a href='http://www.oneofthesedaysblog.com/wp-content/uploads/2010/05/words.txt'>Japanese Words</a><pre>\to be born:?????:?????</pre>\ denotes a new definitionthe english, hiragana and kanji readings are separated with a colon 
