@@ -1,3 +1,3 @@
-require "rack/jekyll"
+require 'masquerade'
 
-run Rack::Jekyll.new
+run Sinatra::Application

@@ -16,8 +16,15 @@ GEM
     liquid (2.2.2)
     maruku (0.6.0)
       syntax (>= 1.0.0)
+    mustache (0.99.3)
     open4 (1.0.1)
     rack (1.0.1)
+    rdiscount (1.6.8)
+    rocco (0.6)
+      mustache
+      rdiscount
+    sinatra (1.0)
+      rack (>= 1.0)
     syntax (1.0.0)
 
 PLATFORMS
@@ -26,3 +33,6 @@ PLATFORMS
 DEPENDENCIES
   jekyll (= 0.5.7)
   rack (= 1.0.1)
+  rdiscount
+  rocco
+  sinatra
