@@ -1,2 +1,5 @@
 *.swp
 _site/*.rb
+_site/Gemfile
+_site/*.lock
+_site/*.ru
