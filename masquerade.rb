@@ -12,3 +12,7 @@ end
 get '/' do
   File.read('_site/index.html')
 end
+
+get '/*' do
+    File.read(params[:splat] + '/index.html')
+end
