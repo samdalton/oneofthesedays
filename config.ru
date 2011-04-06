@@ -1,3 +1,3 @@
-require 'start'
+require './start'
 
 run Sinatra::Application
