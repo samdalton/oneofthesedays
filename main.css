@@ -72,8 +72,8 @@ table td {
   outline: 0;
 }
   td.docs, th.docs {
-    max-width: 450px;
-    min-width: 450px;
+    max-width: 580px;
+    min-width: 580px;
     min-height: 5px;
     padding: 10px 25px 1px 50px;
     overflow-x: hidden;

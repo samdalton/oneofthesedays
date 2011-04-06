@@ -1,28 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">	
-	<head>
-		<title>One of These Days</title>
-	</head>
-	<body>
-		<!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="content-type" content="text/html;charset=utf-8">
-  <title>Ruby Io</title>
-  <link rel="stylesheet" href="/main.css">
-</head>
-<body>
-    <div id='container'>
-        <table cellspacing=0 cellpadding=0>
-  <thead>
-    <tr>
-      <th class=docs><h1>Ruby Io</h1></th>
-      <th class=code></th>
-    </tr>
-</thead>
-<tbody>
-    <tr id='section-1'>
+---
+layout: post
+---
+<tr id='section-1'>
   <td class=docs>
     <div class="pilwrap">
       <a class="pilcrow" href="#section-1">&#182;</a>
@@ -84,13 +63,3 @@ Perhaps the simplest example of IO possible.</p>
 <span class="k">end</span></pre></div>
   </td>
 </tr>
-
-</tbody>
-</table>
-    </div>
-</div>
-</body>
-</html>
-
-	</body>
-</html>
