@@ -10,13 +10,15 @@ before do
 end
 
 get '/' do
-  File.read('_site/index.html')
+    send_file( File.join(settings.public, 'index.html') )
 end
 
-get '/:title/' do
-    File.read("_site/#{params[:title]}/index.html")
+get '/favicon.ico' do
+    # return favicon, eventually
 end
 
-get '/:title' do
-    File.read("_site/#{params[:title]}/index.html")
+get '/*' do
+    send_file( File.join(settings.public, params[:splat], 'index.html') )
 end
+
+
