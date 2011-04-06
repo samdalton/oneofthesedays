@@ -21,9 +21,21 @@ header h1 {
     margin-top: 0px;
     padding: 40px;
 }
+footer {
+    padding: 40px;
+    padding-top: 100px;
+}
+footer ul {
+    margin: 0px;
+    padding: 0px;
+}
+footer li {
+    display: inline;
+    padding-right: 30px;
+}
 
 
-ul li {
+ul, ul li {
     list-style-type: none;
 }
 
