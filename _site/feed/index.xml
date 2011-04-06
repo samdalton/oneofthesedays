@@ -4,7 +4,7 @@
  <title>One of These Days</title>
  <link href="http://oneofthesedaysblog.com/feed/" rel="self"/>
  <link href="http://oneofthesedaysblog.com/"/>
- <updated>2011-04-06T18:39:17+12:00</updated>
+ <updated>2011-04-06T22:39:25+12:00</updated>
  <id>http://oneofthesedaysblog.com/</id>
  <author>
    <name>Sam Dalton</name>
@@ -51,7 +51,10 @@ can be pre-processed with &lt;a href=&quot;http://jashkenas.github.com/docco/&qu
     &lt;div class=&quot;pilwrap&quot;&gt;
       &lt;a class=&quot;pilcrow&quot; href=&quot;#section-3&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
-    &lt;p&gt;I figured it was worth the switch just for this alone, as most of the content is talking about source code.&lt;/p&gt;
+    &lt;p&gt;I figured it was worth the switch just for this alone, as most of the time I&amp;rsquo;m talking about code.
+I&amp;rsquo;m also hoping that the easiser method of posting (git push heroku master) will encourage me to write more frequently, so stay tuned!&lt;/p&gt;
+
+&lt;p&gt;(I will be gradually migrating posts from the old blog over to here, which hopefully won&amp;rsquo;t take too long)&lt;/p&gt;
 
   &lt;/td&gt;
   &lt;td class=code&gt;

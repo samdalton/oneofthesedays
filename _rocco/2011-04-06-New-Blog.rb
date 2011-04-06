@@ -9,4 +9,7 @@ reasons.each do |reason|
     puts reason.explain
 end
 
-# I figured it was worth the switch just for this alone, as most of the content is talking about source code.
+# I figured it was worth the switch just for this alone, as most of the time I'm talking about code.
+# I'm also hoping that the easiser method of posting (git push heroku master) will encourage me to write more frequently, so stay tuned!
+#
+# (I will be gradually migrating posts from the old blog over to here, which hopefully won't take too long)

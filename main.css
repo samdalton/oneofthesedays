@@ -4,8 +4,29 @@ body {
   font-size: 15px;
   line-height: 22px;
   color: #252519;
-  margin: 0; padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
+
+header {
+    height: 100px;
+    background: url('images/bg.png') repeat-x;
+    width: 656px;
+}
+header a, header a:visited {
+    color: #fee;
+    text-decoration: none;
+}
+header h1 {
+    margin-top: 0px;
+    padding: 40px;
+}
+
+
+ul li {
+    list-style-type: none;
+}
+
 a {
   color: #261a3b;
 }
@@ -26,7 +47,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 #background {
   position: fixed;
-  top: 0; left: 525px; right: 0; bottom: 0;
+  top: 0; left: 655px; right: 0; bottom: 0;
   background: #f5f5ff;
   border-left: 1px solid #e5e5ee;
   z-index: -1;
@@ -74,7 +95,7 @@ table td {
   td.docs, th.docs {
     max-width: 580px;
     min-width: 580px;
-    min-height: 5px;
+    min-height: 1000px;
     padding: 10px 25px 1px 50px;
     overflow-x: hidden;
     vertical-align: top;

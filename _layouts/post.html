@@ -1,19 +1,15 @@
 ---
 layout: default
 ---
-<!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="content-type" content="text/html;charset=utf-8">
-  <title>{{ page.title }}</title>
-  <link rel="stylesheet" href="/main.css">
-</head>
-<body>
+   <div id='background'></div>
     <div id='container'>
         <table cellspacing=0 cellpadding=0>
   <thead>
     <tr>
-      <th class=docs><h1>{{ page.title }}</h1></th>
+        <th class=docs>
+            <h2>{{ page.title }}</h2>
+            <h5>{{ page.date | date_to_string }}</h5>
+        </th>
       <th class=code></th>
     </tr>
 </thead>
@@ -23,5 +19,3 @@ layout: default
 </table>
     </div>
 </div>
-</body>
-</html>
