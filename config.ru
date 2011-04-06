@@ -1,3 +1,3 @@
-require 'masquerade'
+require 'start'
 
 run Sinatra::Application
