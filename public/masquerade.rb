@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 
-set :public, Proc.new { File.join(root, "public") }
+set :public, Proc.new { File.join(root, "_site") }
 
 # This before filter ensures that your pages are only ever served 
 # once (per deploy) by Sinatra, and then by Varnish after that
@@ -10,15 +10,9 @@ before do
 end
 
 get '/' do
-    send_file( File.join(settings.public, 'index.html') )
-end
-
-get '/favicon.ico' do
-    # return favicon, eventually
+  File.read('_site/index.html')
 end
 
 get '/*' do
-    send_file( File.join(settings.public, params[:splat], 'index.html') )
+    File.read('_site/' + params[:splat] + '/index.html')
 end
-
-
