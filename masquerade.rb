@@ -13,6 +13,10 @@ get '/' do
   File.read('_site/index.html')
 end
 
-get '/*' do
-    File.read('_site/' + params[:splat][0] + '/index.html')
+get '/:title/' do
+    File.read("_site/#{params[:title]}/index.html")
+end
+
+get '/:title' do
+    File.read("_site/#{params[:title]}/index.html")
 end
