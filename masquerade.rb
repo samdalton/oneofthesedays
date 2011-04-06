@@ -10,6 +10,7 @@ before do
 end
 
 get '/' do
+    puts File.join(settings.public, 'index.html')
     send_file( File.join(settings.public, 'index.html') )
 end
 
