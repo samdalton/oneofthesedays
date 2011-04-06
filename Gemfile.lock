@@ -18,6 +18,7 @@ GEM
       syntax (>= 1.0.0)
     open4 (1.0.1)
     rack (1.0.1)
+    rdiscount (1.6.8)
     sinatra (1.0)
       rack (>= 1.0)
     syntax (1.0.0)
@@ -28,4 +29,5 @@ PLATFORMS
 DEPENDENCIES
   jekyll (= 0.5.7)
   rack (= 1.0.1)
+  rdiscount
   sinatra

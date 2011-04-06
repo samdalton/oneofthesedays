@@ -1,4 +1,4 @@
 destination: _site
-permalink: /:title
+permalink: "/:title"
 markdown: rdiscount
 pygments: false
