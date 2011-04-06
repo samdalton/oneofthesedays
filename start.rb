@@ -17,6 +17,10 @@ get '/favicon.ico' do
     # return favicon, eventually
 end
 
+get '/feed', :provides => ['rss', 'atom', 'xml'] do
+    File.read( File.join( settings.public, 'feed', 'index.xml' ) )
+end
+
 get '/*' do
     send_file( File.join(settings.public, params[:splat], 'index.html') )
 end
