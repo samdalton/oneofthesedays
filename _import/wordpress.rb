@@ -28,7 +28,7 @@ module Jekyll
         slug = post[:post_name]
         date = post[:post_date]
         content = post[:post_content]
-        name = "%02d-%02d-%02d-%s.markdown" % [date.year, date.month, date.day,
+        name = "%02d-%02d-%02d-%s.rb" % [date.year, date.month, date.day,
                                                slug]
 
         # Get the relevant fields as a hash, delete empty fields and convert
@@ -37,9 +37,6 @@ module Jekyll
         data = {
            'layout' => 'post',
            'title' => title.to_s,
-           'excerpt' => post[:post_excerpt].to_s,
-           'wordpress_id' => post[:ID],
-           'wordpress_url' => post[:guid]
          }.delete_if { |k,v| v.nil? || v == ''}.to_yaml
 
         # Write out the data and content to file
