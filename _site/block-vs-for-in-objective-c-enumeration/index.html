@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">	
+	<head>
+            <title>One of These Days</title>
+            <style>@import url('main.css'); </style>
+	</head>
+	<body>
+             <header>
+                 <h1><a href='/'>One of These Days</a></h1>
+            </header>
+            <section>
+                   <div id='background'></div>
+    <div id='container'>
+        <table cellspacing=0 cellpadding=0>
+  <thead>
+    <tr>
+        <th class=docs>
+            <h2>Block Vs For In Objective C Enumeration</h2>
+            <h5>01 Apr 2011</h5>
+        </th>
+      <th class=code></th>
+    </tr>
+</thead>
+<tbody>
+    <tr id='section-1'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-1">&#182;</a>
+    </div>
+    
+
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="no">Having</span> <span class="n">now</span> <span class="n">become</span> <span class="n">used</span> <span class="n">to</span><span class="p">,</span> <span class="ow">and</span> <span class="k">in</span> <span class="n">entirely</span> <span class="k">in</span> <span class="n">love</span> <span class="n">with</span> <span class="no">Ruby</span><span class="p">,</span> <span class="n">I</span> <span class="n">often</span> <span class="n">find</span> <span class="n">myself</span> <span class="n">wishing</span> <span class="n">other</span> <span class="n">languages</span> <span class="n">had</span> <span class="n">blocks</span><span class="o">.</span> <span class="no">It</span><span class="s1">&#39;s such an neat construct that leads to simplistic, elegant, and often more efficient code. During some work on an iPhone app, I had a need to iterate over the objects of a dictionary, getting both key and object for each pair. This is often done with a simple for loop, however the syntax was ugly and, in my opinion, wholly unnecessary:</span>
+
+<span class="s1">&lt;pre class=&#39;</span><span class="n">brush</span><span class="ss">:c</span><span class="s1">&#39;&gt;</span>
+<span class="s1">    NSArray* keys = [data allKeys];</span>
+<span class="s1">  for (int i = 0; i &lt; objCount; i++) {</span>
+<span class="s1">    [keys objectAtIndex:i];</span>
+<span class="s1">    [data objectForKey:[keys objectAtIndex:i]];</span>
+<span class="s1">    // do something cool, but boy is this a lot of typing..</span>
+<span class="s1">  }</span>
+<span class="s1">&lt;/pre&gt;</span>
+
+<span class="s1">5 lines just to get keys and objects from a dictionary? Crazy! Pining for another way, I delved into the documentation and pulled out this gem of a method - &quot;enumerateKeysAndObjectsUsingBlock&quot;.</span>
+
+<span class="s1">This does exactly what it sounds, and, oh what joy, it accepts a block. </span>
+<span class="s1">&lt;/pre&gt;&lt;pre class=&#39;</span><span class="n">brush</span><span class="ss">:ruby</span><span class="s1">&#39;&gt;</span>
+<span class="s1">    [data enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {</span>
+<span class="s1">        // do something cool as we&#39;</span><span class="n">ve</span> <span class="n">already</span> <span class="n">got</span> <span class="n">the</span> <span class="n">key</span> <span class="ow">and</span> <span class="n">object</span><span class="sr"></span>
+<span class="sr">        // maybe I&#39;ll grab a beer with the time I&#39;ve saved on typing</span>
+<span class="sr">  }];</span>
+<span class="sr">&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+
+<span class="no">The</span> <span class="n">block</span> <span class="n">is</span> <span class="n">declared</span> <span class="n">with</span> <span class="n">a</span> <span class="n">slightly</span> <span class="n">odd</span><span class="p">,</span> <span class="n">but</span> <span class="n">manageable</span> <span class="n">syntax</span><span class="p">:</span> <span class="o">^</span> <span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="p">{</span> <span class="n">code</span> <span class="p">}</span>
+<span class="no">In</span> <span class="n">this</span> <span class="k">case</span><span class="p">,</span> <span class="n">the</span> <span class="n">params</span> <span class="n">are</span> <span class="n">the</span> <span class="n">key</span><span class="p">,</span> <span class="n">object</span><span class="p">,</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">boolean</span> <span class="n">called</span> <span class="n">stop</span><span class="o">.</span> <span class="no">According</span> <span class="n">to</span> <span class="n">the</span> <span class="n">documentation</span><span class="p">,</span> <span class="k">if</span> <span class="n">we</span> <span class="n">set</span> <span class="n">stop</span> <span class="n">to</span> <span class="kp">true</span><span class="p">,</span> <span class="n">the</span> <span class="n">enumeration</span> <span class="n">will</span> <span class="n">stop</span><span class="p">,</span> <span class="n">effectively</span> <span class="n">acting</span> <span class="n">as</span> <span class="n">a</span> <span class="s1">&#39;break&#39;</span> <span class="n">function</span><span class="o">.</span> 
+
+<span class="no">Now</span> <span class="n">that</span> <span class="n">we</span><span class="s1">&#39;ve got our code looking pretty, how does it match up in performance? Curious, I ran a simple experiment.</span>
+
+<span class="s1">&lt;pre class=&#39;</span><span class="n">brush</span><span class="ss">:c</span><span class="s1">&#39;&gt;</span>
+<span class="s1">    int objCount = 100000;</span>
+
+<span class="s1">  NSMutableDictionary* data = [[NSMutableDictionary alloc] init];</span>
+<span class="s1">  for (int i = 0; i &lt; objCount; i++) {</span>
+<span class="s1">    [data setObject:@&quot;test&quot; forKey:[NSNumber numberWithInt:i]];</span>
+<span class="s1">  }</span>
+
+<span class="s1">  int iterations = 100;</span>
+
+<span class="s1">  NSDate *methodStart = [NSDate date];</span>
+
+<span class="s1">  for (int j = 0; j &lt; iterations; j++) {</span>
+<span class="s1">    NSArray* keys = [data allKeys];</span>
+<span class="s1">    for (int i = 0; i &lt; objCount; i++) {</span>
+<span class="s1">      [keys objectAtIndex:i];</span>
+<span class="s1">      [data objectForKey:[keys objectAtIndex:i]];</span>
+<span class="s1">    }</span>
+<span class="s1">  }</span>
+
+<span class="s1">  NSDate *methodFinish = [NSDate date];</span>
+<span class="s1">  NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:methodStart];</span>
+<span class="s1">  float forTime = executionTime / iterations;</span>
+<span class="s1">  NSLog(@&quot;Standard For Loop : %f&quot;, forTime);</span>
+
+
+
+
+<span class="s1">  methodStart = [NSDate date];</span>
+
+<span class="s1">  for (int j = 0; j &lt; iterations; j++) {</span>
+<span class="s1">    [data enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {</span>
+
+<span class="s1">    }];		</span>
+<span class="s1">  }</span>
+
+<span class="s1">  methodFinish = [NSDate date];</span>
+<span class="s1">  executionTime = [methodFinish timeIntervalSinceDate:methodStart];</span>
+<span class="s1">  float enumerableTime = executionTime / iterations;</span>
+<span class="s1">  NSLog(@&quot;Standard Enumerable Loop : %f&quot;, enumerableTime);</span>
+
+<span class="s1">  NSLog(@&quot;Times Faster : %f&quot;, forTime / enumerableTime);</span>
+<span class="s1">&lt;/pre&gt;</span>
+
+<span class="s1">Here we&#39;</span><span class="n">re</span> <span class="n">simply</span> <span class="n">creating</span> <span class="n">a</span> <span class="n">dictionary</span> <span class="n">with</span> <span class="mi">100</span><span class="p">,</span><span class="mo">000</span> <span class="n">key</span><span class="o">/</span><span class="n">value</span> <span class="n">pairs</span><span class="p">,</span> <span class="ow">and</span> <span class="n">iterating</span> <span class="n">over</span> <span class="n">it</span> <span class="n">grabbing</span> <span class="n">both</span> <span class="n">key</span> <span class="ow">and</span> <span class="n">value</span><span class="p">,</span> <span class="k">for</span> <span class="n">the</span> <span class="n">two</span> <span class="n">different</span> <span class="nb">methods</span><span class="o">.</span> <span class="no">To</span> <span class="n">attempt</span> <span class="n">to</span> <span class="n">eliminate</span> <span class="n">any</span> <span class="n">time</span> <span class="n">fluctuations</span> <span class="n">due</span> <span class="n">to</span> <span class="n">unpredictable</span> <span class="n">things</span> <span class="n">like</span> <span class="n">caching</span> <span class="ow">or</span> <span class="n">context</span> <span class="n">switching</span><span class="p">,</span> <span class="n">we</span><span class="s1">&#39;re running each loop 100 times. (Note: I tried to run it 1000+ times, but it crashed probably as there are memory leaks galore in the code. Having said that, the memory leaks probably affect the run time as well, but I&#39;</span><span class="n">ll</span> <span class="n">leave</span> <span class="n">that</span> <span class="n">as</span> <span class="n">an</span> <span class="n">exercise</span> <span class="k">for</span> <span class="n">the</span> <span class="n">reader</span> <span class="n">to</span> <span class="n">figure</span> <span class="n">out</span><span class="o">.</span><span class="p">)</span>
+
+<span class="no">And</span> <span class="n">the</span> <span class="n">results?</span> <span class="no">Surprising</span><span class="o">.</span>
+<span class="o">&lt;</span><span class="sr">/pre&gt;&lt;pre class=&#39;brush:plain&#39;&gt;</span>
+<span class="sr">    2011-04-01 18:42:49.163 Standard For Loop : 0.025023</span>
+<span class="sr">    2011-04-01 18:42:49.616 Standard Enumerable Loop : 0.004506</span>
+<span class="sr">    2011-04-01 18:42:49.616 Times Faster : 5.553028</span>
+<span class="sr">&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+
+<span class="no">Using</span> <span class="n">the</span> <span class="n">block</span> <span class="n">is</span> <span class="n">more</span> <span class="n">than</span> <span class="mi">5</span> <span class="p">(</span><span class="no">FIVE</span><span class="o">!</span><span class="p">)</span> <span class="n">times</span> <span class="n">faster</span> <span class="n">than</span> <span class="n">the</span> <span class="n">ugly</span><span class="p">,</span> <span class="n">verbose</span> <span class="k">for</span> <span class="kp">loop</span> <span class="n">version</span><span class="o">.</span> <span class="n">I</span> <span class="n">know</span> <span class="n">what</span> <span class="n">I</span><span class="err">&#39;</span><span class="n">ll</span> <span class="n">be</span> <span class="n">using</span> <span class="n">from</span> <span class="n">now</span> <span class="n">on</span><span class="o">.</span></pre></div>
+  </td>
+</tr>
+
+</tbody>
+</table>
+    </div>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'oneofthesedaysblog'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    var disqus_identifier = '/block-vs-for-in-objective-c-enumeration';
+    var disqus_url = 'http://oneofthesedaysblog.com//block-vs-for-in-objective-c-enumeration';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+            </section>
+            <footer>
+                <h5>The thoughts and ramblings of Sam Dalton - Auckland, New Zealand</h5>
+                <ul>
+                    <li><a href='http://github.com/samdalton' target="_blank">fork me</a></li>
+                    <li><a href='http://twitter.com/spdalton' target="_blank">tweet me</a></li>
+                    <li><a href='mailto:samdalton.co.nz' target="_blank">e-mail me</a></li>
+                    <li><a href='http://last.fm/user/spdalton' target="_blank">let's rock</a></li>
+                </ul>
+            </footer>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16582890-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+---
+layout: post
+---
+<tr id='section-1'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-1">&#182;</a>
+    </div>
+    
+
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="no">While</span> <span class="n">high</span> <span class="n">speed</span> <span class="n">internet</span> <span class="n">is</span> <span class="n">gradually</span> <span class="n">working</span> <span class="n">its</span> <span class="n">way</span> <span class="n">into</span> <span class="n">most</span> <span class="n">homes</span><span class="p">,</span> <span class="n">it</span><span class="s1">&#39;s not absolutely everywhere, and when it is, your ISP may be limiting speeds during certain times of the day or for certain types of internet traffic. To make things easier on users, we can have our web servers compress the data they send. Instead of sending a 200kb Javascript file, it can first be compressed on the server to ~50kb, sent via TCP, and then uncompressed by the web browser. The amount of data being sent is 1/4 of the size, and so the total time is reduced significantly (time taken to compress and uncompress is considered negligible). </span>
+
+<span class="s1">Unfortunately, my attempts to wrangle &lt;a href=&quot;http://ruby-doc.org/core/classes/Zlib.html&quot; title=&quot;Module: Zlib&quot;&gt;Ruby&#39;</span><span class="n">s</span> <span class="no">Zlib</span> <span class="n">compression</span> <span class="n">library</span><span class="o">&lt;</span><span class="sr">/a&gt; have not been successful. The documentation is patchy, at best, with comments such as &quot;???&quot;, &quot;TODO: better comments&quot;, and the occasional snippet of Japanese. Given today&#39;s time constraints, I&#39;m shipping an example that I feel should work, but does not. I will work on resolving the issue, and update this post when it works.</span>
+
+<span class="sr">&lt;pre class=&#39;brush:ruby&#39;&gt;</span>
+<span class="sr">socket.puts &quot;HTTP/</span><span class="mi">1</span><span class="o">.</span><span class="mi">1</span> <span class="mi">200</span> <span class="no">OK</span><span class="p">\</span><span class="n">n</span><span class="s2">&quot;</span>
+<span class="s2">socket.puts &quot;</span><span class="no">Connection</span><span class="p">:</span> <span class="n">close</span><span class="p">\</span><span class="n">n</span><span class="s2">&quot;</span>
+<span class="s2">socket.puts &quot;</span><span class="no">Content</span><span class="o">-</span><span class="no">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">gzip</span><span class="p">\</span><span class="n">n</span><span class="s2">&quot;</span>
+
+<span class="s2">File.open(file, &#39;r&#39;) { |f|  </span>
+<span class="s2">    gz = Zlib::GzipWriter.new(socket, Zlib::BEST_COMPRESSION, Zlib::FINISH)  </span>
+<span class="s2">    while (line = f.gets) </span>
+<span class="s2">        gz &lt; &lt; line</span>
+<span class="s2">    end</span>
+<span class="s2">    gz.close</span>
+<span class="s2">}</span>
+<span class="s2">&lt;/pre&gt;</span>
+
+<span class="s2">I have modified the header to say we are sending the browser compressed data, and created a new Gzip writer object inside the response loop which spits out the contents of the requested file into the gzip writer, which has been given the socket. The documentation states that Gzipwriter can take an IO object, which socket happens to be, however when it runs an exception is thrown saying that the IO file has been closed. While possibly something simple, the answer has thus far eluded me. </span>
+
+<span class="s2">If you have any suggestions or solutions, leave a comment or send a tweet/email. Stay tuned for updates.&lt;/pre&gt;</span></pre></div>
+  </td>
+</tr>

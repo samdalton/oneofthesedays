@@ -1,0 +1,408 @@
+---
+layout: post
+---
+<tr id='section-1'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-1">&#182;</a>
+    </div>
+    <p>Welcome to the first instalment of 0 to Ruby in 30 days. Today will cover a simple, but useful class: Date.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-2'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-2">&#182;</a>
+    </div>
+    <p>Most web applications that let users contribute content will likely require the use of date and time functionality. Just consider how useful would a website be that helps people coordinate meetings if there was no way of specifying the time? Also consider how difficult it would be to coordinate a global event, with people in different time zones, if everyone saw the time in GMT +0. Confusion (and possibly hilarity) would undoubtably ensue. Clearly, we need a way to handle dates and times.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-3'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-3">&#182;</a>
+    </div>
+    <p>Slightly strange motivation aside, let&rsquo;s get started. The format of this tutorial is as follows: I have opened the <a href="http://ruby-doc.org/core/classes/Date.html">API reference for the Date class</a> and will be going through it, testing methods of interest. I have not used the date class before and so at each step, I am guessing the usage based on my limited experience of Ruby gained from <a href="http://mislav.uniqpath.com/poignant-guide/book/chapter-1.html">_Why&rsquo;s (Poignant) Guide</a>. You can consider this tutorial, then, to be an extra reference to the API page, with examples of usage and results of various important methods.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-4'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-4">&#182;</a>
+    </div>
+    <p>One of the major differences between the Ruby date library and the PHP date library is the epoch used. PHP uses the date &lsquo;January 1 1970 00:00:00 GMT&rsquo;, the beginning of UNIX, as a reference point. Time is defined as the number of seconds after or before this time. Ruby uses January 1, 4713 BC as its reference point. This is known as the Julian Date, with any date defined by the number of days before or after this reference point. But this is a programming tutorial, not a history lesson, so let&rsquo;s see some code.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="n">d</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>   
+<span class="nb">puts</span> <span class="n">d</span>                      <span class="c1"># 2010-06-22</span></pre></div>
+  </td>
+</tr>
+<tr id='section-5'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-5">&#182;</a>
+    </div>
+    <p>Great! We can create a new date object by providing the year, month and day. (Date.new and Date::new seems to function identically). By printing it to the console with puts, we can see that, indeed, this Date object contains the date we specified.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-6'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-6">&#182;</a>
+    </div>
+    <p>Lets get specific parts of the date</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="nb">puts</span> <span class="n">d</span><span class="o">.</span><span class="n">month</span>    <span class="c1"># 6</span>
+<span class="nb">puts</span> <span class="n">d</span><span class="o">.</span><span class="n">day</span>      <span class="c1"># 22</span>
+<span class="nb">puts</span> <span class="n">d</span><span class="o">.</span><span class="n">year</span>     <span class="c1"># 2010</span></pre></div>
+  </td>
+</tr>
+<tr id='section-7'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-7">&#182;</a>
+    </div>
+    <p><strong>cwday</strong>
+The method &lsquo;cwday&rsquo; gives the Commercial day of the week
+Today is Tuesday, the 2nd day of the working week. Sunday is 7, the last day of the week.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="nb">puts</span> <span class="n">d</span><span class="o">.</span><span class="n">cwday</span>    <span class="c1"># 2</span></pre></div>
+  </td>
+</tr>
+<tr id='section-8'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-8">&#182;</a>
+    </div>
+    <p>What happens when we create an invalid date?</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="n">d</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mo">0325</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>  <span class="c1"># ArgumentError: invalid date</span></pre></div>
+  </td>
+</tr>
+<tr id='section-9'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-9">&#182;</a>
+    </div>
+    <p>We have a basic understanding, so let&rsquo;s start looking at some of the class methods</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-10'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-10">&#182;</a>
+    </div>
+    <p><strong>day_fraction_to_time</strong></p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="nb">puts</span> <span class="no">Date</span><span class="o">.</span><span class="n">day_fraction_to_time</span><span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">75</span><span class="p">)</span> <span class="c1"># 18003.72423446248771e-17</span></pre></div>
+  </td>
+</tr>
+<tr id='section-11'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-11">&#182;</a>
+    </div>
+    <p>This is equal to 18 hours, 00 minutes, 03 seconds, 0.72.. milliseconds</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-12'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-12">&#182;</a>
+    </div>
+    <p><strong>time_to_day_fraction</strong></p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="nb">puts</span> <span class="no">Date</span><span class="o">.</span><span class="n">time_to_day_fraction</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mo">00</span><span class="p">,</span><span class="mo">03</span><span class="p">)</span>    <span class="c1"># 21601/28800</span></pre></div>
+  </td>
+</tr>
+<tr id='section-13'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-13">&#182;</a>
+    </div>
+    <p>21601/28800 turns out to be 0.75, the fraction we passed in to day_fraction_to_time.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-14'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-14">&#182;</a>
+    </div>
+    <p><strong>today</strong></p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="nb">puts</span> <span class="no">Date</span><span class="o">.</span><span class="n">today</span> <span class="c1"># 2010-06-22</span></pre></div>
+  </td>
+</tr>
+<tr id='section-15'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-15">&#182;</a>
+    </div>
+    <p><strong>valid_time</strong></p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="nb">puts</span> <span class="no">Date</span><span class="o">.</span><span class="n">valid_time?</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># nil</span></pre></div>
+  </td>
+</tr>
+<tr id='section-16'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-16">&#182;</a>
+    </div>
+    <p>25 hours is not a valid time, hence the result is nil.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-17'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-17">&#182;</a>
+    </div>
+    <p><strong>&ndash;</strong>
+The &ndash; operator should return a date that is n days earlier than the current one</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="n">d</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">today</span>
+<span class="nb">puts</span> <span class="n">d</span> <span class="o">-</span> <span class="mi">3</span>  <span class="c1"># 2010-03-19</span></pre></div>
+  </td>
+</tr>
+<tr id='section-18'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-18">&#182;</a>
+    </div>
+    <ul>
+<li>adds days in the same way</li>
+</ul>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-19'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-19">&#182;</a>
+    </div>
+    <p><strong>&lt;&lt;</strong>
+The &lt;&lt; operator should return a date that is n months earlier than the current one</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="n">d</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">today</span>
+<span class="nb">puts</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="o">&lt;</span> <span class="mi">3</span>    <span class="c1"># 2010-03-22</span></pre></div>
+  </td>
+</tr>
+<tr id='section-20'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-20">&#182;</a>
+    </div>
+    <blockquote><blockquote><p>adds months in the same way</p></blockquote></blockquote>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-21'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-21">&#182;</a>
+    </div>
+    <p><strong>leap?</strong>
+Is this a leap year?</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="n">d</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">today</span>
+<span class="nb">puts</span> <span class="n">d</span><span class="o">.</span><span class="n">leap?</span>    <span class="c1"># false</span></pre></div>
+  </td>
+</tr>
+<tr id='section-22'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-22">&#182;</a>
+    </div>
+    <p>go back 2 years</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="n">d</span> <span class="o">=</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="o">&lt;</span> <span class="mi">24</span>    
+<span class="nb">puts</span> <span class="n">d</span><span class="o">.</span><span class="n">leap?</span>    <span class="c1"># true</span></pre></div>
+  </td>
+</tr>
+<tr id='section-23'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-23">&#182;</a>
+    </div>
+    <p><strong>next</strong>
+The next day.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="n">d</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">today</span>
+<span class="nb">puts</span> <span class="n">d</span><span class="o">.</span><span class="n">next</span>     <span class="c1"># 2010-06-23</span></pre></div>
+  </td>
+</tr>
+<tr id='section-24'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-24">&#182;</a>
+    </div>
+    <p>So, that&rsquo;s the Date class. Pretty nifty, and very intuitive. But what good is the date without the time? Enter: DateTime</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="n">t</span> <span class="o">=</span> <span class="no">DateTime</span><span class="o">.</span><span class="n">new</span>
+<span class="nb">puts</span> <span class="n">t</span>  <span class="c1"># -4712-01-01T00:00:00+00:00</span></pre></div>
+  </td>
+</tr>
+<tr id='section-25'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-25">&#182;</a>
+    </div>
+    <p>Looks like that wasn&rsquo;t sufficient, but note the term &lsquo;-4712&rsquo;. This was the year Ruby set to be the reference time.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="n">t</span> <span class="o">=</span> <span class="no">DateTime</span><span class="o">.</span><span class="n">now</span>
+<span class="nb">puts</span> <span class="n">t</span>  <span class="c1"># 2010-06-22T13:56:13+12:00</span></pre></div>
+  </td>
+</tr>
+<tr id='section-26'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-26">&#182;</a>
+    </div>
+    <p>There we go
+2010-06-22 is the date
+T demarcates the time
+13:56:13 is the current time
++12:00 is the time zone. I live in New Zealand which is GMT +12</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-27'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-27">&#182;</a>
+    </div>
+    <p>Let&rsquo;s just check that the timezone is correct</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="nb">puts</span> <span class="n">t</span><span class="o">.</span><span class="n">zone</span> <span class="c1"># +12:00</span></pre></div>
+  </td>
+</tr>
+<tr id='section-28'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-28">&#182;</a>
+    </div>
+    <p>Now we&rsquo;ve seen some of the various methods, lets put it to use in a practical example. If you&rsquo;re developing a website, chances are you&rsquo;ll be dealing with people from all over the world. This means you&rsquo;ll be dealing with different time zones, and so every time you work with a date and time you must ensure you have the timezone correct. Let&rsquo;s imagine you&rsquo;re developing &lsquo;Qwitter&rsquo;, a social networking service designed for people who are trying to ween themselves off Twitter. When someone updates their status, their followers want to see the time in their own timezone, so lets define a function to convert a time from a certain timezone, into another</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="k">def</span> <span class="nf">time_relative_to_timezone</span> <span class="p">(</span><span class="n">oldTime</span><span class="p">,</span> <span class="n">newTimeZone</span><span class="p">)</span>
+    <span class="n">oldTimeZone</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">offset</span>    
+    <span class="n">oldTimeZone</span> <span class="o">*=</span> <span class="mi">24</span>
+
+    <span class="n">timeZoneDifference</span> <span class="o">=</span> <span class="n">oldTimeZone</span> <span class="o">-</span> <span class="n">newTimeZone</span>
+
+    <span class="n">time</span> <span class="o">-</span> <span class="p">(</span><span class="n">timeZoneDifference</span> <span class="o">/</span> <span class="mi">24</span><span class="p">)</span>
+<span class="k">end</span></pre></div>
+  </td>
+</tr>
+<tr id='section-29'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-29">&#182;</a>
+    </div>
+    <p>We can call it like so:</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="nb">puts</span> <span class="n">time_relative_to_timezone</span><span class="p">(</span><span class="no">DateTime</span><span class="o">.</span><span class="n">now</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">)</span></pre></div>
+  </td>
+</tr>
+<tr id='section-30'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-30">&#182;</a>
+    </div>
+    <p>So, what&rsquo;s going on there? Firstly, we are taking the given time and finding it&rsquo;s timezone. The &lsquo;offset&rsquo; method returns the timezone as a fraction of 24 hours. 0.5 would be 12 out of 24, for a timezone difference of +12. Thus, if we multiply this fraction by 24, we get the timezone offset in hours.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-31'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-31">&#182;</a>
+    </div>
+    <p>We then find the difference between this timezone, and the supplied one. We will assume for arguments sake (no pun intended) that the supplied timezone is already an offset given in hours. By subtracting them, we find how different they are.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-32'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-32">&#182;</a>
+    </div>
+    <p>Lastly, recall that when used with a DateTime object, the &ndash; operator subtracts a number of days. If we subtract our time zone difference as a fraction of 24 hours (1 day), we will end up with a new DateTime object with a time that has been adjusted.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-33'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-33">&#182;</a>
+    </div>
+    <p>Obviously we would need to include error handling for invalid arguments, but this has been ocluded for clarity.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-34'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-34">&#182;</a>
+    </div>
+    <p><strong>End</strong>
+Hopefully this tutorial has shed some light on the Ruby Date, and DateTime classes. If you have any questions, comments, criticisms, praise, please leave a comment or send me an email.</p>
+
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>

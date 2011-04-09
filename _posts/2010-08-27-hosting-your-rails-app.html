@@ -1,0 +1,60 @@
+---
+layout: post
+---
+<tr id='section-1'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-1">&#182;</a>
+    </div>
+    
+
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="no">So</span> <span class="n">you</span><span class="s1">&#39;ve got this sweet rails app made, and it runs fine locally, but you&#39;</span><span class="n">d</span> <span class="n">like</span> <span class="n">other</span> <span class="n">people</span> <span class="n">to</span> <span class="n">be</span> <span class="n">able</span> <span class="n">to</span> <span class="n">use</span> <span class="n">it</span><span class="p">,</span> <span class="n">right?</span> <span class="no">For</span> <span class="n">that</span><span class="p">,</span> <span class="n">you</span> <span class="n">can</span> <span class="n">sign</span> <span class="n">up</span> <span class="k">for</span> <span class="n">an</span> <span class="n">account</span> <span class="n">with</span> <span class="n">a</span> <span class="n">web</span> <span class="n">hosting</span> <span class="n">company</span><span class="p">,</span> <span class="n">but</span> <span class="n">with</span> <span class="n">so</span> <span class="n">many</span><span class="p">,</span> <span class="n">how</span> <span class="k">do</span> <span class="n">you</span> <span class="n">choose</span> <span class="n">one?</span>
+
+<span class="no">So</span> <span class="n">far</span><span class="p">,</span> <span class="n">I</span><span class="s1">&#39;ve used 2 different companies to host a rails app, &lt;a href=&quot;http://www.rackspace.com/index.php&quot; title=&quot;Dedicated Server, Managed Hosting, Web Hosting by Rackspace Hosting&quot;&gt;Rackspace&lt;/a&gt; and &lt;a href=&quot;http://heroku.com/&quot; title=&quot;Heroku | Ruby Cloud Platform as a Service&quot;&gt;Heroku&lt;/a&gt;. I&#39;</span><span class="n">ve</span> <span class="n">settled</span> <span class="n">with</span> <span class="no">Heroku</span><span class="p">,</span> <span class="ow">and</span> <span class="n">couldn</span><span class="s1">&#39;t be happier.</span>
+
+<span class="s1">&lt;a href=&quot;http://www.oneofthesedaysblog.com/wp-content/uploads/2010/08/Dedicated-Server-Managed-Hosting-Web-Hosting-from-Rackspace.png&quot;&gt;&lt;img src=&quot;http://www.oneofthesedaysblog.com/wp-content/uploads/2010/08/Dedicated-Server-Managed-Hosting-Web-Hosting-from-Rackspace.png&quot; alt=&quot;&quot; title=&quot;Dedicated Server, Managed Hosting &amp;amp; Web Hosting from Rackspace&quot; width=&quot;158&quot; height=&quot;60&quot; class=&quot;alignleft size-full wp-image-381&quot; /&gt;&lt;/a&gt;Let&#39;</span><span class="n">s</span> <span class="n">look</span> <span class="n">at</span> <span class="no">Rackspace</span> <span class="n">first</span><span class="o">.</span> <span class="no">They</span><span class="s1">&#39;re a large company with a lot of infrastructure and support. When they say that have &#39;</span><span class="n">fanatical</span> <span class="n">customer</span> <span class="n">support</span><span class="s1">&#39;, they really mean it. I needed their support 3 times during my time with them, and it took less than 5 minutes from identifying the problem, to talking with a real person from the company on how to fix my problem. They offer a 24/7 live chat service, and, living in New Zealand this is particularly useful as my 9AM is most web company&#39;</span><span class="n">s</span> <span class="mi">6</span><span class="no">PM</span><span class="o">.</span>
+
+<span class="no">What</span> <span class="n">they</span> <span class="n">offer</span> <span class="n">is</span> <span class="n">essentially</span> <span class="n">a</span> <span class="no">Virtual</span> <span class="no">Private</span> <span class="no">Server</span> <span class="p">(</span><span class="no">VPS</span><span class="p">)</span> <span class="n">solution</span><span class="p">,</span> <span class="n">along</span> <span class="n">with</span> <span class="n">your</span> <span class="n">run</span> <span class="n">of</span> <span class="n">the</span> <span class="n">mill</span> <span class="n">cloud</span> <span class="n">storage</span><span class="p">,</span> <span class="n">much</span> <span class="n">like</span> <span class="no">Amazon</span><span class="s1">&#39;s ubiquitous S3. Having an entirely blank server that you can install any OS and software on is a real charm. Instead of having too little control, you have too much control. If you&#39;</span><span class="n">re</span> <span class="n">a</span> <span class="n">sysadmin</span> <span class="n">geek</span> <span class="ow">or</span> <span class="n">bash</span> <span class="n">guru</span><span class="p">,</span> <span class="n">you</span> <span class="n">will</span> <span class="n">have</span> <span class="n">a</span> <span class="n">blast</span><span class="p">,</span> <span class="n">making</span> <span class="n">this</span> <span class="n">a</span> <span class="n">service</span> <span class="n">that</span> <span class="n">probably</span> <span class="n">wouldn</span><span class="s1">&#39;t suit someone with limited server experience.</span>
+
+<span class="s1">I installed a typical LAMP stack, with Ubuntu 8.x as my distribution of choice. There really was no difference from setting up this server than if I were doing it on a local development machine, with the exception of DNS. Alongside setting up your /etc/hosts file, you will need to use a simple control panel to add in your domain.</span>
+
+<span class="s1">This excess of freedom however does create a large amount of setup work to get your server running, especially when it comes to getting rails going. Following &lt;a href=&quot;http://hackd.thrivesmarthq.com/how-to-setup-a-linux-server-for-ruby-on-rails-with-github-and-phusion-passenger&quot; title=&quot;How-To Setup a Linux Server for Ruby on Rails - with Phusion Passenger and GitHub - Hack&#39;</span><span class="n">d</span><span class="s2">&quot;&gt;this tutorial&lt;/a&gt; on setting up Passenger and Capistrano, it took around 30 minutes and a couple of headaches.</span>
+
+<span class="s2">One downside with Rackspace is that it is down to the administrator of the account to ensure the server is secure. For an experience sysadmin this is probably a non-issue, but for those competent enough to get a server running but lacking any solid security experience, it can be a tad dangerous.</span>
+
+<span class="s2">To sum up, if you&#39;re looking for complete control, extremely reasonable pricing, on demand support, and don&#39;t mind getting your hands dirty in the command line, then you will probably love Rackspace.</span>
+
+<span class="s2">&lt;hr /&gt;</span>
+
+<span class="s2">&lt;a href=&quot;</span><span class="n">http</span><span class="ss">:/</span><span class="o">/</span><span class="n">www</span><span class="o">.</span><span class="n">oneofthesedaysblog</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">wp</span><span class="o">-</span><span class="n">content</span><span class="o">/</span><span class="n">uploads</span><span class="o">/</span><span class="mi">2010</span><span class="o">/</span><span class="mi">08</span><span class="o">/</span><span class="n">heroku</span><span class="o">-</span><span class="n">logo_big</span><span class="o">.</span><span class="n">png</span><span class="s2">&quot;&gt;&lt;img src=&quot;</span><span class="n">http</span><span class="ss">:/</span><span class="o">/</span><span class="n">www</span><span class="o">.</span><span class="n">oneofthesedaysblog</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">wp</span><span class="o">-</span><span class="n">content</span><span class="o">/</span><span class="n">uploads</span><span class="o">/</span><span class="mi">2010</span><span class="o">/</span><span class="mi">08</span><span class="o">/</span><span class="n">heroku</span><span class="o">-</span><span class="n">logo_big</span><span class="o">.</span><span class="n">png</span><span class="s2">&quot; alt=&quot;&quot; title=&quot;</span><span class="n">heroku</span><span class="o">-</span><span class="n">logo_big</span><span class="s2">&quot; width=&quot;</span><span class="mi">313</span><span class="s2">&quot; height=&quot;</span><span class="mi">98</span><span class="s2">&quot; class=&quot;</span><span class="n">alignright</span> <span class="n">size</span><span class="o">-</span><span class="n">full</span> <span class="n">wp</span><span class="o">-</span><span class="n">image</span><span class="o">-</span><span class="mi">382</span><span class="s2">&quot; /&gt;&lt;/a&gt;Heroku is the opposite of Rackspace, swapping complete control for effortless setup and deployment. You can have your app deployed and running on their servers with 2 lines:</span>
+
+<span class="s2">&lt;pre class=&#39;brush:bash&#39;&gt;</span>
+<span class="s2">  heroku create MyAwesomeRailsApp</span>
+<span class="s2">  git push heroku </span>
+<span class="s2">&lt;/pre&gt;</span>
+
+<span class="s2">If you then navigate to the URL it gives you, you will see your rails app. The only caveat to this is that you must be in the root directory of your app, and it must be in a git repository. If you&#39;re starting a brand new rails app, the setup would look like this:</span>
+
+<span class="s2">&lt;pre class=&#39;brush:bash&#39;&gt;</span>
+<span class="s2">  rails Skynet</span>
+<span class="s2">  cd Skynet</span>
+<span class="s2">  git init</span>
+<span class="s2">  git add .</span>
+<span class="s2">  git commit -m &quot;</span><span class="no">Importing</span> <span class="no">Skynet</span><span class="s2">&quot;</span>
+<span class="s2">  heroku create skynet</span>
+<span class="s2">  git push heroku </span>
+<span class="s2">&lt;/pre&gt;</span>
+
+<span class="s2">This will then have your new rails app running at http://skynet.heroku.com. </span>
+
+<span class="s2">Heroku also comes with a swathe of plugins. From hosted MongoDB installations, to effortless DNS, to Cron jobs and auto backups, it&#39;s like a Sith lord having the keys to the Padawan training room, and all the Jedis are away on holiday.</span>
+
+<span class="s2">Essentially, Heroku has done to hosting what rails did for web development. Convention over configuration, excellent user experience, and having everything &quot;</span><span class="n">just</span> <span class="n">work</span><span class="s2">&quot; with the minimum amount of effort.</span>
+
+<span class="s2">Another neat thing with Heroku is that all of the commands and tools it provides are accessible through a command line tool. You can add domain names, add more concurrency to your app, run rake commands, and just about every other feature they provide.</span>
+
+<span class="s2">So if you&#39;re looking for a no fuss, beautifully designed, effortless workflow, rubyesque, affordable and scalable solution, you might want to check out Heroku. (However, it&#39;s built on Rails, which &lt;a href=&quot;</span><span class="n">http</span><span class="ss">:/</span><span class="o">/</span><span class="n">canrailsscale</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="s2">&quot; title=&quot;</span><span class="no">Can</span> <span class="no">Rails</span> <span class="no">Scale</span><span class="sc">?&quot;</span><span class="o">&gt;</span><span class="n">can</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">actually</span> <span class="n">scale</span><span class="o">&lt;</span><span class="sr">/a&gt;, so you may want to take that into consideration.)</span></pre></div>
+  </td>
+</tr>

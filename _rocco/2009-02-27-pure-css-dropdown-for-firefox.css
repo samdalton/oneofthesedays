@@ -1,0 +1,43 @@
+# Here's a quick and dirty pure CSS dropdown that at present only works in Firefox. 
+.Navigation li {
+	position:relative; display:block;
+	float:left;
+	height:26px;
+	overflow:hidden; 
+	display:inline; 
+	padding:0px 10px;
+}
+.Navigation li:hover { color:orange; cursor:pointer; overflow:visible;}
+
+.Navigation li ul { 
+	background:#FFFFFF none repeat scroll 0 0;
+	border:1px solid #000000;
+	padding:4px;
+	position:absolute;
+	width:600px;
+	top:30px;
+	overflow:visible;
+	height:42px;
+}
+.Navigation li ul li { display:inline; color:#000; }
+
+# That's all the CSS needed, along with this HTML: 
+<div class="Navigation">
+    <ul>
+        <li><a>Home</a></li>
+        <li>
+            <a>About Us</a>
+            <ul>
+                <li>Sub Link 1</li>
+                <li>Sub Link 2</li>
+                <li>Sub Link 3</li>
+            </ul>
+        </li>
+        <li><a>Products</a></li>
+        <li><a>Contact</a></li>
+    </ul>
+</div>
+
+# By floating each list element as a block element, we can hide the sub menu by hiding the overflow content of the div. Hovering over an element sets overflow to visible, and so the sub menu appears. 
+
+# Now if only it worked in IE.. 

@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">	
+	<head>
+            <title>One of These Days</title>
+            <style>@import url('main.css'); </style>
+	</head>
+	<body>
+             <header>
+                 <h1><a href='/'>One of These Days</a></h1>
+            </header>
+            <section>
+                   <div id='background'></div>
+    <div id='container'>
+        <table cellspacing=0 cellpadding=0>
+  <thead>
+    <tr>
+        <th class=docs>
+            <h2>Ruby Day 5 Building A Web Server</h2>
+            <h5>27 Jun 2010</h5>
+        </th>
+      <th class=code></th>
+    </tr>
+</thead>
+<tbody>
+    <tr id='section-1'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-1">&#182;</a>
+    </div>
+    
+
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="no">Looking</span> <span class="n">through</span> <span class="n">the</span> <span class="n">upcoming</span> <span class="n">topics</span> <span class="n">that</span> <span class="n">I</span> <span class="n">plan</span> <span class="n">to</span> <span class="n">cover</span><span class="p">,</span> <span class="n">I</span> <span class="n">noticed</span> <span class="n">a</span> <span class="n">connection</span><span class="p">:</span> <span class="n">they</span> <span class="n">all</span> <span class="n">cover</span> <span class="n">important</span> <span class="n">aspects</span> <span class="n">of</span> <span class="n">a</span> <span class="n">web</span> <span class="n">server</span><span class="o">.</span> <span class="no">Threads</span> <span class="n">let</span> <span class="n">us</span> <span class="n">handle</span> <span class="n">multiple</span> <span class="n">requests</span> <span class="n">simultaneously</span><span class="p">,</span> <span class="n">queues</span> <span class="n">let</span> <span class="n">us</span> <span class="n">store</span> <span class="n">pending</span> <span class="n">requests</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">mutex</span> <span class="n">ensures</span> <span class="n">that</span> <span class="n">it</span> <span class="n">won</span><span class="s1">&#39;t become corrupted from multiple threads accessing it. We also need a way of logging requests, interpreting URLs, and certainly, we&#39;</span><span class="n">d</span> <span class="n">like</span> <span class="n">to</span> <span class="nb">test</span> <span class="n">it</span> <span class="n">to</span> <span class="n">be</span> <span class="n">sure</span> <span class="n">it</span> <span class="n">all</span> <span class="n">works</span><span class="o">.</span> <span class="no">So</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">covering</span> <span class="n">the</span> <span class="n">remaining</span> <span class="n">topics</span> <span class="k">in</span> <span class="n">my</span> <span class="n">proposed</span> <span class="n">order</span><span class="p">,</span> <span class="n">I</span> <span class="n">will</span> <span class="n">instead</span> <span class="n">create</span> <span class="n">sections</span> <span class="n">of</span> <span class="n">the</span> <span class="n">web</span> <span class="n">server</span> <span class="n">that</span> <span class="n">each</span> <span class="n">focus</span> <span class="n">on</span> <span class="n">a</span> <span class="n">different</span> <span class="n">part</span> <span class="n">of</span> <span class="n">the</span> <span class="no">Ruby</span> <span class="no">API</span><span class="o">.</span> <span class="no">Not</span> <span class="n">only</span> <span class="n">will</span> <span class="n">this</span> <span class="n">provide</span> <span class="n">a</span> <span class="n">more</span> <span class="n">hands</span><span class="o">-</span><span class="n">on</span> <span class="ow">and</span> <span class="n">relevant</span> <span class="n">example</span><span class="p">,</span> <span class="n">but</span> <span class="n">it</span> <span class="n">will</span> <span class="n">also</span> <span class="n">serve</span> <span class="n">as</span> <span class="n">a</span> <span class="n">basic</span> <span class="n">tutorial</span> <span class="n">on</span> <span class="n">how</span> <span class="n">the</span> <span class="no">HTTP</span> <span class="n">protocol</span> <span class="ow">and</span> <span class="n">web</span> <span class="n">servers</span> <span class="n">work</span><span class="o">.</span> <span class="no">The</span> <span class="n">resulting</span> <span class="n">server</span> <span class="n">will</span> <span class="n">by</span> <span class="n">no</span> <span class="n">means</span> <span class="n">be</span> <span class="n">any</span> <span class="n">competition</span> <span class="n">to</span> <span class="n">existing</span> <span class="no">Ruby</span> <span class="n">servers</span> <span class="n">such</span> <span class="n">as</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;http://github.com/fauna/mongrel&#39;</span><span class="o">&gt;</span><span class="no">Mongrel</span><span class="o">&lt;</span><span class="sr">/a&gt; or &lt;a href=&#39;http:/</span><span class="o">/</span><span class="n">code</span><span class="o">.</span><span class="n">macournoyer</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">thin</span><span class="o">/</span><span class="err">&#39;</span><span class="o">&gt;</span><span class="no">Thin</span><span class="o">&lt;</span><span class="sr">/a&gt;, but it will serve us well for the purposes of teaching. </span>
+
+<span class="sr">First up will be sockets, as with out that we have no hope of communicating with anyone.</span></pre></div>
+  </td>
+</tr>
+
+</tbody>
+</table>
+    </div>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'oneofthesedaysblog'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    var disqus_identifier = '/ruby-day-5-building-a-web-server';
+    var disqus_url = 'http://oneofthesedaysblog.com//ruby-day-5-building-a-web-server';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+            </section>
+            <footer>
+                <h5>The thoughts and ramblings of Sam Dalton - Auckland, New Zealand</h5>
+                <ul>
+                    <li><a href='http://github.com/samdalton' target="_blank">fork me</a></li>
+                    <li><a href='http://twitter.com/spdalton' target="_blank">tweet me</a></li>
+                    <li><a href='mailto:samdalton.co.nz' target="_blank">e-mail me</a></li>
+                    <li><a href='http://last.fm/user/spdalton' target="_blank">let's rock</a></li>
+                </ul>
+            </footer>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16582890-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</body>
+</html>

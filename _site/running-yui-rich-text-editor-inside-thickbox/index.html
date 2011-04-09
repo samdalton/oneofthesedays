@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">	
+	<head>
+            <title>One of These Days</title>
+            <style>@import url('main.css'); </style>
+	</head>
+	<body>
+             <header>
+                 <h1><a href='/'>One of These Days</a></h1>
+            </header>
+            <section>
+                   <div id='background'></div>
+    <div id='container'>
+        <table cellspacing=0 cellpadding=0>
+  <thead>
+    <tr>
+        <th class=docs>
+            <h2>Running Yui Rich Text Editor Inside Thickbox</h2>
+            <h5>04 Feb 2009</h5>
+        </th>
+      <th class=code></th>
+    </tr>
+</thead>
+<tbody>
+    <tr id='section-1'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-1">&#182;</a>
+    </div>
+    
+
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="sr">//</span><span class="no">The</span> <span class="n">latest</span> <span class="n">project</span> <span class="n">at</span> <span class="n">work</span> <span class="n">required</span> <span class="n">me</span> <span class="n">to</span> <span class="n">get</span> <span class="n">a</span> <span class="n">rich</span> <span class="n">text</span> <span class="n">editor</span> <span class="p">(</span><span class="no">RTE</span><span class="p">)</span> <span class="n">running</span> <span class="n">inside</span> <span class="n">jquery</span> <span class="n">thickbox</span><span class="o">.</span> <span class="no">After</span> <span class="n">trying</span> <span class="n">out</span> <span class="n">a</span> <span class="n">few</span> <span class="n">different</span> <span class="no">RTEs</span> <span class="n">I</span> <span class="n">finally</span> <span class="n">settled</span> <span class="n">on</span> <span class="n">the</span> <span class="no">Yahoo</span> <span class="no">YUI</span> <span class="n">editor</span> <span class="n">as</span> <span class="n">it</span> <span class="n">looks</span> <span class="n">the</span> <span class="n">nicest</span><span class="p">,</span> <span class="ow">and</span> <span class="n">is</span> <span class="n">easily</span> <span class="n">customized</span><span class="o">.</span><span class="sr"></span>
+
+<span class="sr">//After 5 lines, YUI editor was up and running inside thickbox. Sweet, no problems there. However the insert image and link boxes failed completely, in all browsers. </span>
+
+<span class="sr">/</span><span class="o">/</span><span class="no">The</span> <span class="n">boxes</span> <span class="n">were</span> <span class="n">created</span> <span class="ow">and</span> <span class="n">inserted</span> <span class="n">alongside</span> <span class="n">thickbox</span><span class="p">,</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">inside</span><span class="o">.</span> <span class="no">Thankfully</span> <span class="n">thanks</span> <span class="n">to</span> <span class="n">all</span> <span class="n">of</span> <span class="no">YUI</span> <span class="n">editor</span><span class="s1">&#39;s events this was an easy fix.</span>
+<span class="s1">editor.on(&#39;</span><span class="n">windowInsertImageRender</span><span class="s1">&#39;, function() {</span>
+<span class="s1">     document.getElementById(&#39;</span><span class="n">dd</span><span class="o">-</span><span class="n">editor</span><span class="s1">&#39;).appendChild(this.get(&#39;</span><span class="n">panel</span><span class="s1">&#39;).element);</span>
+<span class="s1">});</span>
+
+<span class="s1">//Here, &quot;dd-editor&quot; is the ID of the div surrounding by YUI editor and &#39;</span><span class="n">editor</span><span class="s1">&#39; is the name of my YUI editor object. We simply set it to listen to the &#39;</span><span class="n">windowInsertImageRender</span><span class="s1">&#39; event and, when it occurs, attach it to the same div that the editor is in.</span>
+
+<span class="s1">//That fixed, it seemed to be working very smoothly until, surprise, it fails in IE.</span>
+
+<span class="s1">//![YUI Thickbox Bug](/uploads/2009/02/yui-thickbox-scroll-bug.png)</span>
+
+<span class="s1">//When the thickbox is too small to hold all of the content and scrollbars appear, scrolling down creates all manners of positioning problems with the toolbar. Drilling down with the IE developer toolbar revealed that scrolling works down to the list element with a class of &quot;yui-toolbar-groupitem&quot;. It is the elements inside that bug out.</span>
+
+<span class="s1">//After an hour of trying various css positionings and styles, I managed to fix the content area and title bar in place with a bit of jquery.</span>
+<span class="s1">$(&quot;#editor_editor&quot;).attr(&quot;position&quot;, &quot;static&quot;)</span>
+
+<span class="s1">//A fix for the buttons was eventually found as well, however it isn&#39;</span><span class="n">t</span> <span class="n">so</span> <span class="n">much</span> <span class="n">a</span> <span class="n">fix</span> <span class="n">as</span> <span class="n">it</span> <span class="n">is</span> <span class="n">a</span> <span class="n">sluggish</span><span class="p">,</span> <span class="n">ungainly</span> <span class="n">hack</span><span class="o">.</span>
+
+<span class="err">$</span><span class="p">(</span><span class="s2">&quot;#TB_ajaxContent&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">scroll</span><span class="p">(</span><span class="n">function</span> <span class="p">()</span> <span class="p">{</span> <span class="n">editor</span><span class="o">.</span><span class="n">toolbar</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="kp">true</span><span class="p">);</span> <span class="n">editor</span><span class="o">.</span><span class="n">toolbar</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="kp">false</span><span class="p">);</span> <span class="p">}</span> <span class="p">);</span><span class="sr"></span>
+
+<span class="sr">//Hooking in to the scroll event on the thickbox window, each time it moves we collapse and then redisplay the toolbar. This causes the buttons to jump into the correct place at the cost of a very slow scrolling time. </span>
+
+<span class="sr">/</span><span class="o">/</span><span class="no">Note</span><span class="p">:</span> <span class="n">the</span> <span class="n">above</span> <span class="mi">2</span> <span class="n">lines</span> <span class="n">need</span> <span class="n">to</span> <span class="n">be</span> <span class="n">called</span> <span class="n">after</span> <span class="n">the</span> <span class="n">editor</span> <span class="n">has</span> <span class="n">fulled</span> <span class="n">rendered</span> <span class="ow">and</span> <span class="n">only</span> <span class="k">in</span> <span class="no">IE</span><span class="o">.</span> <span class="no">This</span> <span class="n">can</span> <span class="n">be</span> <span class="n">done</span> <span class="n">by</span> <span class="n">using</span> <span class="n">the</span> <span class="n">windowRender</span> <span class="n">event</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">bit</span> <span class="n">of</span> <span class="n">jquery</span><span class="p">,</span> <span class="n">like</span> <span class="n">so</span><span class="p">:</span>
+<span class="k">if</span> <span class="p">(</span><span class="vg">$.</span><span class="n">browser</span><span class="o">.</span><span class="n">msie</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">editor</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s1">&#39;windowRender&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
+         <span class="err">$</span><span class="p">(</span><span class="s2">&quot;#editor_editor&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s2">&quot;position&quot;</span><span class="p">,</span> <span class="s2">&quot;static&quot;</span><span class="p">);</span>
+         <span class="err">$</span><span class="p">(</span><span class="s2">&quot;#TB_ajaxContent&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">scroll</span><span class="p">(</span><span class="n">function</span> <span class="p">()</span> <span class="p">{</span> <span class="n">editor</span><span class="o">.</span><span class="n">toolbar</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="kp">true</span><span class="p">);</span> <span class="n">editor</span><span class="o">.</span><span class="n">toolbar</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="kp">false</span><span class="p">);</span> <span class="p">}</span> <span class="p">);</span>
+     <span class="p">});</span>
+<span class="p">}</span></pre></div>
+  </td>
+</tr>
+
+</tbody>
+</table>
+    </div>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'oneofthesedaysblog'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    var disqus_identifier = '/running-yui-rich-text-editor-inside-thickbox';
+    var disqus_url = 'http://oneofthesedaysblog.com//running-yui-rich-text-editor-inside-thickbox';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+            </section>
+            <footer>
+                <h5>The thoughts and ramblings of Sam Dalton - Auckland, New Zealand</h5>
+                <ul>
+                    <li><a href='http://github.com/samdalton' target="_blank">fork me</a></li>
+                    <li><a href='http://twitter.com/spdalton' target="_blank">tweet me</a></li>
+                    <li><a href='mailto:samdalton.co.nz' target="_blank">e-mail me</a></li>
+                    <li><a href='http://last.fm/user/spdalton' target="_blank">let's rock</a></li>
+                </ul>
+            </footer>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16582890-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</body>
+</html>

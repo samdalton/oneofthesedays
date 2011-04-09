@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">	
+	<head>
+            <title>One of These Days</title>
+            <style>@import url('main.css'); </style>
+	</head>
+	<body>
+             <header>
+                 <h1><a href='/'>One of These Days</a></h1>
+            </header>
+            <section>
+                   <div id='background'></div>
+    <div id='container'>
+        <table cellspacing=0 cellpadding=0>
+  <thead>
+    <tr>
+        <th class=docs>
+            <h2>Ruby Day 7 Http Protocol</h2>
+            <h5>29 Jun 2010</h5>
+        </th>
+      <th class=code></th>
+    </tr>
+</thead>
+<tbody>
+    <tr id='section-1'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-1">&#182;</a>
+    </div>
+    
+
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="no">We</span> <span class="n">have</span> <span class="n">created</span> <span class="n">a</span> <span class="n">simple</span> <span class="n">server</span> <span class="n">that</span> <span class="n">responds</span> <span class="n">with</span> <span class="n">whatever</span> <span class="n">text</span> <span class="n">it</span> <span class="n">received</span> <span class="k">when</span> <span class="n">we</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">it</span> <span class="n">via</span> <span class="no">TELNET</span><span class="o">.</span> <span class="no">The</span> <span class="n">uses</span> <span class="k">for</span> <span class="n">this</span> <span class="n">are</span> <span class="n">limited</span> <span class="ow">and</span> <span class="n">so</span> <span class="n">we</span> <span class="n">want</span> <span class="n">now</span> <span class="n">to</span> <span class="k">begin</span> <span class="n">implementing</span> <span class="n">the</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/Protocols/&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;HTTP - Hypertext Transfer Protocol Overview&quot;</span><span class="o">&gt;</span><span class="no">HyperText</span> <span class="no">Transfer</span> <span class="no">Protocol</span> <span class="p">(</span><span class="no">HTTP</span><span class="p">)</span><span class="o">&lt;</span><span class="sr">/a&gt; to enable us to show a web page. Being a standard, and universally adopted protocol, a web browser knows that if it uses HTTP to talk to a web server, they will both understand each other. HTTP defines a set of actions that a web server must carry out. These are:</span>
+
+<span class="sr">&lt;ul&gt;</span>
+<span class="sr">  &lt;li&gt;&lt;strong&gt;OPTIONS&lt;/s</span><span class="n">trong</span><span class="o">&gt;</span> <span class="o">-</span> <span class="no">Returns</span> <span class="n">information</span> <span class="ow">and</span> <span class="n">options</span> <span class="n">available</span> <span class="k">for</span> <span class="n">the</span> <span class="n">server</span><span class="p">,</span> <span class="ow">or</span> <span class="n">a</span> <span class="n">specified</span> <span class="n">resource</span><span class="o">.</span> <span class="s1">&#39;OPTIONS *&#39;</span> <span class="n">will</span> <span class="n">tell</span> <span class="n">you</span> <span class="n">what</span> <span class="n">the</span> <span class="n">entire</span> <span class="n">server</span> <span class="n">is</span> <span class="n">capable</span> <span class="n">of</span><span class="p">,</span> <span class="n">whereas</span> <span class="s1">&#39;OPTIONS filename&#39;</span> <span class="n">will</span> <span class="n">tell</span> <span class="n">you</span> <span class="n">what</span> <span class="n">it</span> <span class="n">can</span> <span class="k">do</span> <span class="n">with</span> <span class="n">that</span> <span class="n">particular</span> <span class="n">file</span><span class="o">.</span><span class="n">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr">  &lt;li&gt;&lt;strong&gt;GET&lt;/s</span><span class="n">trong</span><span class="o">&gt;</span> <span class="o">-</span> <span class="no">Returns</span> <span class="n">the</span> <span class="n">contents</span> <span class="n">of</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span><span class="o">.</span> <span class="s1">&#39;GET index.html&#39;</span> <span class="n">will</span> <span class="k">return</span> <span class="n">the</span> <span class="n">file</span> <span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="o">.</span> <span class="no">The</span> <span class="no">GET</span> <span class="nb">method</span> <span class="n">is</span> <span class="n">what</span> <span class="n">we</span> <span class="n">will</span> <span class="n">be</span> <span class="n">implementing</span><span class="o">.</span><span class="n">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr">  &lt;li&gt;&lt;strong&gt;HEAD&lt;/s</span><span class="n">trong</span><span class="o">&gt;</span> <span class="o">-</span> <span class="no">Works</span> <span class="n">the</span> <span class="n">same</span> <span class="n">as</span> <span class="no">GET</span><span class="p">,</span> <span class="n">except</span> <span class="n">the</span> <span class="n">contents</span> <span class="n">of</span> <span class="n">the</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span> <span class="n">is</span> <span class="ow">not</span> <span class="n">returned</span><span class="o">.</span> <span class="no">Instead</span><span class="p">,</span> <span class="n">meta</span><span class="o">-</span><span class="n">information</span> <span class="n">is</span> <span class="n">returned</span><span class="p">,</span> <span class="n">such</span> <span class="n">as</span> <span class="n">the</span> <span class="n">file</span><span class="o">-</span><span class="nb">type</span> <span class="ow">or</span> <span class="k">when</span> <span class="n">it</span> <span class="n">was</span> <span class="n">last</span> <span class="n">modified</span><span class="o">.</span><span class="n">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr">  &lt;li&gt;&lt;strong&gt;POST&lt;/s</span><span class="n">trong</span><span class="o">&gt;</span> <span class="o">-</span> <span class="no">Sending</span> <span class="n">information</span> <span class="n">along</span> <span class="n">with</span> <span class="n">a</span> <span class="no">POST</span> <span class="n">request</span> <span class="n">will</span> <span class="n">associate</span> <span class="n">with</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">file</span><span class="o">.</span> <span class="s1">&#39;POST index.php?foo=bar&#39;</span> <span class="n">will</span> <span class="nb">send</span> <span class="n">the</span> <span class="n">value</span> <span class="s1">&#39;bar&#39;</span> <span class="n">to</span> <span class="n">the</span> <span class="n">file</span> <span class="s1">&#39;index.php&#39;</span><span class="p">,</span> <span class="n">storing</span> <span class="n">it</span> <span class="n">under</span> <span class="n">the</span> <span class="nb">name</span> <span class="s1">&#39;foo.&#39;</span><span class="o">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr">  &lt;li&gt;&lt;strong&gt;PUT&lt;/s</span><span class="n">trong</span><span class="o">&gt;</span> <span class="o">-</span> <span class="no">PUT</span> <span class="n">is</span> <span class="n">the</span> <span class="n">opposite</span> <span class="n">of</span> <span class="no">GET</span><span class="p">:</span> <span class="n">it</span> <span class="n">sends</span> <span class="n">a</span> <span class="n">file</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">location</span><span class="p">,</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">server</span> <span class="n">will</span> <span class="n">store</span> <span class="n">that</span> <span class="n">file</span> <span class="k">in</span> <span class="n">that</span> <span class="n">location</span><span class="o">.</span><span class="n">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr">  &lt;li&gt;&lt;strong&gt;DELETE&lt;/s</span><span class="n">trong</span><span class="o">&gt;</span> <span class="o">-</span> <span class="no">You</span> <span class="n">can</span> <span class="n">remove</span> <span class="n">a</span> <span class="n">specified</span> <span class="n">file</span> <span class="n">with</span> <span class="s1">&#39;DELTE filename&#39;</span><span class="p">,</span> <span class="n">however</span> <span class="n">there</span> <span class="n">is</span> <span class="n">no</span> <span class="n">guarantee</span> <span class="n">that</span> <span class="n">the</span> <span class="n">server</span> <span class="n">will</span> <span class="n">actually</span> <span class="k">do</span> <span class="n">this</span><span class="o">.</span><span class="n">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr">  &lt;li&gt;&lt;strong&gt;TRACE&lt;/s</span><span class="n">trong</span><span class="o">&gt;</span> <span class="o">-</span> <span class="no">Lists</span> <span class="n">the</span> <span class="n">exact</span> <span class="n">servers</span> <span class="n">a</span> <span class="n">request</span> <span class="n">must</span> <span class="n">go</span> <span class="n">through</span> <span class="n">to</span> <span class="n">reach</span> <span class="n">the</span> <span class="n">destination</span> <span class="n">server</span><span class="o">.</span> <span class="no">This</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">proxy</span> <span class="n">server</span><span class="p">,</span> <span class="k">for</span> <span class="n">example</span><span class="o">.</span><span class="n">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr">  &lt;li&gt;&lt;strong&gt;CONNECT&lt;/s</span><span class="n">trong</span><span class="o">&gt;</span> <span class="o">-</span> <span class="no">Not</span> <span class="n">used</span> <span class="k">in</span> <span class="no">HTTP</span> <span class="mi">1</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="no">CONNECT</span> <span class="n">is</span> <span class="n">reserved</span> <span class="k">for</span> <span class="n">future</span> <span class="n">implementations</span> <span class="n">that</span> <span class="n">may</span> <span class="n">wish</span> <span class="n">to</span> <span class="n">set</span> <span class="n">up</span> <span class="n">some</span> <span class="n">form</span> <span class="n">of</span> <span class="n">secure</span> <span class="n">communication</span><span class="o">.</span><span class="n">&lt;</span><span class="sr">/li&gt;</span>
+<span class="sr">&lt;/u</span><span class="n">l</span><span class="o">&gt;</span>
+<span class="p">(</span><span class="no">Paraphrased</span> <span class="ow">and</span> <span class="n">adapted</span> <span class="n">from</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;HTTP/1.1: Method Definitions&quot;</span><span class="o">&gt;</span><span class="no">W3C</span><span class="o">&lt;</span><span class="sr">/a&gt;)</span>
+
+<span class="sr">For a basic web server we will only need to implement the GET method, as that will at least allow us to send content to the browser. We&#39;ll also want to send back a few status codes. Status codes let the browser determine what the server has done. The most prevalent example is 404 - File Not Found. Equally as important is 200 - OK, which is returned when the server can successfully carry out the request. Along with these 2, we will send back 400 - Bad Request if something other than a GET request is sent. The entire server code is below, and each step is explained in detail afterwards.</span>
+
+<span class="sr">&lt;pre class=&#39;brush:ruby&#39;&gt;</span>
+<span class="sr">require &#39;socket&#39;</span>
+
+<span class="sr">server = TCPServer.new(&#39;127.0.0.1&#39;, &#39;8080&#39;)</span>
+
+<span class="sr">while socket = server.accept</span>
+<span class="sr">    request = socket.readline</span>
+
+<span class="sr">    validGET = request.match(/</span><span class="no">GET</span> <span class="o">.</span><span class="n">*</span> <span class="no">HTTP</span><span class="p">\</span><span class="o">/</span><span class="mi">1</span><span class="p">\</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="p">)</span>
+
+    <span class="k">unless</span> <span class="p">(</span><span class="n">validGET</span><span class="p">)</span> 
+        <span class="n">socket</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;HTTP/1.1 400 Bad Request&quot;</span>
+        <span class="n">socket</span><span class="o">.</span><span class="n">close</span>
+        <span class="k">next</span>
+    <span class="k">end</span>
+
+    <span class="n">file</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">file</span>
+
+    <span class="k">unless</span> <span class="p">(</span> <span class="no">File</span><span class="o">.</span><span class="n">exists?</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="p">)</span> 
+        <span class="n">socket</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;HTTP/1.1 404 File Not Found&quot;</span>
+        <span class="n">socket</span><span class="o">.</span><span class="n">close</span>
+        <span class="k">next</span>
+    <span class="k">end</span>
+
+    <span class="n">socket</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;HTTP/1.1 200 OK</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">socket</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;Connection: close</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">socket</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;Content-Type: text/html</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> 
+        <span class="k">while</span> <span class="p">(</span><span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">gets</span><span class="p">)</span> 
+            <span class="n">socket</span><span class="o">.</span><span class="n">puts</span> <span class="n">line</span>
+        <span class="k">end</span>
+    <span class="p">}</span>
+
+    <span class="n">socket</span><span class="o">.</span><span class="n">close</span>
+<span class="k">end</span>
+<span class="o">&lt;</span><span class="sr">/pre&gt;</span>
+
+<span class="sr">To test the server, create an html file called test.html in the same directory as the Ruby file containing the above code. Run the program, and point your browser to &#39;http:/</span><span class="o">/</span><span class="mi">127</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">1</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="nb">test</span><span class="o">.</span><span class="n">html</span><span class="s1">&#39;. Hopefully you should see the contents of the html file rendered by the browser.</span>
+
+<span class="s1">The first 3 lines should look familiar.</span>
+<span class="s1">&lt;pre class=&#39;</span><span class="n">brush</span><span class="ss">:ruby</span><span class="s1">&#39;&gt;</span>
+<span class="s1">server = TCPServer.new(&#39;</span><span class="mi">127</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">1</span><span class="s1">&#39;, &#39;</span><span class="mi">8080</span><span class="s1">&#39;)</span>
+
+<span class="s1">while socket = server.accept</span>
+<span class="s1">    request = socket.readline</span>
+<span class="s1">&lt;/pre&gt;</span>
+<span class="s1">We&#39;</span><span class="n">re</span> <span class="n">setting</span> <span class="n">the</span> <span class="n">program</span> <span class="n">to</span> <span class="n">listen</span> <span class="n">on</span> <span class="no">TCP</span> <span class="n">port</span> <span class="mi">8080</span><span class="p">,</span> <span class="ow">and</span> <span class="n">once</span> <span class="n">a</span> <span class="n">connection</span> <span class="n">is</span> <span class="n">made</span><span class="p">,</span> <span class="n">we</span><span class="s1">&#39;re storing the received information in the &#39;</span><span class="n">request</span><span class="s1">&#39; variable.</span>
+
+<span class="s1">After this we&#39;</span><span class="n">re</span> <span class="n">checking</span> <span class="k">if</span> <span class="n">the</span> <span class="n">request</span> <span class="n">is</span> <span class="n">a</span> <span class="n">valid</span> <span class="no">HTTP</span> <span class="mi">1</span><span class="o">.</span><span class="mi">1</span> <span class="no">GET</span> <span class="n">request</span><span class="o">.</span>
+<span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;brush:ruby&#39;</span><span class="o">&gt;</span>
+<span class="n">validGET</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sr">/GET .* HTTP\/1\.1/</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="sr">/pre&gt;</span>
+<span class="sr">We are using the regular expression &#39;/</span><span class="no">GET</span> <span class="o">.</span><span class="n">*</span> <span class="no">HTTP</span><span class="p">\</span><span class="o">/</span><span class="mi">1</span><span class="p">\</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="s1">&#39; to check if the request fits the format &#39;</span><span class="no">GET</span> <span class="n">file</span> <span class="no">HTTP</span><span class="o">/</span><span class="mi">1</span><span class="o">.</span><span class="mi">1</span><span class="s1">&#39;. &#39;</span><span class="o">.</span><span class="n">*</span><span class="s1">&#39; represents any sequence of characters, of any length. While this isn&#39;</span><span class="n">t</span> <span class="n">perfect</span><span class="p">,</span> <span class="n">it</span> <span class="n">should</span> <span class="n">suffice</span> <span class="k">for</span> <span class="n">now</span><span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;brush:ruby&#39;</span><span class="o">&gt;</span>
+<span class="k">unless</span> <span class="p">(</span><span class="n">validGET</span><span class="p">)</span> 
+  <span class="n">socket</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;HTTP/1.1 400 Bad Request&quot;</span>
+  <span class="n">socket</span><span class="o">.</span><span class="n">close</span>
+  <span class="k">next</span>
+<span class="k">end</span>
+<span class="o">&lt;</span><span class="sr">/pre&gt;</span>
+
+<span class="sr">&#39;unless&#39; functions identically to &#39;if not&#39;, so the code inside will only be executed if validGET is not equal to something other than nil. validGET will be nil if the request string did not match the regular expression. Hence, if the request doesn&#39;t match we are sending back &#39;HTTP/</span><span class="mi">1</span><span class="o">.</span><span class="mi">1</span> <span class="mi">400</span> <span class="no">Bad</span> <span class="no">Request</span><span class="s1">&#39;, and closing the socket. &#39;</span><span class="k">next</span><span class="s1">&#39; stops Ruby from executing the remaining contents of the loop, and forces it to start the loop again.</span>
+
+<span class="s1">&lt;pre class=&#39;</span><span class="n">brush</span><span class="ss">:ruby</span><span class="s1">&#39;&gt;</span>
+<span class="s1">file = request.split(&#39;</span> <span class="s1">&#39;)[1]</span>
+<span class="s1">file = &#39;</span><span class="o">.</span><span class="s1">&#39; + file</span>
+<span class="s1">&lt;/pre&gt;</span>
+<span class="s1">Here we are simply finding the name of the file they requested the server to load. The GET request consists of 3 parts, with a space in between each: &#39;</span><span class="no">GET</span><span class="s1">&#39; &#39;</span><span class="n">filename</span><span class="s1">&#39; &#39;</span><span class="no">HTTP</span><span class="o">/</span><span class="mi">1</span><span class="o">.</span><span class="mi">1</span><span class="s1">&#39;. Thus, the second element in the array returned by split will be the filename. We prepend the filename with a &#39;</span><span class="o">.</span><span class="s1">&#39; to ensure that the resulting file path is relative to the current directory. If they request index.html, the request will come through as /index.html. By prepending &#39;</span><span class="o">.</span><span class="s1">&#39; the file becomes ./index.html which is relative to the current directory.</span>
+
+<span class="s1">&lt;pre class=&#39;</span><span class="n">brush</span><span class="ss">:ruby</span><span class="s1">&#39;&gt;</span>
+<span class="s1">unless ( File.exists?(file) ) </span>
+<span class="s1">    socket.puts &quot;HTTP/1.1 404 File Not Found&quot;</span>
+<span class="s1">    socket.close</span>
+<span class="s1">    next</span>
+<span class="s1">end</span>
+<span class="s1">&lt;/pre&gt;</span>
+<span class="s1">Just as we checked for a correct GET request, we need to check if the requested file can actually be sent. File.exists? will return true if the given file exists on the computer. If not, we send back the famous 404 error.</span>
+
+<span class="s1">&lt;pre class=&#39;</span><span class="n">brush</span><span class="ss">:ruby</span><span class="s1">&#39;&gt;</span>
+<span class="s1">socket.puts &quot;HTTP/1.1 200 OK\n&quot;</span>
+<span class="s1">socket.puts &quot;Connection: close\n&quot;</span>
+<span class="s1">socket.puts &quot;Content-Type: text/html\n&quot;</span>
+<span class="s1">&lt;/pre&gt;</span>
+
+<span class="s1">Having got to this point in the code, we can say that we have received a correctly formed request for a file that we are able to send back. What we do next is part of the HTTP protocol, and is us telling the client that the request can indeed be processed. This is the 200 OK response. Following this, we send a &#39;</span><span class="no">Connection</span><span class="p">:</span> <span class="n">close</span><span class="s1">&#39; to indicate that we have finished sending back this message. &#39;</span><span class="no">Content</span><span class="o">-</span><span class="no">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="s1">&#39; is the beginning of a new message, and it is telling the client that they can expect to receive an html file. If we want our web server to handle images, and other file types, we will have to add in logic to send back the correct content type. Today we will just stick with text/html.</span>
+
+<span class="s1">&lt;pre class=&#39;</span><span class="n">brush</span><span class="ss">:ruby</span><span class="s1">&#39;&gt;</span>
+<span class="s1">File.open(file, &#39;</span><span class="n">r</span><span class="s1">&#39;) { |f| </span>
+<span class="s1">    while (line = f.gets) </span>
+<span class="s1">        socket.puts line</span>
+<span class="s1">    end</span>
+<span class="s1">}</span>
+<span class="s1">&lt;/pre&gt;</span>
+
+<span class="s1">Finally, we can send the contents of the html to the client. We simply open up the requested file and loop over each line in it. For each line, we send it back through the socket.</span>
+
+<span class="s1">There you have it. A web server that handles HTTP 1.1 GET requests to successfully send back an HTML file, while also handling malformed requests, and requests for non-existent files. Granted, there is a large amount of functionality that we didn&#39;</span><span class="n">t</span> <span class="n">implement</span><span class="p">,</span> <span class="n">including</span> <span class="n">some</span> <span class="n">important</span> <span class="n">error</span> <span class="n">checking</span><span class="p">,</span> <span class="n">but</span> <span class="n">hopefully</span> <span class="n">it</span> <span class="n">highlights</span> <span class="n">the</span> <span class="n">overall</span> <span class="n">mechanisms</span> <span class="n">of</span> <span class="no">HTTP</span> <span class="ow">and</span> <span class="n">web</span> <span class="n">servers</span><span class="o">.</span></pre></div>
+  </td>
+</tr>
+
+</tbody>
+</table>
+    </div>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'oneofthesedaysblog'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    var disqus_identifier = '/ruby-day-7-http-protocol';
+    var disqus_url = 'http://oneofthesedaysblog.com//ruby-day-7-http-protocol';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+            </section>
+            <footer>
+                <h5>The thoughts and ramblings of Sam Dalton - Auckland, New Zealand</h5>
+                <ul>
+                    <li><a href='http://github.com/samdalton' target="_blank">fork me</a></li>
+                    <li><a href='http://twitter.com/spdalton' target="_blank">tweet me</a></li>
+                    <li><a href='mailto:samdalton.co.nz' target="_blank">e-mail me</a></li>
+                    <li><a href='http://last.fm/user/spdalton' target="_blank">let's rock</a></li>
+                </ul>
+            </footer>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16582890-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</body>
+</html>

@@ -41,8 +41,8 @@ module Jekyll
 
         # Write out the data and content to file
         File.open("_posts/#{name}", "w") do |f|
-          f.puts data
-          f.puts "---"
+          #f.puts data
+          #f.puts "---"
           f.puts content
         end
       end
