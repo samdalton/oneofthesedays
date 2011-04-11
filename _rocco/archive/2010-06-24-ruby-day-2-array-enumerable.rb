@@ -3,26 +3,17 @@
 # <a href='http://ruby-doc.org/core/classes/Array.html'>Ruby's Array class</a> has a lot of methods, so let's get right in to it and explore some of what it has to offer.
 
 # <h3>Creation</h3>
-puts [1, 2, 3]
-#=>1
-#=>2
-#=>3
-
+puts [1, 2, 3] # 1 2 3
 
 # That's all it takes! The square brackets let Ruby know that we want to create a new array, with the elements set to be the contents of the brackets. This syntax is an alias of the actual method, [].
-puts Array.[](1,2,3)
-#=>1
-#=>2
-#=>3
-
+puts Array.[](1,2,3) # 1 2 3
 
 # If we want to create an array, but we don't have anything to store in it yet, we can use the 'new' method.
 Array.new
 
 
 # If we know that we want to store n items, we can create the array with a capacity.
-Array.new(10).size
-#=>10
+Array.new(10).size # 10
 
 
 # Size is a method of array which returns the number of elements. We created an empty array with space for 10 elements, and that is the size of the array.

@@ -3,7 +3,7 @@ output_dir = '_posts'
 template = '_layouts/rocco.mustache'
 
 Dir.foreach('_rocco') do |file|
-    unless File.directory?(file) or file =~ /(\.swp|DS_Store)/
+    unless File.directory?(file) or file =~ /(\.swp|DS_Store|.swo)/
         puts 'Found ' + file
         %x{rocco #{input_dir}/#{file} -o #{output_dir} -t #{template} }
         

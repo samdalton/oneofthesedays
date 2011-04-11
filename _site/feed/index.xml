@@ -4,7 +4,7 @@
  <title>One of These Days</title>
  <link href="http://oneofthesedaysblog.com/feed/" rel="self"/>
  <link href="http://oneofthesedaysblog.com/"/>
- <updated>2011-04-11T12:35:42+12:00</updated>
+ <updated>2011-04-11T12:46:07+12:00</updated>
  <id>http://oneofthesedaysblog.com/</id>
  <author>
    <name>Sam Dalton</name>
@@ -1294,7 +1294,140 @@ I&amp;rsquo;m also hoping that the easiser method of posting (git push heroku ma
    <link href="http://oneofthesedaysblog.com/ruby-day-6-sockets-and-tcp"/>
    <updated>2010-06-28T00:00:00+12:00</updated>
    <id>http://oneofthesedaysblog.com/ruby-day-6-sockets-and-tcp</id>
-   <content type="html"></content>
+   <content type="html">&lt;tr id='section-1'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-1&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;To kick off this web-server series we&amp;rsquo;ll create a server which, at it&amp;rsquo;s simplest, consists of just 3 lines of Ruby code. It can be called an echo server, and it does just that; it sends back to you whatever you send to it. Find a large, empty room, yell out &amp;ldquo;Ruby is awesome&amp;rdquo; and you&amp;rsquo;ll hear it repeated (this also works in a small room filled with Ruby developers). If you&amp;rsquo;re not fond of going outside (or socialising) however, you can use an echo server to achieve the same effect. Send the text &amp;ldquo;Ruby is awesome&amp;rdquo; to this echo server, and it will reply with the same message.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-2'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-2&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;This simple example expresses a concept that is fundamental to how any server works. They listen for requests, do something, and (sometimes) send something back. A web server is listening to requests to load a particular page, and in response, it sends back the contents of that page. A mail server listens for requests to download mail messages, and in response it sends the latest emails. As most servers follow this basic pattern, standards have been developed and adopted that describe in what format the requests and responses should be. Warning: You are now entering the world of acronyms.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-3'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-3&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;TCP, UDP, HTTP, STMP, NTS, FTP, ARP, SSH, IMAP, DNS, DHCP, IRC, to name but a few, are all protocols that describe requests and responses. Today we will be using the Transmission Control Protocol (TCP) to implement our simple echo server. To describe TCP, we can look at it&amp;rsquo;s simpler cousin: the Universal Datagram Packet (UDP). UDP is a protocol that specifies how data should be broken up into chunks, in order to send over a network. It also specifies how that data knows where it has to go. By pairing up a packet with an Internet Protocol (IP) address, network hardware will (all things going well) be able to send a packet it receives to the correct destination. The packet also contains the IP address of the sending machine, so that the receiver knows where to send its response. TCP does exactly what UDP does, except it does a few extra things to ensure that packets sent do actually arrive correctly. This includes error checking and correction, as well as ensuring that the sender isn&amp;rsquo;t sending more packets that the receiver can handle at once.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-4'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-4&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;If we want to create an &amp;lsquo;echo&amp;rsquo; server, we will need to listen for packets that are sent to us via the TCP protocol. When we receive one, we need to extract the message, and send it back again. Here&amp;rsquo;s the server:&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;socket&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TCPServer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;127.0.0.1&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;8080&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;accept&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readline&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-5'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-5&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Firstly, we&amp;rsquo;re creating a new TCPServer object that will listen for requests at the IP address 127.0.0.1 and on port 8080. 127.0.0.1 is an IP address reserved to represent the local machine. If the operating system is asked to send a packet to this address, it realises that this is actually the same machine and so it is a good way of testing without requiring 2 computers. Port 8080 is a common port used for alternative web servers, which we will be creating eventually, so we may as well use it now. As the network card receives packets for the entire operating system, and not specific programs (mail client, chat client, etc.), a program must associate itself with a port number. The operating system can then look at the port number in the received packet and determine which program it should go to. Packets with port number 21 will be sent to your FTP client, port 110 packets will go to your mail client. We want packets with port 8080 to be sent to our Ruby program. To ensure there is no confusion, only one program can take one port number at a time, so if you receive an error about port 8080 being use, you may have another program already attached to it.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-6'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-6&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;When you run this program, nothing will happen. The program will continue running forever and nothing will be displayed to the screen. Why doesn&amp;rsquo;t the program end? The answer is in the second line, server.accept. Accept is a method which causes the program to pause until the TCPServer object receives a packet. As soon as it does, it returns a Socket object which contains the received packet and information on the machine who sent it. This socket acts as our end of the connection created between us and them, &lt;a href='http://www.youtube.com/watch?v=f99PcP0aFNE'&gt;a tube of the internet&lt;/a&gt;, if you will allow the analogy. Whatever is sent down this tube, we will eventually receive, and vice versa. Therefore, to create our echo, we come to the third line.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readline&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-7'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-7&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;We read the socket, which will contain the message they sent, and we use &amp;lsquo;puts&amp;rsquo; to sent it straight back. To see this in action, we can use telnet to connect to our running server and send it a message.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;telnet&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;127&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8080&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-8'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-8&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;The screencast below will show it working.&lt;/p&gt;
+
+&lt;object width=&quot;600&quot; height=&quot;450&quot;&gt;&lt;param name=&quot;allowfullscreen&quot; value=&quot;true&quot; /&gt;&lt;param name=&quot;allowscriptaccess&quot; value=&quot;always&quot; /&gt;&lt;param name=&quot;movie&quot; value=&quot;http://vimeo.com/moogaloop.swf?clip_id=12910541&amp;amp;server=vimeo.com&amp;amp;show_title=1&amp;amp;show_byline=1&amp;amp;show_portrait=0&amp;amp;color=00ADEF&amp;amp;fullscreen=1&quot; /&gt;&lt;embed src=&quot;http://vimeo.com/moogaloop.swf?clip_id=12910541&amp;amp;server=vimeo.com&amp;amp;show_title=1&amp;amp;show_byline=1&amp;amp;show_portrait=0&amp;amp;color=00ADEF&amp;amp;fullscreen=1&quot; type=&quot;application/x-shockwave-flash&quot; allowfullscreen=&quot;true&quot; allowscriptaccess=&quot;always&quot; width=&quot;600&quot; height=&quot;450&quot;&gt;&lt;/embed&gt;&lt;/object&gt;
+
+
+&lt;p&gt;&lt;a href=&quot;http://vimeo.com/12910541&quot;&gt;A Simple TCP Echo Server in Ruby&lt;/a&gt; from &lt;a href=&quot;http://vimeo.com/user4148440&quot;&gt;Sam Dalton&lt;/a&gt; on &lt;a href=&quot;http://vimeo.com&quot;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-9'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-9&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Voila! Hopefully you managed to get it working, and understood why it works as well. While this is a server in just 3 lines, it&amp;rsquo;s not particularly useful. Once someone connects, the programs ends and the server closes. To make it run indefinitely we will need some kind of infinite loop.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;accept&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readline&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-10'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-10&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;In Ruby, every operation returns something, even variable assignment. The returned value will be equal to whatever value was set. So in this case, when server.accept detects a connection and returns a socket object, the while loop will see that an object was returned. An object is not regarded as false, and so the loops is entered. When the loop ends, server.accept is called once more, and the process repeats indefinitely. The program will never end because server.accept will always wait until it gets a connection, and hence will always return a non-nil value to the while loop condition. Just as with files, we also have to close the socket. We didn&amp;rsquo;t do this in the first example because the program exited straight afterwards so there wasn&amp;rsquo;t much need.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-11'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-11&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;So there you have it, a 3 (or 4) line echo server that uses the TCP protocol.&lt;/p&gt;
+
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+</content>
  </entry>
  
  <entry>
@@ -1757,7 +1890,7 @@ The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsqu
     &lt;h3&gt;Creation&lt;/h3&gt;
   &lt;/td&gt;
   &lt;td class=code&gt;
-    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 1 2 3&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr id='section-4'&gt;
@@ -1765,12 +1898,10 @@ The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsqu
     &lt;div class=&quot;pilwrap&quot;&gt;
       &lt;a class=&quot;pilcrow&quot; href=&quot;#section-4&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
-    &lt;p&gt;=&gt;1
-=&gt;2
-=&gt;3&lt;/p&gt;
+    &lt;p&gt;That&amp;rsquo;s all it takes! The square brackets let Ruby know that we want to create a new array, with the elements set to be the contents of the brackets. This syntax is an alias of the actual method, [].&lt;/p&gt;
   &lt;/td&gt;
   &lt;td class=code&gt;
-    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 1 2 3&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr id='section-5'&gt;
@@ -1778,10 +1909,10 @@ The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsqu
     &lt;div class=&quot;pilwrap&quot;&gt;
       &lt;a class=&quot;pilcrow&quot; href=&quot;#section-5&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
-    &lt;p&gt;That&amp;rsquo;s all it takes! The square brackets let Ruby know that we want to create a new array, with the elements set to be the contents of the brackets. This syntax is an alias of the actual method, [].&lt;/p&gt;
+    &lt;p&gt;If we want to create an array, but we don&amp;rsquo;t have anything to store in it yet, we can use the &amp;lsquo;new&amp;rsquo; method.&lt;/p&gt;
   &lt;/td&gt;
   &lt;td class=code&gt;
-    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr id='section-6'&gt;
@@ -1789,51 +1920,16 @@ The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsqu
     &lt;div class=&quot;pilwrap&quot;&gt;
       &lt;a class=&quot;pilcrow&quot; href=&quot;#section-6&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
-    &lt;p&gt;=&gt;1
-=&gt;2
-=&gt;3&lt;/p&gt;
+    &lt;p&gt;If we know that we want to store n items, we can create the array with a capacity.&lt;/p&gt;
   &lt;/td&gt;
   &lt;td class=code&gt;
-    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 10&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr id='section-7'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
       &lt;a class=&quot;pilcrow&quot; href=&quot;#section-7&quot;&gt;&amp;#182;&lt;/a&gt;
-    &lt;/div&gt;
-    &lt;p&gt;If we want to create an array, but we don&amp;rsquo;t have anything to store in it yet, we can use the &amp;lsquo;new&amp;rsquo; method.&lt;/p&gt;
-  &lt;/td&gt;
-  &lt;td class=code&gt;
-    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
-  &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr id='section-8'&gt;
-  &lt;td class=docs&gt;
-    &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-8&quot;&gt;&amp;#182;&lt;/a&gt;
-    &lt;/div&gt;
-    &lt;p&gt;If we know that we want to store n items, we can create the array with a capacity.&lt;/p&gt;
-  &lt;/td&gt;
-  &lt;td class=code&gt;
-    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
-  &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr id='section-9'&gt;
-  &lt;td class=docs&gt;
-    &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-9&quot;&gt;&amp;#182;&lt;/a&gt;
-    &lt;/div&gt;
-    &lt;p&gt;=&gt;10&lt;/p&gt;
-  &lt;/td&gt;
-  &lt;td class=code&gt;
-    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
-  &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr id='section-10'&gt;
-  &lt;td class=docs&gt;
-    &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-10&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;Size is a method of array which returns the number of elements. We created an empty array with space for 10 elements, and that is the size of the array.&lt;/p&gt;
   &lt;/td&gt;
@@ -1857,10 +1953,10 @@ The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsqu
     &lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr id='section-12'&gt;
+&lt;tr id='section-9'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-12&quot;&gt;&amp;#182;&lt;/a&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-9&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;We have created an array called &amp;lsquo;even&amp;rsquo; that contains the first 5 even numbers. Firstly, we stated that we wanted a new array of size 5&lt;/p&gt;
   &lt;/td&gt;
@@ -1869,10 +1965,10 @@ The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsqu
  &lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr id='section-13'&gt;
+&lt;tr id='section-10'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-13&quot;&gt;&amp;#182;&lt;/a&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-10&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;Secondly, we put a block at the end of it.&lt;/p&gt;
   &lt;/td&gt;
@@ -1880,10 +1976,10 @@ The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsqu
     &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr id='section-14'&gt;
+&lt;tr id='section-11'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-14&quot;&gt;&amp;#182;&lt;/a&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-11&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;This could also be written as&lt;/p&gt;
   &lt;/td&gt;
@@ -1891,10 +1987,10 @@ The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsqu
     &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr id='section-15'&gt;
+&lt;tr id='section-12'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-15&quot;&gt;&amp;#182;&lt;/a&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-12&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;What is this voodoo magic, do I hear you ask? Well, the block is taking a number, i, and returning the sum of i with itself. The value of i that is passed is the index into each element created. Thus for an array of size 5, we will have the indices 0, 1, 2, 3, and 4. Working this out the long way gives us&lt;/p&gt;
   &lt;/td&gt;
@@ -1907,10 +2003,10 @@ The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsqu
 &lt;span class=&quot;n&quot;&gt;even&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr id='section-16'&gt;
+&lt;tr id='section-13'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-16&quot;&gt;&amp;#182;&lt;/a&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-13&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;Using a block lets us define each element programatically, based on the the index of that element. Nifty!&lt;/p&gt;
   &lt;/td&gt;
@@ -1946,10 +2042,10 @@ The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsqu
     &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;echo&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# echo echo echo&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr id='section-19'&gt;
+&lt;tr id='section-16'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-19&quot;&gt;&amp;#182;&lt;/a&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-16&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;the more interesting usage is as a join operator. PHP offers the join() method which, given an array and a character will return a string consisting of each array element, followed by the given character. Ruby also has a join method, but the * operator is a great shortcut.&lt;/p&gt;
   &lt;/td&gt;
@@ -1973,10 +2069,10 @@ The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsqu
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;ca&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;car&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;car&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;car&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;co&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;cone&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;con&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;cone&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;cone&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;cone&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr id='section-21'&gt;
+&lt;tr id='section-18'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-21&quot;&gt;&amp;#182;&lt;/a&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-18&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;Note that this method isn&amp;rsquo;t part of the core API, and so it needs to be explicitly included&lt;/p&gt;
   &lt;/td&gt;
@@ -1984,10 +2080,10 @@ The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsqu
     &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr id='section-22'&gt;
+&lt;tr id='section-19'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-22&quot;&gt;&amp;#182;&lt;/a&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-19&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;So why is this useful? The main application I can see for this is auto-completion. Given a set of names or commands, what are the fewest characters I can type to identify one in particular? Consider a lazy person using twitter. If I want to send a message someone, I don&amp;rsquo;t really want to type out their whole user id. Given an array of people I follow, abbrev can generate a list of possible abbreviations such that each abbreviation will only reference one person.&lt;/p&gt;
   &lt;/td&gt;
@@ -2014,10 +2110,10 @@ The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsqu
  &lt;span class=&quot;s2&quot;&gt;&amp;quot;fra&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;frank&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr id='section-23'&gt;
+&lt;tr id='section-20'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-23&quot;&gt;&amp;#182;&lt;/a&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-20&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;Steve and Stephen have the same first 3 characters, and so you can see that the shortest abbreviation for each is stev and step. You may have noticed that I used &amp;lsquo;p&amp;rsquo; and not &amp;lsquo;puts&amp;rsquo;. This is because abbrev doesn&amp;rsquo;t return an array, but a hash of &amp;lsquo;abbreviation&amp;rsquo; =&gt; &amp;lsquo;originalString&amp;rsquo; pairs.&lt;/p&gt;
   &lt;/td&gt;
@@ -2040,10 +2136,10 @@ The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsqu
 &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;collect&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;compact&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# [2, 4, 6, 8]&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr id='section-25'&gt;
+&lt;tr id='section-22'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-25&quot;&gt;&amp;#182;&lt;/a&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-22&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;By checking if each number is divisible by 2, we can create a new array containing only the even numbers. &amp;lsquo;compact&amp;rsquo; is used to remove elements that are &amp;lsquo;nil&amp;rsquo;. As collect will create a new array of the same size, when the number is odd no value will be returned and so that element will be empty. To overwrite the array instead of creating a new one, use the exclamation mark.&lt;/p&gt;
   &lt;/td&gt;
@@ -2108,10 +2204,10 @@ The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsqu
     &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;sx&quot;&gt;%w{a c b}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sort&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# [&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;]&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr id='section-30'&gt;
+&lt;tr id='section-27'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-30&quot;&gt;&amp;#182;&lt;/a&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-27&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;%w{a c b} is a short way of saying [&amp;lsquo;a&amp;rsquo;, &amp;lsquo;c&amp;rsquo;, &amp;lsquo;b&amp;rsquo;]. If each element of your array is a single word, then the shorthand will be quicker as you don&amp;rsquo;t have to worry about typing in quotes. So, given our array, [&amp;lsquo;a&amp;rsquo;, &amp;lsquo;c&amp;rsquo;, &amp;lsquo;b&amp;rsquo;] and our block, { |a,b| a &amp;lt; =&gt; b }, we see that they have become alphabetically sorted. The block operates on a pair of values, and compares them with the &amp;lt; =&gt; operator. &amp;lt; =&gt; returns -1 if the left value is lesser, 0 if they are equal, and +1 if the left value is greater. If we want to sort the array in reverse order, we simply swap the order of the values in our block.&lt;/p&gt;
   &lt;/td&gt;
@@ -2136,10 +2232,10 @@ The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsqu
     &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;title&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Frankenstien&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;author&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Shelly, M.&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr id='section-32'&gt;
+&lt;tr id='section-29'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-32&quot;&gt;&amp;#182;&lt;/a&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-29&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;As you can see, we have an array of hashes, containing an author and a title. They are ordered by the author&amp;rsquo;s name. Here&amp;rsquo;s the BookShelf class that lets us do this.&lt;/p&gt;
   &lt;/td&gt;
@@ -2163,10 +2259,10 @@ The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsqu
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr id='section-33'&gt;
+&lt;tr id='section-30'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-33&quot;&gt;&amp;#182;&lt;/a&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-30&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;We are including the Enumerable class, which means that if we define the method, &amp;lsquo;each&amp;rsquo;, we can call any Enumerable method on the BookShelf class.&lt;/p&gt;
   &lt;/td&gt;
@@ -2174,10 +2270,10 @@ The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsqu
     &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr id='section-34'&gt;
+&lt;tr id='section-31'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-34&quot;&gt;&amp;#182;&lt;/a&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-31&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;The each method is defined as&lt;/p&gt;
   &lt;/td&gt;
@@ -2185,10 +2281,10 @@ The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsqu
     &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;vi&quot;&gt;@authors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;each_with_index&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;author&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;title&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@titles&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr id='section-35'&gt;
+&lt;tr id='section-32'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-35&quot;&gt;&amp;#182;&lt;/a&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-32&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;In English, this says &amp;lsquo;For each author, get me the name of the author and the index. Then I&amp;rsquo;m going to stop (yield) and return the name of the author, and the title of the book that appears in the same position in the titles array&amp;rsquo;. As you can see, it is &amp;lsquo;yield&amp;rsquo; that is doing the magic here. It essentially stops the loop (each_with_index) and spits out the result of the statements that follow it.&lt;/p&gt;
   &lt;/td&gt;
@@ -2196,10 +2292,10 @@ The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsqu
     &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr id='section-36'&gt;
+&lt;tr id='section-33'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-36&quot;&gt;&amp;#182;&lt;/a&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-33&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;If you want to try it out yourself, you could add some books to the BookShelf like so&lt;/p&gt;
   &lt;/td&gt;
