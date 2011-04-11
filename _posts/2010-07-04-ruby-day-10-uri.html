@@ -6,40 +6,89 @@ layout: post
     <div class="pilwrap">
       <a class="pilcrow" href="#section-1">&#182;</a>
     </div>
-    
+    <p>Today we will take a brief look at Ruby&rsquo;s <a href="http://ruby-doc.org/core/classes/URI.html" title="Module: URI">Uniform Resource Identifier (URI) class</a> in order to handle a wider range of requests in our web server. Currently, if we enter a URL such as &lsquo;http://localhost:8080/test.html&rsquo; into our web browser we will receive a request that looks like &lsquo;GET /index.html HTTP/1.1&rsquo;. If we want to send any extra parameters such as an id (http://localhost:8080/test.html?id=123) then our server will naively assume that the file we are requesting is named &lsquo;index.html?id=123&rsquo;, and so it will not be able to find it.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-2'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-2">&#182;</a>
+    </div>
+    <p>By treating the request as an <a href="http://www.bernzilla.com/item.php?id=100">HTTP URI</a>, we can interpret the request more intelligently, separating it into the filename and the query parameters.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-3'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-3">&#182;</a>
+    </div>
+    <p>We can modify our worker class like so</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="n">file</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+<span class="n">file</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">file</span>
+
+<span class="n">uri</span> <span class="o">=</span>  <span class="no">URI</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="n">file</span> <span class="o">=</span> <span class="n">uri</span><span class="o">[</span><span class="mi">5</span><span class="o">]</span>
+<span class="n">query</span> <span class="o">=</span> <span class="n">uri</span><span class="o">[</span><span class="mi">7</span><span class="o">]</span></pre></div>
+  </td>
+</tr>
+<tr id='section-4'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-4">&#182;</a>
+    </div>
+    <p>The &lsquo;split&rsquo; method will take a URL and split it up into 9 components which will be explained by using the URL &lsquo;http://www.google.com/index.html?user=123&rsquo; as an example</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-5'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-5">&#182;</a>
+    </div>
+    <p>Scheme &ndash; http
+Userinfo &ndash; nil
+Host &ndash; www.google.com
+Port &ndash; 80
+Registry &ndash; nil
+Path &ndash; /index.html
+Opaque &ndash; nil
+Query = user=123
+Fragment &ndash; nil</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-6'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-6">&#182;</a>
+    </div>
+    <p>(Userinfo, registry, opaque and fragment are not likely to be used for an HTTP request so we can ignore them.)</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-7'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-7">&#182;</a>
+    </div>
+    <p>The two components we are interested in are path and query, elements 5 and 7 respectively. By passing the middle part of our GET request to the split method, we can grab the 2 elements we need. &lsquo;uri[5]&rsquo; contains the file we want, so that will be passed to the File class. &lsquo;uri[7]&rsquo; contains the query parameters which can be dealt with later on.</p>
 
   </td>
   <td class=code>
-    <div class='highlight'><pre><span class="no">Today</span> <span class="n">we</span> <span class="n">will</span> <span class="n">take</span> <span class="n">a</span> <span class="n">brief</span> <span class="n">look</span> <span class="n">at</span> <span class="no">Ruby</span><span class="s1">&#39;s &lt;a href=&quot;http://ruby-doc.org/core/classes/URI.html&quot; title=&quot;Module: URI&quot;&gt;Uniform Resource Identifier (URI) class&lt;/a&gt; in order to handle a wider range of requests in our web server. Currently, if we enter a URL such as &#39;</span><span class="n">http</span><span class="ss">:/</span><span class="o">/</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="nb">test</span><span class="o">.</span><span class="n">html</span><span class="s1">&#39; into our web browser we will receive a request that looks like &#39;</span><span class="no">GET</span><span class="sr"> /index.html HTTP/</span><span class="mi">1</span><span class="o">.</span><span class="mi">1</span><span class="s1">&#39;. If we want to send any extra parameters such as an id (http://localhost:8080/test.html?id=123) then our server will naively assume that the file we are requesting is named &#39;</span><span class="n">index</span><span class="o">.</span><span class="n">html?</span><span class="nb">id</span><span class="o">=</span><span class="mi">123</span><span class="s1">&#39;, and so it will not be able to find it.</span>
-
-<span class="s1">By treating the request as an &lt;a href=&quot;http://www.bernzilla.com/item.php?id=100&quot;&gt;HTTP URI&lt;/a&gt;, we can interpret the request more intelligently, separating it into the filename and the query parameters. </span>
-
-<span class="s1">We can modify our worker class like so</span>
-<span class="s1">&lt;pre class=&#39;</span><span class="n">brush</span><span class="ss">:ruby</span><span class="s1">&#39;&gt;</span>
-<span class="s1">file = request.split(&#39;</span> <span class="s1">&#39;)[1]</span>
-<span class="s1">file = &#39;</span><span class="o">.</span><span class="s1">&#39; + file</span>
-
-<span class="s1">uri =  URI.split(file)</span>
-<span class="s1">file = uri[5]</span>
-<span class="s1">query = uri[7]</span>
-<span class="s1">&lt;/pre&gt;</span>
-
-<span class="s1">The &#39;</span><span class="nb">split</span><span class="s1">&#39; method will take a URL and split it up into 9 components which will be explained by using the URL &#39;</span><span class="n">http</span><span class="ss">:/</span><span class="o">/</span><span class="n">www</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html?user</span><span class="o">=</span><span class="mi">123</span><span class="s1">&#39; as an example</span>
-
-<span class="s1">&lt;pre class=&#39;</span><span class="n">brush</span><span class="ss">:ruby</span><span class="s1">&#39;&gt;</span>
-<span class="s1">Scheme - http</span>
-<span class="s1">Userinfo - nil</span>
-<span class="s1">Host - www.google.com</span>
-<span class="s1">Port - 80</span>
-<span class="s1">Registry - nil</span>
-<span class="s1">Path - /index.html</span>
-<span class="s1">Opaque - nil</span>
-<span class="s1">Query = user=123</span>
-<span class="s1">Fragment - nil</span>
-<span class="s1">&lt;/pre&gt;</span>
-
-<span class="s1">(Userinfo, registry, opaque and fragment are not likely to be used for an HTTP request so we can ignore them.)</span>
-
-<span class="s1">The two components we are interested in are path and query, elements 5 and 7 respectively. By passing the middle part of our GET request to the split method, we can grab the 2 elements we need. &#39;</span><span class="n">uri</span><span class="o">[</span><span class="mi">5</span><span class="o">]</span><span class="s1">&#39; contains the file we want, so that will be passed to the File class. &#39;</span><span class="n">uri</span><span class="o">[</span><span class="mi">7</span><span class="o">]</span><span class="err">&#39;</span> <span class="n">contains</span> <span class="n">the</span> <span class="n">query</span> <span class="n">parameters</span> <span class="n">which</span> <span class="n">can</span> <span class="n">be</span> <span class="n">dealt</span> <span class="n">with</span> <span class="n">later</span> <span class="n">on</span><span class="o">.</span></pre></div>
+    <div class='highlight'><pre></pre></div>
   </td>
 </tr>

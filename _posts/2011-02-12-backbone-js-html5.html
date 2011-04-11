@@ -1,3 +1,337 @@
 ---
 layout: post
 ---
+<tr id='section-1'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-1">&#182;</a>
+    </div>
+    <p>As <a href="http://www.oneofthesedaysblog.com/backbone-js/" title="Backbone.js | One Of These Days">stated previously</a>, <a href="http://documentcloud.github.com/backbone/" title="Backbone.js">Backbone.js</a> is buckets of fun to work with. In the spirit of this praise, I thought I&rsquo;d have a play with it, and see how it could work with HTML5 animation development.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-2'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-2">&#182;</a>
+    </div>
+    <p>The end result is a cannon that shoots a small cannon ball, <a href="http://www.oneofthesedaysblog.com/serve/backbone-canvas/index.html" title="Backbone.js">viewable here</a>. While the example is entirely contrived, it demonstrates a number of aspects of Backbone.js, and well, is kind of fun. This first post will look at the Backbone.js portion of the app, and a second post will follow to briefly go over the canvas animation.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-3'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-3">&#182;</a>
+    </div>
+    <p><img src="/uploads/2011/02/Screen-shot-2011-02-12-at-4.20.35-PM.png" alt="Keeping the backbone views and models in separate files and folders is a good way of helping you navigate your app. For larger scale projects, this is essential." /></p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-4'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-4">&#182;</a>
+    </div>
+    <p>The first file we need is our main html page, which will include all of the necessary javascript files, a bit of styling, and the 2 HTML elements we need for our cannon. The cannon image is what we click to fire the cannon, and the firingRange canvas is where the cannon ball will be animated.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-5'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-5">&#182;</a>
+    </div>
+    <p>Next, we&rsquo;ll look at the main.js file, as this is what kicks off the app.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="err">$</span><span class="p">(</span><span class="n">function</span><span class="p">()</span> <span class="p">{</span>                
+    <span class="n">myCannon</span> <span class="o">=</span> <span class="kp">new</span> <span class="no">CannonView</span><span class="p">();</span>
+<span class="p">});</span></pre></div>
+  </td>
+</tr>
+<tr id='section-6'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-6">&#182;</a>
+    </div>
+    <p>That&rsquo;s it. This will be executed when the DOM is ready, and will ensure our cannon is fully functioning. This file is a clear example of how backbone can help organise and DRY up your code. There&rsquo;s no doubt as to where the execution flow of the app starts, and from here, it is easy to follow through. This makes testing easier, debugging easier, and allows other people to get up to speed with the code in a far shorter period of time (including yourself!).</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="n">window</span><span class="o">.</span><span class="n">CannonView</span> <span class="o">=</span> <span class="no">Backbone</span><span class="o">.</span><span class="n">View</span><span class="o">.</span><span class="n">extend</span><span class="p">({</span>
+
+    <span class="n">el</span> <span class="p">:</span> <span class="err">$</span><span class="p">(</span><span class="s1">&#39;a.do&#39;</span><span class="p">),</span>
+
+    <span class="n">model</span> <span class="p">:</span> <span class="kp">new</span> <span class="no">Cannon</span><span class="p">,</span>
+
+    <span class="n">events</span> <span class="p">:</span> <span class="p">{</span>            
+        <span class="s1">&#39;click&#39;</span> <span class="p">:</span> <span class="s1">&#39;lightFuse&#39;</span>            
+    <span class="p">},</span>
+
+    <span class="kp">initialize</span> <span class="p">:</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">_</span><span class="o">.</span><span class="n">bindAll</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="s1">&#39;fire&#39;</span><span class="p">);</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">ball</span> <span class="o">=</span> <span class="kp">new</span> <span class="no">BallView</span><span class="p">;</span>
+
+        <span class="n">loadingView</span> <span class="o">=</span> <span class="kp">new</span> <span class="no">LoadingView</span><span class="p">;</span>
+        <span class="no">Backbone</span><span class="o">.</span><span class="n">beforeSync</span> <span class="o">=</span> <span class="n">loadingView</span><span class="o">.</span><span class="n">render</span><span class="p">;</span>
+        <span class="no">Backbone</span><span class="o">.</span><span class="n">afterSync</span> <span class="o">=</span> <span class="n">loadingView</span><span class="o">.</span><span class="n">remove</span><span class="p">;</span>
+    <span class="p">},</span>
+
+    <span class="n">lightFuse</span> <span class="p">:</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fire</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">fire</span><span class="p">);</span>
+    <span class="p">},</span>
+
+    <span class="n">fire</span> <span class="p">:</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">ball</span><span class="o">.</span><span class="n">animate</span><span class="p">();</span>
+    <span class="p">}</span>
+
+<span class="p">});</span></pre></div>
+  </td>
+</tr>
+<tr id='section-7'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-7">&#182;</a>
+    </div>
+    <p>One of three, the cannon view takes care of our event handling as well as setting up the other 2 views. It&rsquo;s given the anchor tag as its element, allowing us to easily bind a click event. The model it&rsquo;s given is Cannon, a simple model that will store the amount of ammo available, and persist this to a server.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-8'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-8">&#182;</a>
+    </div>
+    <p>When the cannon is clicked, lightFuse is called, which subsequently calls fire on the Cannon model. We&rsquo;re passing in the fire function, which the model will treat as a callback and call it once firing has completed at the model level. This call will cause animate to be called on the ball, resulting in fancy animation. Note that in the initialize method we are using the underscore.js bindAll method to ensure that when the callback is passed into the model, it is <a href="http://stackoverflow.com/questions/183214/javascript-callback-scope" title="events - JavaScript Callback Scope - Stack Overflow">still scoped to CannonView</a> and not Cannon.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-9'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-9">&#182;</a>
+    </div>
+    <p>The last area of interest in this view is the 3 lines regarding the loadingView. The loading view is essentially our fuse animation. It seems appropriate to illustrate the loading of the cannon ball with such a depiction, and so we need a way of showing this when we click the cannon, and hiding it after it&rsquo;s fired. While we could use the success callback in the Backbone.sync object, doing so would require us to put code related to the loading down in the cannon model. In keeping with a strict-as-possible separation of concerns view, it would be more appropriate to have this logic higher up, in the view class itself. As the fire method on the model is asynchronous, we cannot simply show the fuse before calling fire, and hide it afterwards. To achieve the functionality we want, I thought it would be an interesting exercise to edit the Backbone.sync object itself, in the backbone source. While this may not be the most appropriate way of doing this, it should at least be educational.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-10'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-10">&#182;</a>
+    </div>
+    <p>Two lines are added to the top of backbone.js to allow us to set before and after callbacks.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="no">Backbone</span><span class="o">.</span><span class="n">beforeSync</span> <span class="o">=</span> <span class="n">function</span><span class="p">(){};</span>
+<span class="no">Backbone</span><span class="o">.</span><span class="n">afterSync</span> <span class="o">=</span> <span class="n">function</span><span class="p">(){};</span></pre></div>
+  </td>
+</tr>
+<tr id='section-11'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-11">&#182;</a>
+    </div>
+    <p>The last edit needs to go in the Backbone.sync object.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre>    <span class="no">Backbone</span><span class="o">.</span><span class="n">sync</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="nb">method</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">success</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>            
+        <span class="n">var</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+          </pre></div>
+  </td>
+</tr>
+<tr id='section-12'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-12">&#182;</a>
+    </div>
+    <p>here is where our after callbacks are run</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre>          <span class="n">success</span><span class="p">:</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span> <span class="n">success</span><span class="p">();</span> <span class="no">Backbone</span><span class="o">.</span><span class="n">afterSync</span><span class="p">();</span> <span class="p">},</span>
+          <span class="n">error</span><span class="p">:</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span> <span class="n">error</span><span class="p">();</span> <span class="no">Backbone</span><span class="o">.</span><span class="n">afterSync</span><span class="p">();</span> <span class="p">}</span>
+          
+        <span class="p">};</span></pre></div>
+  </td>
+</tr>
+<tr id='section-13'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-13">&#182;</a>
+    </div>
+    <p>run our before callback</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre>        <span class="no">Backbone</span><span class="o">.</span><span class="n">beforeSync</span><span class="p">();</span>         <span class="vg">$.</span><span class="n">ajax</span><span class="p">(</span><span class="n">params</span><span class="p">);</span>
+      <span class="p">};</span></pre></div>
+  </td>
+</tr>
+<tr id='section-14'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-14">&#182;</a>
+    </div>
+    <p>We&rsquo;re modifying the success and error callbacks to also execute the afterSync callback. It&rsquo;s included in both success and error, as even if there is an error we want to stop the fuse from showing. Before we execute the ajax request, we call beforeSync. This will occur synchronously, and so $.ajax will be called afterwards. On completion of the request, afterSync will be called. As we have hooked loadingView.render to before, and loadingView.remove to after, we will now see the fuse light on click, and stop after firing. <em>Note: if this way of doing things has made anyone cringe or question, I&rsquo;d love to hear from you in the comments or email about an alternative way of achieving this. My justification is that the edits to the source are in no way connected semantically to anything in the app, and the functionality could fit a wide number of use cases.</em></p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-15'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-15">&#182;</a>
+    </div>
+    <p>While we&rsquo;re on the topic of loading, let&rsquo;s take a quick look at the loading view. It&rsquo;s nothing fancy, just a view that on rendering, puts a span element containing and image into the DOM. We&rsquo;ve bound render and remove to itself so that when inside the Backbone.sync callback, they still have  the correct scope.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="n">window</span><span class="o">.</span><span class="n">LoadingView</span> <span class="o">=</span> <span class="no">Backbone</span><span class="o">.</span><span class="n">View</span><span class="o">.</span><span class="n">extend</span><span class="p">({</span>
+
+   <span class="n">tagName</span> <span class="p">:</span> <span class="s1">&#39;span&#39;</span><span class="p">,</span>
+
+   <span class="n">className</span> <span class="p">:</span> <span class="s1">&#39;loading&#39;</span><span class="p">,</span>
+
+   <span class="kp">initialize</span> <span class="p">:</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
+       <span class="n">_</span><span class="o">.</span><span class="n">bindAll</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="s2">&quot;render&quot;</span><span class="p">,</span> <span class="s2">&quot;remove&quot;</span><span class="p">);</span>
+   <span class="p">},</span>
+
+   <span class="n">render</span> <span class="p">:</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
+       <span class="err">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">el</span><span class="p">)</span><span class="o">.</span><span class="n">html</span><span class="p">(</span><span class="s2">&quot;&lt;img src=&#39;images/fuse.gif&#39;/&gt;&quot;</span><span class="p">));</span>
+   <span class="p">}</span>
+
+<span class="p">});</span></pre></div>
+  </td>
+</tr>
+<tr id='section-16'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-16">&#182;</a>
+    </div>
+    <p>The final view for this app is the ball view. This is where our HTML5 canvas magic happens, and so for brevity, this will be covered in a separate post. The view has an animate method however, which when called by the cannon view, will show the cannon ball flying out of the cannon. This is a great example of how backbone can hide away implementation details. The main app knows nothing of the canvas animation, and we can easily swap this out for whatever we want. All the cannon view cares about is that there is an animate method it can call, and the rest will follow.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-17'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-17">&#182;</a>
+    </div>
+    <p>Finally, we come to the cannon model itself. In order to demonstrate the loading functionality, it was necessary to create some form of delay between calling fire on the model, and having the model state update. A simple php script was used that would randomly sleep for between 0 and 2 seconds.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="nb">sleep</span><span class="p">(</span><span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">));</span></pre></div>
+  </td>
+</tr>
+<tr id='section-18'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-18">&#182;</a>
+    </div>
+    <p>and now our model:</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="n">window</span><span class="o">.</span><span class="n">Cannon</span> <span class="o">=</span> <span class="no">Backbone</span><span class="o">.</span><span class="n">Model</span><span class="o">.</span><span class="n">extend</span><span class="p">({</span></pre></div>
+  </td>
+</tr>
+<tr id='section-19'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-19">&#182;</a>
+    </div>
+    <p>our delay script</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre>   <span class="n">url</span> <span class="p">:</span> <span class="s1">&#39;http://oneofthesedaysblog.com/server/backbone-canvas/sleep.php&#39;</span><span class="p">,</span> 
+   <span class="n">defaults</span> <span class="p">:</span> <span class="p">{</span></pre></div>
+  </td>
+</tr>
+<tr id='section-20'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-20">&#182;</a>
+    </div>
+    <p>a new cannon has 100 cannon balls</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="n">ammo</span> <span class="p">:</span> <span class="mi">100</span> 
+   <span class="p">},</span>
+
+   <span class="n">fire</span> <span class="p">:</span> <span class="n">function</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span> <span class="p">{</span></pre></div>
+  </td>
+</tr>
+<tr id='section-21'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-21">&#182;</a>
+    </div>
+    <p>only fire if we have positive ammo</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre>       <span class="k">if</span> <span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ammo&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+           <span class="n">this</span><span class="o">.</span><span class="n">save</span><span class="p">({</span> <span class="n">ammo</span> <span class="p">:</span> <span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ammo&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">},</span> <span class="p">{</span><span class="n">success</span> <span class="p">:</span> <span class="n">callback</span><span class="p">,</span> <span class="n">error</span> <span class="p">:</span> <span class="n">callback</span> <span class="p">});</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">});</span></pre></div>
+  </td>
+</tr>
+<tr id='section-22'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-22">&#182;</a>
+    </div>
+    <p>We&rsquo;re giving the cannon model a single attribute called ammo, which will keep track of how many times the cannon has been fired. This is being set an arbitrary value of 100, such that after 100 firings, it won&rsquo;t fire again until the page is reloaded. The fire method is also here, and we can see that it takes in the callback we pass in from the view. If there is positive ammo, the model will try and save this to the server, with a value of ammo decreased by one. In the case of our simple script, we&rsquo;re not really concerned whether or not the sync is successful, so I&rsquo;ve set the callback to run on either success or error.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-23'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-23">&#182;</a>
+    </div>
+    <p>If we look back at the Backbone.sync object, we can see that this callback is being executed in the line we modified:</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="n">success</span><span class="p">:</span>      <span class="n">function</span><span class="p">()</span> <span class="p">{</span> <span class="n">success</span><span class="p">();</span> <span class="no">Backbone</span><span class="o">.</span><span class="n">afterSync</span><span class="p">();</span> <span class="p">}</span></pre></div>
+  </td>
+</tr>
+<tr id='section-24'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-24">&#182;</a>
+    </div>
+    <p>It&rsquo;s running the callback we pass in to save(), as well as our afterSync callback.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-25'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-25">&#182;</a>
+    </div>
+    <p>That concludes the overview of the cannon app, with the exception of the ball view, which will be covered in another post. Hopefully this has been useful in, once again, highlighting the advantages of using simple MVC framework such as backbone. Our presentation and business logic is clearly separated, and the components are decoupled sufficiently such that we can easily make changes without breaking the rest of the app. The structure of the app is also useful for navigating the various areas of functionality, resulting in <a href="http://www.osnews.com/story/19266/WTFs_m" title="WTFs/m">fewer WTFs per minute</a>.</p>
+
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>

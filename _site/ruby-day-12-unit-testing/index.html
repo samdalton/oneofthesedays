@@ -28,43 +28,94 @@
     <div class="pilwrap">
       <a class="pilcrow" href="#section-1">&#182;</a>
     </div>
-    
-
+    <p><em>Before we get into unit testing in Ruby, I should apologise for the inconsistent posting of content. Amidst other work commitments, writing 1 post per day for 30 days is proving to be quite a challenge. I imagine at the end of this I will be able to write a post on &ldquo;How Not to Write a Blog Post Series&rdquo;. (Here&rsquo;s a tip now: start writing at least a week before you start publishing)</em></p>
   </td>
   <td class=code>
-    <div class='highlight'><pre><span class="o">&lt;</span><span class="n">em</span><span class="o">&gt;</span><span class="no">Before</span> <span class="n">we</span> <span class="n">get</span> <span class="n">into</span> <span class="n">unit</span> <span class="n">testing</span> <span class="k">in</span> <span class="no">Ruby</span><span class="p">,</span> <span class="n">I</span> <span class="n">should</span> <span class="n">apologise</span> <span class="k">for</span> <span class="n">the</span> <span class="n">inconsistent</span> <span class="n">posting</span> <span class="n">of</span> <span class="n">content</span><span class="o">.</span> <span class="no">Amidst</span> <span class="n">other</span> <span class="n">work</span> <span class="n">commitments</span><span class="p">,</span> <span class="n">writing</span> <span class="mi">1</span> <span class="n">post</span> <span class="n">per</span> <span class="n">day</span> <span class="k">for</span> <span class="mi">30</span> <span class="n">days</span> <span class="n">is</span> <span class="n">proving</span> <span class="n">to</span> <span class="n">be</span> <span class="n">quite</span> <span class="n">a</span> <span class="n">challenge</span><span class="o">.</span> <span class="n">I</span> <span class="n">imagine</span> <span class="n">at</span> <span class="n">the</span> <span class="k">end</span> <span class="n">of</span> <span class="n">this</span> <span class="n">I</span> <span class="n">will</span> <span class="n">be</span> <span class="n">able</span> <span class="n">to</span> <span class="n">write</span> <span class="n">a</span> <span class="n">post</span> <span class="n">on</span> <span class="s2">&quot;How Not to Write a Blog Post Series&quot;</span><span class="o">.</span> <span class="p">(</span><span class="no">Here</span><span class="s1">&#39;s a tip now: start writing at least a week before you start publishing)&lt;/em&gt;</span>
-
-<span class="s1">We have a reasonable HTTP server working for us now. It can handle multiple simultaneous requests, log important information out to a file, and handle query parameters in the requested URL. While we can see that it works by running it, it would be good to have a more thorough test which we can run often and easily to ensure that any future changes do not break it. We will be using the &lt;a href=&quot;http://ruby-doc.org/core/classes/Test/Unit.html&quot; title=&quot;Module: Test::Unit&quot;&gt;Ruby Unit Testing Framework&lt;/a&gt; to achieve this.</span>
-
-<span class="s1">Writing unit tests is a bit like using source control. Once you&#39;</span><span class="n">ve</span> <span class="n">set</span> <span class="n">it</span> <span class="n">up</span> <span class="ow">and</span> <span class="n">are</span> <span class="n">using</span> <span class="n">it</span> <span class="n">regularly</span><span class="p">,</span> <span class="n">your</span> <span class="n">level</span> <span class="n">of</span> <span class="n">sanity</span> <span class="n">is</span> <span class="n">slightly</span> <span class="n">higher</span> <span class="n">than</span> <span class="k">if</span> <span class="n">you</span> <span class="n">weren</span><span class="s1">&#39;t using it. Similarly, once you&#39;</span><span class="n">ve</span> <span class="n">written</span> <span class="n">some</span> <span class="n">good</span> <span class="n">unit</span> <span class="n">tests</span><span class="p">,</span> <span class="n">they</span> <span class="n">will</span> <span class="n">always</span> <span class="n">be</span> <span class="n">there</span> <span class="k">for</span> <span class="n">you</span> <span class="n">to</span> <span class="n">check</span> <span class="n">that</span> <span class="n">your</span> <span class="n">code</span> <span class="n">runs</span> <span class="n">ok</span><span class="o">.</span> <span class="no">An</span> <span class="n">example</span> <span class="n">of</span> <span class="n">where</span> <span class="n">a</span> <span class="n">good</span> <span class="n">set</span> <span class="n">of</span> <span class="n">unit</span> <span class="n">tests</span> <span class="n">would</span> <span class="n">be</span> <span class="n">handy</span> <span class="n">is</span> <span class="k">in</span> <span class="n">a</span> <span class="n">series</span> <span class="n">of</span> <span class="n">text</span> <span class="n">manipulation</span> <span class="n">operations</span><span class="o">.</span> <span class="no">On</span> <span class="n">a</span> <span class="no">UNIX</span> <span class="n">machine</span> <span class="n">you</span> <span class="n">may</span> <span class="n">simply</span> <span class="n">be</span> <span class="n">checking</span> <span class="k">for</span> <span class="n">the</span> <span class="n">existence</span> <span class="n">of</span> <span class="s1">&#39;\n&#39;</span> <span class="k">for</span> <span class="n">newlines</span><span class="p">,</span> <span class="n">but</span> <span class="k">if</span> <span class="n">the</span> <span class="n">same</span> <span class="n">code</span> <span class="n">is</span> <span class="n">run</span> <span class="n">on</span> <span class="n">a</span> <span class="no">Windows</span> <span class="n">machine</span> <span class="n">it</span> <span class="n">may</span> <span class="nb">fail</span><span class="o">.</span> <span class="no">By</span> <span class="n">running</span> <span class="n">the</span> <span class="n">tests</span> <span class="n">on</span> <span class="n">each</span> <span class="kp">new</span> <span class="n">machine</span><span class="p">,</span> <span class="n">issues</span> <span class="n">like</span> <span class="n">this</span> <span class="n">will</span> <span class="n">become</span> <span class="n">apparent</span> <span class="n">with</span> <span class="n">very</span> <span class="n">little</span> <span class="n">extra</span> <span class="n">effort</span><span class="o">.</span>
-
-<span class="no">As</span> <span class="n">the</span> <span class="n">synchronised</span> <span class="n">buffer</span> <span class="n">is</span> <span class="n">a</span> <span class="n">crucial</span> <span class="n">component</span> <span class="n">of</span> <span class="n">the</span> <span class="n">multi</span><span class="o">-</span><span class="n">threaded</span> <span class="n">web</span> <span class="n">server</span><span class="p">,</span> <span class="n">we</span> <span class="n">will</span> <span class="n">create</span> <span class="n">a</span> <span class="n">set</span> <span class="n">of</span> <span class="n">unit</span> <span class="n">tests</span> <span class="n">specifically</span> <span class="n">to</span> <span class="nb">test</span> <span class="n">this</span> <span class="n">class</span><span class="o">.</span>
-
-<span class="n">A</span> <span class="n">unit</span> <span class="nb">test</span> <span class="k">class</span> <span class="n">at</span> <span class="n">its</span> <span class="n">most</span> <span class="n">basic</span> <span class="n">looks</span> <span class="n">like</span> <span class="n">this</span><span class="p">:</span>
-<span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;brush:ruby&#39;</span><span class="o">&gt;</span>
-<span class="k">class</span> <span class="nc">SyncBufferTest</span> <span class="o">&lt;</span> <span class="no">Test</span><span class="o">::</span><span class="no">Unit</span><span class="o">::</span><span class="no">TestCase</span>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-2'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-2">&#182;</a>
+    </div>
+    <p>We have a reasonable HTTP server working for us now. It can handle multiple simultaneous requests, log important information out to a file, and handle query parameters in the requested URL. While we can see that it works by running it, it would be good to have a more thorough test which we can run often and easily to ensure that any future changes do not break it. We will be using the <a href="http://ruby-doc.org/core/classes/Test/Unit.html" title="Module: Test::Unit">Ruby Unit Testing Framework</a> to achieve this.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-3'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-3">&#182;</a>
+    </div>
+    <p>Writing unit tests is a bit like using source control. Once you&rsquo;ve set it up and are using it regularly, your level of sanity is slightly higher than if you weren&rsquo;t using it. Similarly, once you&rsquo;ve written some good unit tests, they will always be there for you to check that your code runs ok. An example of where a good set of unit tests would be handy is in a series of text manipulation operations. On a UNIX machine you may simply be checking for the existence of &lsquo;\n&rsquo; for newlines, but if the same code is run on a Windows machine it may fail. By running the tests on each new machine, issues like this will become apparent with very little extra effort.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-4'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-4">&#182;</a>
+    </div>
+    <p>As the synchronised buffer is a crucial component of the multi-threaded web server, we will create a set of unit tests specifically to test this class.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-5'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-5">&#182;</a>
+    </div>
+    <p>A unit test class at its most basic looks like this:</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="k">class</span> <span class="nc">SyncBufferTest</span> <span class="o">&lt;</span> <span class="no">Test</span><span class="o">::</span><span class="no">Unit</span><span class="o">::</span><span class="no">TestCase</span>
   <span class="k">def</span> <span class="nf">test1</span>
     <span class="n">assert</span><span class="p">(</span><span class="kp">true</span><span class="p">)</span>
   <span class="k">end</span>
-<span class="k">end</span>
-<span class="o">&lt;</span><span class="sr">/pre&gt;</span>
-
-<span class="sr">We are simply extending from the &#39;Test::Unit::TestCase&#39; class and then defining our test in the method &#39;test1&#39;. There is a convention that must be followed for defining new tests, but it is a simple one: each method must begin with &#39;test&#39;. You can have whatever you like afterwards, but with &#39;test&#39; at the front Ruby will know this is to be treated as a test case. The following are all valid test case names:</span>
-<span class="sr">&lt;/</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;brush:ruby&#39;</span><span class="o">&gt;</span>
-<span class="n">test1</span>
+<span class="k">end</span></pre></div>
+  </td>
+</tr>
+<tr id='section-6'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-6">&#182;</a>
+    </div>
+    <p>We are simply extending from the &lsquo;Test::Unit::TestCase&rsquo; class and then defining our test in the method &lsquo;test1&rsquo;. There is a convention that must be followed for defining new tests, but it is a simple one: each method must begin with &lsquo;test&rsquo;. You can have whatever you like afterwards, but with &lsquo;test&rsquo; at the front Ruby will know this is to be treated as a test case. The following are all valid test case names:</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="n">test1</span>
 <span class="n">test_my_test</span>
 <span class="n">test_if_exception_thrown</span>
-<span class="n">test123ABC</span>
-<span class="o">&lt;</span><span class="sr">/pre&gt;</span>
-
-<span class="sr">In order to examine more of the Ruby Unit Test API, we will need to make a quick addition to the SynchronisedBuffer class. Add the following  line to the beginning of the initialize method. (i.e. before @capacity = capacity)</span>
-<span class="sr">&lt;pre class=&#39;brush:ruby&#39;&gt;</span>
-<span class="sr">raise &quot;Capacity must be greater than 0&quot; unless capacity &gt; 0</span>
-<span class="sr">&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-<span class="no">This</span> <span class="n">does</span> <span class="n">exactly</span> <span class="n">what</span> <span class="n">it</span> <span class="n">says</span> <span class="n">it</span> <span class="n">will</span><span class="p">:</span> <span class="n">raises</span> <span class="n">an</span> <span class="n">exception</span> <span class="n">with</span> <span class="n">the</span> <span class="n">message</span> <span class="s2">&quot;Capacity must be greater than 0&quot;</span> <span class="k">unless</span> <span class="n">the</span> <span class="n">capacity</span> <span class="n">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="mi">0</span><span class="o">.</span> <span class="no">This</span> <span class="n">stops</span> <span class="n">someone</span> <span class="n">creating</span> <span class="n">a</span> <span class="kp">new</span> <span class="n">buffer</span> <span class="n">with</span> <span class="n">a</span> <span class="n">capacity</span> <span class="n">of</span> <span class="mi">0</span> <span class="ow">or</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">which</span> <span class="n">simply</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">make</span> <span class="n">sense</span><span class="o">.</span> <span class="no">We</span> <span class="n">can</span> <span class="k">then</span> <span class="n">write</span> <span class="nb">test</span> <span class="n">cases</span> <span class="n">to</span> <span class="n">check</span> <span class="n">that</span> <span class="n">this</span> <span class="n">actually</span> <span class="n">happens</span><span class="o">.</span>
-
-<span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;brush:ruby&#39;</span><span class="o">&gt;</span>
-<span class="k">def</span> <span class="nf">test_zero_capacity</span>
+<span class="n">test123ABC</span></pre></div>
+  </td>
+</tr>
+<tr id='section-7'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-7">&#182;</a>
+    </div>
+    <p>In order to examine more of the Ruby Unit Test API, we will need to make a quick addition to the SynchronisedBuffer class. Add the following  line to the beginning of the initialize method. (i.e. before @capacity = capacity)</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="k">raise</span> <span class="s2">&quot;Capacity must be greater than 0&quot;</span> <span class="k">unless</span> <span class="n">capacity</span> <span class="o">&gt;</span> <span class="mi">0</span></pre></div>
+  </td>
+</tr>
+<tr id='section-8'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-8">&#182;</a>
+    </div>
+    <p>This does exactly what it says it will: raises an exception with the message &ldquo;Capacity must be greater than 0&rdquo; unless the capacity is greater than 0. This stops someone creating a new buffer with a capacity of 0 or -1, which simply does not make sense. We can then write test cases to check that this actually happens.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="k">def</span> <span class="nf">test_zero_capacity</span>
       <span class="k">begin</span>
           <span class="no">SynchronisedBuffer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
       <span class="k">rescue</span> 
@@ -78,22 +129,64 @@
       <span class="k">rescue</span> 
         <span class="n">assert_equal</span><span class="p">(</span><span class="s2">&quot;Capacity must be greater than 0&quot;</span><span class="p">,</span> <span class="vg">$!</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
       <span class="k">end</span>
-  <span class="k">end</span>
-<span class="o">&lt;</span><span class="sr">/pre&gt;</span>
-
-<span class="sr">&#39;test_zero_capacity&#39; and &#39;test_negative_capacity&#39; are testing this line we just added in above. An exception should be thrown when the supplied capacity is less than or equal to 0. By using the error handling begin/</span><span class="k">rescue</span> <span class="n">syntax</span> <span class="n">we</span> <span class="n">can</span> <span class="kp">catch</span> <span class="n">any</span> <span class="n">exceptions</span> <span class="n">thrown</span><span class="o">.</span> <span class="no">In</span> <span class="n">the</span> <span class="k">rescue</span> <span class="n">section</span><span class="p">,</span> <span class="n">we</span> <span class="n">are</span> <span class="n">calling</span>  <span class="s1">&#39;assert_equal&#39;</span> <span class="n">which</span> <span class="n">is</span> <span class="n">a</span> <span class="nb">method</span> <span class="n">provided</span> <span class="n">by</span> <span class="no">Test</span><span class="o">::</span><span class="no">Unit</span><span class="o">::</span><span class="no">TestCase</span> <span class="n">to</span> <span class="k">ensure</span> <span class="n">that</span> <span class="mi">2</span> <span class="n">values</span> <span class="n">are</span> <span class="n">equal</span><span class="o">.</span> <span class="no">It</span> <span class="n">is</span> <span class="n">by</span> <span class="n">convention</span> <span class="n">that</span> <span class="n">the</span> <span class="n">expected</span> <span class="n">value</span> <span class="n">comes</span> <span class="n">before</span> <span class="n">the</span> <span class="n">actual</span> <span class="n">value</span><span class="p">,</span> <span class="n">thus</span> <span class="n">we</span> <span class="n">are</span> <span class="n">seeing</span> <span class="k">if</span> <span class="s2">&quot;Capacity must be greater than 0&quot;</span> <span class="n">is</span> <span class="n">equal</span> <span class="n">to</span> <span class="n">the</span> <span class="n">message</span> <span class="n">contained</span> <span class="k">in</span> <span class="n">the</span> <span class="n">thrown</span> <span class="n">exception</span><span class="o">.</span> <span class="s1">&#39;$!&#39;</span> <span class="n">is</span> <span class="n">a</span> <span class="n">global</span> <span class="n">variable</span> <span class="n">that</span> <span class="n">contains</span> <span class="n">the</span> <span class="n">most</span> <span class="n">recently</span> <span class="n">thrown</span> <span class="n">exception</span><span class="p">,</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">message</span> <span class="nb">method</span> <span class="n">returns</span> <span class="n">the</span> <span class="n">message</span> <span class="n">that</span> <span class="n">the</span> <span class="n">exception</span> <span class="n">contains</span><span class="o">.</span>
-
-<span class="no">If</span> <span class="n">we</span> <span class="n">now</span> <span class="n">run</span> <span class="n">this</span> <span class="n">file</span> <span class="n">we</span> <span class="n">should</span> <span class="n">see</span> <span class="n">output</span> <span class="n">like</span> <span class="n">below</span>
-<span class="o">[</span><span class="n">caption</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;attachment_354&quot;</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;aligncenter&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;616&quot;</span> <span class="n">caption</span><span class="o">=</span><span class="s2">&quot;Need more dots&quot;</span><span class="o">]&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;http://www.oneofthesedaysblog.com/wp-content/uploads/2010/07/Screen-shot-2010-07-09-at-11.24.10-PM.png&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;http://www.oneofthesedaysblog.com/wp-content/uploads/2010/07/Screen-shot-2010-07-09-at-11.24.10-PM.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Test Cases Passings&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Test Cases Passing&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;616&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;115&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;size-full wp-image-354&quot;</span><span class="sr"> /&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;[/</span><span class="n">caption</span><span class="o">]</span>
-
-
-<span class="n">A</span> <span class="n">dot</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">represents</span> <span class="n">a</span> <span class="nb">test</span> <span class="n">that</span> <span class="n">has</span> <span class="n">passed</span><span class="o">.</span> <span class="no">We</span> <span class="n">can</span> <span class="n">see</span> <span class="n">results</span> <span class="k">in</span> <span class="n">a</span> <span class="n">sentence</span> <span class="n">as</span> <span class="n">well</span><span class="p">,</span> <span class="s1">&#39;2 tests, 2 assertions, 0 failures, 0 errors&#39;</span><span class="o">.</span> <span class="no">We</span> <span class="n">have</span> <span class="mi">2</span> <span class="n">tests</span> <span class="n">that</span> <span class="n">asserted</span> <span class="mi">1</span> <span class="n">statement</span> <span class="n">each</span><span class="p">,</span> <span class="ow">and</span> <span class="n">neither</span> <span class="n">failed</span> <span class="n">nor</span> <span class="n">threw</span> <span class="n">an</span> <span class="n">error</span><span class="o">.</span> <span class="no">If</span> <span class="n">we</span> <span class="n">remove</span> <span class="n">the</span> <span class="k">begin</span><span class="o">/</span><span class="k">rescue</span> <span class="n">block</span> <span class="n">from</span> <span class="n">each</span> <span class="nb">test</span><span class="p">,</span> <span class="ow">and</span> <span class="n">simply</span> <span class="n">have</span> <span class="s1">&#39;SynchronisedBuffer.new(0)&#39;</span> <span class="k">then</span> <span class="n">there</span> <span class="n">would</span> <span class="n">appear</span> <span class="n">an</span> <span class="s1">&#39;E&#39;</span> <span class="k">for</span> <span class="n">error</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">a</span> <span class="s1">&#39;.&#39;</span> <span class="n">as</span> <span class="n">the</span> <span class="n">thrown</span> <span class="n">exception</span> <span class="n">is</span> <span class="ow">not</span> <span class="n">being</span> <span class="n">rescued</span><span class="o">.</span> <span class="no">Alternatively</span><span class="p">,</span> <span class="k">if</span> <span class="k">in</span> <span class="n">our</span> <span class="no">SynchronisedBuffer</span> <span class="k">class</span> <span class="n">we</span> <span class="n">did</span> <span class="ow">not</span> <span class="n">put</span> <span class="k">in</span> <span class="n">the</span> <span class="n">line</span> <span class="n">to</span> <span class="k">raise</span> <span class="n">the</span> <span class="n">exception</span><span class="p">,</span> <span class="n">we</span> <span class="n">would</span> <span class="n">see</span> <span class="n">an</span> <span class="s1">&#39;F&#39;</span> <span class="k">in</span> <span class="n">place</span> <span class="n">of</span> <span class="n">a</span> <span class="s1">&#39;.&#39;</span> <span class="n">as</span> <span class="n">no</span> <span class="n">exception</span> <span class="n">is</span> <span class="n">being</span> <span class="n">thrown</span><span class="p">,</span> <span class="ow">and</span> <span class="n">so</span> <span class="n">no</span> <span class="n">assertion</span> <span class="n">is</span> <span class="kp">true</span><span class="o">.</span> <span class="p">(</span><span class="no">This</span> <span class="n">idea</span> <span class="n">of</span> <span class="n">writing</span> <span class="n">tests</span> <span class="n">that</span> <span class="n">will</span> <span class="nb">fail</span> <span class="n">before</span> <span class="n">the</span> <span class="n">function</span> <span class="n">has</span> <span class="n">actually</span> <span class="n">been</span> <span class="n">implemented</span> <span class="n">is</span> <span class="n">known</span> <span class="n">as</span> <span class="no">Test</span> <span class="no">Driven</span> <span class="no">Development</span><span class="p">)</span><span class="o">.</span>
-
-<span class="no">The</span> <span class="n">trick</span> <span class="n">to</span> <span class="n">unit</span> <span class="n">testing</span> <span class="n">is</span> <span class="n">finding</span> <span class="n">the</span> <span class="n">right</span> <span class="n">set</span> <span class="n">of</span> <span class="nb">test</span> <span class="n">cases</span> <span class="n">that</span> <span class="n">don</span><span class="s1">&#39;t overlap, but don&#39;</span><span class="n">t</span> <span class="n">miss</span> <span class="n">anything</span> <span class="n">out</span><span class="p">,</span> <span class="n">either</span><span class="o">.</span> <span class="no">We</span> <span class="n">have</span> <span class="n">tested</span> <span class="n">the</span> <span class="n">capacity</span> <span class="n">of</span> <span class="mi">0</span><span class="p">,</span> <span class="n">which</span> <span class="n">is</span> <span class="n">neither</span> <span class="n">a</span> <span class="n">positive</span> <span class="n">nor</span> <span class="n">a</span> <span class="n">negative</span> <span class="n">number</span><span class="o">.</span> <span class="no">It</span> <span class="n">is</span> <span class="k">in</span> <span class="n">a</span> <span class="k">class</span> <span class="n">of</span> <span class="n">it</span><span class="s1">&#39;s own and so we must include this test. -1, however, is a negative number just like -2 or -9,235,123. It is in a class with an infinite amount of other negative numbers. It would be impossible, and senseless, to test each negative number as we know that the condition only requires the number to be greater than 0. -1 is therefore sufficient to ensure that it will work with any negative number.</span>
-
-<span class="s1">Let&#39;</span><span class="n">s</span> <span class="n">now</span> <span class="nb">test</span> <span class="n">the</span> <span class="n">empty?</span> <span class="ow">and</span> <span class="n">full?</span> <span class="nb">methods</span><span class="o">.</span>
-<span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;brush:ruby&#39;</span><span class="o">&gt;</span>
-<span class="k">def</span> <span class="nf">test_empty?</span>
+  <span class="k">end</span></pre></div>
+  </td>
+</tr>
+<tr id='section-9'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-9">&#182;</a>
+    </div>
+    <p>&lsquo;test_zero_capacity&rsquo; and &lsquo;test_negative_capacity&rsquo; are testing this line we just added in above. An exception should be thrown when the supplied capacity is less than or equal to 0. By using the error handling begin/rescue syntax we can catch any exceptions thrown. In the rescue section, we are calling  &lsquo;assert_equal&rsquo; which is a method provided by Test::Unit::TestCase to ensure that 2 values are equal. It is by convention that the expected value comes before the actual value, thus we are seeing if &ldquo;Capacity must be greater than 0&rdquo; is equal to the message contained in the thrown exception. &lsquo;$!&rsquo; is a global variable that contains the most recently thrown exception, and the message method returns the message that the exception contains.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-10'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-10">&#182;</a>
+    </div>
+    <p>If we now run this file we should see output like below
+<img src="/uploads/2010/07/Screen-shot-2010-07-09-at-11.24.10-PM.png" alt="Test output" /></p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-11'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-11">&#182;</a>
+    </div>
+    <p>A dot, &lsquo;.&rsquo;, represents a test that has passed. We can see results in a sentence as well, &lsquo;2 tests, 2 assertions, 0 failures, 0 errors&rsquo;. We have 2 tests that asserted 1 statement each, and neither failed nor threw an error. If we remove the begin/rescue block from each test, and simply have &lsquo;SynchronisedBuffer.new(0)&rsquo; then there would appear an &lsquo;E&rsquo; for error instead of a &lsquo;.&rsquo; as the thrown exception is not being rescued. Alternatively, if in our SynchronisedBuffer class we did not put in the line to raise the exception, we would see an &lsquo;F&rsquo; in place of a &lsquo;.&rsquo; as no exception is being thrown, and so no assertion is true. (This idea of writing tests that will fail before the function has actually been implemented is known as Test Driven Development).</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-12'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-12">&#182;</a>
+    </div>
+    <p>The trick to unit testing is finding the right set of test cases that don&rsquo;t overlap, but don&rsquo;t miss anything out, either. We have tested the capacity of 0, which is neither a positive nor a negative number. It is in a class of it&rsquo;s own and so we must include this test. -1, however, is a negative number just like -2 or -9,235,123. It is in a class with an infinite amount of other negative numbers. It would be impossible, and senseless, to test each negative number as we know that the condition only requires the number to be greater than 0. -1 is therefore sufficient to ensure that it will work with any negative number.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-13'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-13">&#182;</a>
+    </div>
+    <p>Let&rsquo;s now test the empty? and full? methods.
+Here we are creating a new buffer with a valid capacity and then calling the &lsquo;assert&rsquo; method. This simply checks if the value inside returns true. If it does, then the assertion is true. Without putting in any objects, empty? should return true. With a buffer of capacity 1, after putting in 1 item full? should return true.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="k">def</span> <span class="nf">test_empty?</span>
     <span class="n">buffer</span> <span class="o">=</span> <span class="no">SynchronisedBuffer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">assert</span><span class="p">(</span><span class="n">buffer</span><span class="o">.</span><span class="n">empty?</span><span class="p">)</span>    
 <span class="k">end</span>
@@ -102,123 +195,162 @@
     <span class="n">buffer</span> <span class="o">=</span> <span class="no">SynchronisedBuffer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">buffer</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;item 1&quot;</span><span class="p">)</span>
     <span class="n">assert</span><span class="p">(</span><span class="n">buffer</span><span class="o">.</span><span class="n">full?</span><span class="p">)</span>
+<span class="k">end</span></pre></div>
+  </td>
+</tr>
+<tr id='section-14'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-14">&#182;</a>
+    </div>
+    <p>These tests check that full? does not return true when it shouldn&rsquo;t, and likewise with empty?.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="k">def</span> <span class="nf">test_not_full</span>
+    <span class="n">buffer</span> <span class="o">=</span> <span class="no">SynchronisedBuffer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">buffer</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;item 1&quot;</span><span class="p">)</span>
+    <span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">buffer</span><span class="o">.</span><span class="n">full?</span><span class="p">)</span>
 <span class="k">end</span>
-<span class="o">&lt;</span><span class="sr">/pre&gt;</span>
-<span class="sr">Here we are creating a new buffer with a valid capacity and then calling the &#39;assert&#39; method. This simply checks if the value inside returns true. If it does, then the assertion is true. Without putting in any objects, empty? should return true. With a buffer of capacity 1, after putting in 1 item full? should return true.</span>
 
-<span class="sr">&lt;pre class=&#39;brush:ruby&#39;&gt;</span>
-<span class="sr">def test_not_full</span>
-<span class="sr">    buffer = SynchronisedBuffer.new(2)</span>
-<span class="sr">    buffer.put(&quot;item 1&quot;)</span>
-<span class="sr">    assert(!buffer.full?)</span>
-<span class="sr">end</span>
+<span class="k">def</span> <span class="nf">test_not_empty</span>
+    <span class="n">buffer</span> <span class="o">=</span> <span class="no">SynchronisedBuffer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">buffer</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;item 1&quot;</span><span class="p">)</span>
+    <span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">buffer</span><span class="o">.</span><span class="n">empty?</span><span class="p">)</span>
+<span class="k">end</span></pre></div>
+  </td>
+</tr>
+<tr id='section-15'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-15">&#182;</a>
+    </div>
+    <p>We now have some simple test cases in place, but they only ensure a limited part of the functionality. What we really want to test are the put and get methods. As these methods can potentially put to sleep the thread that calls them, we have to be careful when testing them. The scenarios we must test for are</p>
 
-<span class="sr">def test_not_empty</span>
-<span class="sr">    buffer = SynchronisedBuffer.new(2)</span>
-<span class="sr">    buffer.put(&quot;item 1&quot;)</span>
-<span class="sr">    assert(!buffer.empty?)</span>
-<span class="sr">end</span>
-<span class="sr">&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-<span class="no">These</span> <span class="n">tests</span> <span class="n">check</span> <span class="n">that</span> <span class="n">full?</span> <span class="n">does</span> <span class="ow">not</span> <span class="k">return</span> <span class="kp">true</span> <span class="k">when</span> <span class="n">it</span> <span class="n">shouldn</span><span class="s1">&#39;t, and likewise with empty?.</span>
+<ul>
+<li>calling put while the buffer is empty</li>
+<li>calling put while the buffer is full</li>
+<li>calling get while the buffer is empty</li>
+<li>calling get while the buffer is full</li>
+<li>calling get while a thread is waiting on put</li>
+<li>calling put while a thread is waiting on get</li>
+</ul>
 
-<span class="s1">We now have some simple test cases in place, but they only ensure a limited part of the functionality. What we really want to test are the put and get methods. As these methods can potentially put to sleep the thread that calls them, we have to be careful when testing them. The scenarios we must test for are</span>
-<span class="s1">&lt;ul&gt;</span>
-<span class="s1">  &lt;li&gt;calling put while the buffer is empty&lt;/li&gt;</span>
-<span class="s1">  &lt;li&gt;calling put while the buffer is full&lt;/li&gt;</span>
-<span class="s1">  &lt;li&gt;calling get while the buffer is empty&lt;/li&gt;</span>
-<span class="s1">  &lt;li&gt;calling get while the buffer is full&lt;/li&gt;</span>
-<span class="s1">  &lt;li&gt;calling get while a thread is waiting on put&lt;/li&gt;</span>
-<span class="s1">  &lt;li&gt;calling put while a thread is waiting on get&lt;/li&gt;</span>
-<span class="s1">&lt;/ul&gt;</span>
-<span class="s1">and we can translate them to the following test case names</span>
-<span class="s1">&lt;pre class=&#39;</span><span class="n">brush</span><span class="ss">:ruby</span><span class="s1">&#39;&gt;</span>
-<span class="s1">def test_put_while_empty</span>
-<span class="s1">end</span>
 
-<span class="s1">def test_put_while_full</span>
-<span class="s1">end</span>
+<p>and we can translate them to the following test case names</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="k">def</span> <span class="nf">test_put_while_empty</span>
+<span class="k">end</span>
 
-<span class="s1">def test_get_while_empty</span>
-<span class="s1">end  </span>
+<span class="k">def</span> <span class="nf">test_put_while_full</span>
+<span class="k">end</span>
 
-<span class="s1">def test_get_while_full</span>
-<span class="s1">end</span>
+<span class="k">def</span> <span class="nf">test_get_while_empty</span>
+<span class="k">end</span>  
 
-<span class="s1">def test_get_waking_up_sleeping_thread</span>
-<span class="s1">end</span>
+<span class="k">def</span> <span class="nf">test_get_while_full</span>
+<span class="k">end</span>
 
-<span class="s1">def test_get_waking_up_sleeping_thread</span>
-<span class="s1">end</span>
-<span class="s1">&lt;/pre&gt;</span>
+<span class="k">def</span> <span class="nf">test_get_waking_up_sleeping_thread</span>
+<span class="k">end</span>
 
-<span class="s1">Our first test is rather simple</span>
-<span class="s1">&lt;pre class=&#39;</span><span class="n">brush</span><span class="ss">:ruby</span><span class="s1">&#39;&gt;</span>
-<span class="s1">def test_put_while_empty</span>
-<span class="s1">    buffer = SynchronisedBuffer.new(1)</span>
-<span class="s1">    buffer.put(&quot;item 1&quot;)</span>
-<span class="s1">    assert_equal(&#39;</span><span class="n">run</span><span class="s1">&#39;, Thread.current.status)</span>
-<span class="s1">end</span>
-<span class="s1">&lt;/pre&gt;</span>
-<span class="s1">We create a new buffer with a capacity of 1. After putting in 1 item, the buffer should be full. The buffer was empty when we called put, so the current thread should not be put to sleep while waiting for the buffer to empty. Thus we are asserting that the status of the current thread is equal to &#39;</span><span class="n">run</span><span class="s1">&#39;. This concept of checking thread status will be very important for the rest of the test cases.</span>
+<span class="k">def</span> <span class="nf">test_get_waking_up_sleeping_thread</span>
+<span class="k">end</span></pre></div>
+  </td>
+</tr>
+<tr id='section-16'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-16">&#182;</a>
+    </div>
+    <p>Our first test is rather simple
+We create a new buffer with a capacity of 1. After putting in 1 item, the buffer should be full. The buffer was empty when we called put, so the current thread should not be put to sleep while waiting for the buffer to empty. Thus we are asserting that the status of the current thread is equal to &lsquo;run&rsquo;. This concept of checking thread status will be very important for the rest of the test cases.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="k">def</span> <span class="nf">test_put_while_empty</span>
+    <span class="n">buffer</span> <span class="o">=</span> <span class="no">SynchronisedBuffer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">buffer</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;item 1&quot;</span><span class="p">)</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="s1">&#39;run&#39;</span><span class="p">,</span> <span class="no">Thread</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">status</span><span class="p">)</span>
+<span class="k">end</span></pre></div>
+  </td>
+</tr>
+<tr id='section-17'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-17">&#182;</a>
+    </div>
+    <p>As before, we are creating a new buffer and placing in an item so it becomes full. As the buffer is full, any subsequent calls of put will cause the calling thread to sleep. As we don&rsquo;t want to put our main thread to sleep, we create a new thread and pass in the buffer. By calling &lsquo;put&rsquo; in this thread, we expect the thread to go to sleep. The line that comes after,</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="k">def</span> <span class="nf">test_put_while_full</span>
+    <span class="n">buffer</span> <span class="o">=</span> <span class="no">SynchronisedBuffer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">buffer</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;item 1&quot;</span><span class="p">)</span>
+    <span class="n">thread</span> <span class="o">=</span> <span class="no">Thread</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">buffer</span><span class="o">|</span>
+        <span class="n">buffer</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;item 2&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="no">Thread</span><span class="o">.</span><span class="n">pass</span>  <span class="c1"># run &#39;thread&#39; to ensure it sleeps</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="s1">&#39;sleep&#39;</span><span class="p">,</span> <span class="n">thread</span><span class="o">.</span><span class="n">status</span><span class="p">,</span> <span class="s1">&#39;Thread should be asleep waiting to put&#39;</span><span class="p">)</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">kill!</span>
+<span class="k">end</span></pre></div>
+  </td>
+</tr>
+<tr id='section-18'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-18">&#182;</a>
+    </div>
+    <p>Thread.pass is important as it without it, assert_equal might be called before the new thread has had a chance to actually call &lsquo;put&rsquo;. If this were the case, the thread would not yet be asleep, and so it&rsquo;s status would be &lsquo;run&rsquo;, and the test would fail. &lsquo;Thread.pass&rsquo; says to the Ruby thread scheduler &ldquo;I&rsquo;ve had enough, let another thread run for a while&rdquo;. This would give the thread to actually call buffer.put and then we can test if it&rsquo;s state is set to &lsquo;sleep&rsquo;. Lastly, while perhaps not necessary, we are destroying this new thread.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-19'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-19">&#182;</a>
+    </div>
+    <p>Having written this test case, the subsequent ones will follow much the same pattern.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="k">def</span> <span class="nf">test_get_while_empty</span>
+    <span class="n">buffer</span> <span class="o">=</span> <span class="no">SynchronisedBuffer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">thread</span> <span class="o">=</span> <span class="no">Thread</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">buffer</span><span class="o">|</span>
+        <span class="n">buffer</span><span class="o">.</span><span class="n">get</span>
+    <span class="p">}</span>
+    <span class="no">Thread</span><span class="o">.</span><span class="n">pass</span> <span class="c1"># run &#39;thread&#39; to ensure it sleeps</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="s1">&#39;sleep&#39;</span><span class="p">,</span> <span class="n">thread</span><span class="o">.</span><span class="n">status</span><span class="p">,</span> <span class="s1">&#39;Thread should be asleep waiting to get&#39;</span><span class="p">)</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">kill!</span>
+<span class="k">end</span>
 
-<span class="s1">&lt;pre class=&#39;</span><span class="n">brush</span><span class="ss">:ruby</span><span class="s1">&#39;&gt;</span>
-<span class="s1">def test_put_while_full</span>
-<span class="s1">    buffer = SynchronisedBuffer.new(1)</span>
-<span class="s1">    buffer.put(&quot;item 1&quot;)</span>
-<span class="s1">    thread = Thread.new(buffer) { |buffer|</span>
-<span class="s1">        buffer.put(&quot;item 2&quot;)</span>
-<span class="s1">    }</span>
-<span class="s1">    Thread.pass  # run &#39;</span><span class="n">thread</span><span class="s1">&#39; to ensure it sleeps</span>
-<span class="s1">    assert_equal(&#39;</span><span class="nb">sleep</span><span class="s1">&#39;, thread.status, &#39;</span><span class="no">Thread</span> <span class="n">should</span> <span class="n">be</span> <span class="n">asleep</span> <span class="n">waiting</span> <span class="n">to</span> <span class="n">put</span><span class="s1">&#39;)</span>
-<span class="s1">    thread.kill!</span>
-<span class="s1">end</span>
-<span class="s1">&lt;/pre&gt;</span>
-<span class="s1">As before, we are creating a new buffer and placing in an item so it becomes full. As the buffer is full, any subsequent calls of put will cause the calling thread to sleep. As we don&#39;</span><span class="n">t</span> <span class="n">want</span> <span class="n">to</span> <span class="n">put</span> <span class="n">our</span> <span class="n">main</span> <span class="n">thread</span> <span class="n">to</span> <span class="nb">sleep</span><span class="p">,</span> <span class="n">we</span> <span class="n">create</span> <span class="n">a</span> <span class="kp">new</span> <span class="n">thread</span> <span class="ow">and</span> <span class="n">pass</span> <span class="k">in</span> <span class="n">the</span> <span class="n">buffer</span><span class="o">.</span> <span class="no">By</span> <span class="n">calling</span> <span class="s1">&#39;put&#39;</span> <span class="k">in</span> <span class="n">this</span> <span class="n">thread</span><span class="p">,</span> <span class="n">we</span> <span class="n">expect</span> <span class="n">the</span> <span class="n">thread</span> <span class="n">to</span> <span class="n">go</span> <span class="n">to</span> <span class="nb">sleep</span><span class="o">.</span> <span class="no">The</span> <span class="n">line</span> <span class="n">that</span> <span class="n">comes</span> <span class="n">after</span><span class="p">,</span>
-<span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;brush:ruby&#39;</span><span class="o">&gt;</span>
-<span class="no">Thread</span><span class="o">.</span><span class="n">pass</span>
-<span class="o">&lt;</span><span class="sr">/pre&gt;</span>
-<span class="sr">is important as it without it, assert_equal might be called before the new thread has had a chance to actually call &#39;put&#39;. If this were the case, the thread would not yet be asleep, and so it&#39;s status would be &#39;run&#39;, and the test would fail. &#39;Thread.pass&#39; says to the Ruby thread scheduler &quot;I&#39;ve had enough, let another thread run for a while&quot;. This would give the thread to actually call buffer.put and then we can test if it&#39;s state is set to &#39;sleep&#39;. Lastly, while perhaps not necessary, we are destroying this new thread.</span>
-
-<span class="sr">Having written this test case, the subsequent ones will follow much the same pattern.</span>
-
-<span class="sr">&lt;pre class=&#39;brush:ruby&#39;&gt;</span>
-<span class="sr">def test_get_while_empty</span>
-<span class="sr">    buffer = SynchronisedBuffer.new(1)</span>
-<span class="sr">    thread = Thread.new(buffer) { |buffer|</span>
-<span class="sr">        buffer.get</span>
-<span class="sr">    }</span>
-<span class="sr">    Thread.pass # run &#39;thread&#39; to ensure it sleeps</span>
-<span class="sr">    assert_equal(&#39;sleep&#39;, thread.status, &#39;Thread should be asleep waiting to get&#39;)</span>
-<span class="sr">    thread.kill!</span>
-<span class="sr">end</span>
-<span class="sr">&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;brush:ruby&#39;</span><span class="o">&gt;</span>
 <span class="k">def</span> <span class="nf">test_get_while_full</span>
     <span class="n">buffer</span> <span class="o">=</span> <span class="no">SynchronisedBuffer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">buffer</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;item 1&quot;</span><span class="p">)</span>
     <span class="n">buffer</span><span class="o">.</span><span class="n">get</span>
     <span class="n">assert</span><span class="p">(</span><span class="n">buffer</span><span class="o">.</span><span class="n">empty?</span><span class="p">)</span>
+<span class="k">end</span></pre></div>
+  </td>
+</tr>
+<tr id='section-20'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-20">&#182;</a>
+    </div>
+    <p>This last test case has a minor addition, &lsquo;thread.join&rsquo;. We are testing the case when we are trying to put an item into a full buffer. This call will make the thread sleep until someone else calls &lsquo;get&rsquo;. Once get is called, we want to ensure that the thread waiting actually completes calling &lsquo;buffer.put&rsquo; and so we use the join method. Join makes the thread behave synchronously, pausing the current thread until the joined thread has finished executing. If thread.alive? returns false, we know that this thread has died. For it to have died it must have completed executing, and for that to have happened it must have been woken up. Thus if the assertion is true, calling &lsquo;get&rsquo; successfully woke up our thread. The same applies for calling get on an empty buffer.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="k">def</span> <span class="nf">test_get_waking_up_sleeping_thread</span>
+    <span class="n">buffer</span> <span class="o">=</span> <span class="no">SynchronisedBuffer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">buffer</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;item 1&quot;</span><span class="p">)</span>
+    <span class="n">thread</span> <span class="o">=</span> <span class="no">Thread</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">buffer</span><span class="o">|</span>
+        <span class="n">buffer</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;item 2&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="no">Thread</span><span class="o">.</span><span class="n">pass</span>
+    <span class="n">buffer</span><span class="o">.</span><span class="n">get</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">join</span>
+    <span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">thread</span><span class="o">.</span><span class="n">alive?</span><span class="p">)</span>
 <span class="k">end</span>
-<span class="o">&lt;</span><span class="sr">/pre&gt;</span>
 
-<span class="sr">&lt;pre class=&#39;brush:ruby&#39;&gt;</span>
-<span class="sr">def test_get_waking_up_sleeping_thread</span>
-<span class="sr">    buffer = SynchronisedBuffer.new(1)</span>
-<span class="sr">    buffer.put(&quot;item 1&quot;)</span>
-<span class="sr">    thread = Thread.new(buffer) { |buffer|</span>
-<span class="sr">        buffer.put(&quot;item 2&quot;)</span>
-<span class="sr">    }</span>
-<span class="sr">    Thread.pass</span>
-<span class="sr">    buffer.get</span>
-<span class="sr">    thread.join</span>
-<span class="sr">    assert(!thread.alive?)</span>
-<span class="sr">end</span>
-<span class="sr">&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-
-<span class="no">This</span> <span class="n">last</span> <span class="nb">test</span> <span class="k">case</span> <span class="n">has</span> <span class="n">a</span> <span class="n">minor</span> <span class="n">addition</span><span class="p">,</span> <span class="s1">&#39;thread.join&#39;</span><span class="o">.</span> <span class="no">We</span> <span class="n">are</span> <span class="n">testing</span> <span class="n">the</span> <span class="k">case</span> <span class="k">when</span> <span class="n">we</span> <span class="n">are</span> <span class="n">trying</span> <span class="n">to</span> <span class="n">put</span> <span class="n">an</span> <span class="n">item</span> <span class="n">into</span> <span class="n">a</span> <span class="n">full</span> <span class="n">buffer</span><span class="o">.</span> <span class="no">This</span> <span class="n">call</span> <span class="n">will</span> <span class="n">make</span> <span class="n">the</span> <span class="n">thread</span> <span class="nb">sleep</span> <span class="k">until</span> <span class="n">someone</span> <span class="k">else</span> <span class="n">calls</span> <span class="s1">&#39;get&#39;</span><span class="o">.</span> <span class="no">Once</span> <span class="n">get</span> <span class="n">is</span> <span class="n">called</span><span class="p">,</span> <span class="n">we</span> <span class="n">want</span> <span class="n">to</span> <span class="k">ensure</span> <span class="n">that</span> <span class="n">the</span> <span class="n">thread</span> <span class="n">waiting</span> <span class="n">actually</span> <span class="n">completes</span> <span class="n">calling</span> <span class="s1">&#39;buffer.put&#39;</span> <span class="ow">and</span> <span class="n">so</span> <span class="n">we</span> <span class="n">use</span> <span class="n">the</span> <span class="n">join</span> <span class="nb">method</span><span class="o">.</span> <span class="no">Join</span> <span class="n">makes</span> <span class="n">the</span> <span class="n">thread</span> <span class="n">behave</span> <span class="n">synchronously</span><span class="p">,</span> <span class="n">pausing</span> <span class="n">the</span> <span class="n">current</span> <span class="n">thread</span> <span class="k">until</span> <span class="n">the</span> <span class="n">joined</span> <span class="n">thread</span> <span class="n">has</span> <span class="n">finished</span> <span class="n">executing</span><span class="o">.</span> <span class="no">If</span> <span class="n">thread</span><span class="o">.</span><span class="n">alive?</span> <span class="n">returns</span> <span class="kp">false</span><span class="p">,</span> <span class="n">we</span> <span class="n">know</span> <span class="n">that</span> <span class="n">this</span> <span class="n">thread</span> <span class="n">has</span> <span class="n">died</span><span class="o">.</span> <span class="no">For</span> <span class="n">it</span> <span class="n">to</span> <span class="n">have</span> <span class="n">died</span> <span class="n">it</span> <span class="n">must</span> <span class="n">have</span> <span class="n">completed</span> <span class="n">executing</span><span class="p">,</span> <span class="ow">and</span> <span class="k">for</span> <span class="n">that</span> <span class="n">to</span> <span class="n">have</span> <span class="n">happened</span> <span class="n">it</span> <span class="n">must</span> <span class="n">have</span> <span class="n">been</span> <span class="n">woken</span> <span class="n">up</span><span class="o">.</span> <span class="no">Thus</span> <span class="k">if</span> <span class="n">the</span> <span class="n">assertion</span> <span class="n">is</span> <span class="kp">true</span><span class="p">,</span> <span class="n">calling</span> <span class="s1">&#39;get&#39;</span> <span class="n">successfully</span> <span class="n">woke</span> <span class="n">up</span> <span class="n">our</span> <span class="n">thread</span><span class="o">.</span> <span class="no">The</span> <span class="n">same</span> <span class="n">applies</span> <span class="k">for</span> <span class="n">calling</span> <span class="n">get</span> <span class="n">on</span> <span class="n">an</span> <span class="n">empty</span> <span class="n">buffer</span><span class="o">.</span>
-
-<span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;brush:ruby&#39;</span><span class="o">&gt;</span>
 <span class="k">def</span> <span class="nf">test_get_waking_up_sleeping_thread</span>
     <span class="n">buffer</span> <span class="o">=</span> <span class="no">SynchronisedBuffer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">thread</span> <span class="o">=</span> <span class="no">Thread</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">buffer</span><span class="o">|</span>
@@ -228,16 +360,42 @@
     <span class="n">buffer</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;item 1&quot;</span><span class="p">)</span>
     <span class="n">thread</span><span class="o">.</span><span class="n">join</span>
     <span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">thread</span><span class="o">.</span><span class="n">alive?</span><span class="p">)</span>
-<span class="k">end</span>
-<span class="o">&lt;</span><span class="sr">/pre&gt;</span>
+<span class="k">end</span></pre></div>
+  </td>
+</tr>
+<tr id='section-21'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-21">&#182;</a>
+    </div>
+    <p>The results of all our test cases running should look something like the following:
+<img src="/uploads/2010/07/Screen-shot-2010-07-10-at-12.31.51-AM.png" alt="Green is a happy colour" /></p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-22'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-22">&#182;</a>
+    </div>
+    <p>With all these test cases in place, we can be fairly certain that our implementation is correct and the any future bugs that may be introduced will be caught. Note that each test case only makes 1 assertion. While this is not entirely necessary, it is good practice. If a test case fails to pass, then there is no doubt as to which assertion failed. By placing 10 assertions into a test case &lsquo;test_buffer&rsquo; it  becomes much more difficult to find the exact cause of the failure as the name &lsquo;test_buffer&rsquo; failing tells us nothing and what was tested. If multiple assertions are made in the same test case, either one or more of them is redundant, or the test cases should be separated into multiple separate cases.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-23'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-23">&#182;</a>
+    </div>
+    <p>Hopefully these examples give you an understanding of how to use the Ruby Unit Testing Framework, as well as how to test synchronised and multi-threaded classes. As always, please leave a comment or send me an email with any feedback, criticisms, questions or comments.</p>
 
-<span class="sr">The results of all our test cases running should look something like the following:</span>
-<span class="sr">[caption id=&quot;attachment_357&quot; align=&quot;aligncenter&quot; width=&quot;611&quot; caption=&quot;You will learn to love this green&quot;]&lt;a href=&quot;http:/</span><span class="o">/</span><span class="n">www</span><span class="o">.</span><span class="n">oneofthesedaysblog</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">wp</span><span class="o">-</span><span class="n">content</span><span class="o">/</span><span class="n">uploads</span><span class="o">/</span><span class="mi">2010</span><span class="o">/</span><span class="mo">07</span><span class="o">/</span><span class="no">Screen</span><span class="o">-</span><span class="n">shot</span><span class="o">-</span><span class="mi">2010</span><span class="o">-</span><span class="mo">07</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">at</span><span class="o">-</span><span class="mi">12</span><span class="o">.</span><span class="mi">31</span><span class="o">.</span><span class="mi">51</span><span class="o">-</span><span class="no">AM</span><span class="o">.</span><span class="n">png</span><span class="s2">&quot;&gt;&lt;img src=&quot;</span><span class="n">http</span><span class="ss">:/</span><span class="o">/</span><span class="n">www</span><span class="o">.</span><span class="n">oneofthesedaysblog</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">wp</span><span class="o">-</span><span class="n">content</span><span class="o">/</span><span class="n">uploads</span><span class="o">/</span><span class="mi">2010</span><span class="o">/</span><span class="mo">07</span><span class="o">/</span><span class="no">Screen</span><span class="o">-</span><span class="n">shot</span><span class="o">-</span><span class="mi">2010</span><span class="o">-</span><span class="mo">07</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">at</span><span class="o">-</span><span class="mi">12</span><span class="o">.</span><span class="mi">31</span><span class="o">.</span><span class="mi">51</span><span class="o">-</span><span class="no">AM</span><span class="o">.</span><span class="n">png</span><span class="s2">&quot; alt=&quot;</span><span class="no">Many</span> <span class="n">passed</span> <span class="nb">test</span> <span class="n">cases</span><span class="s2">&quot; title=&quot;</span><span class="no">Many</span> <span class="n">passed</span> <span class="nb">test</span> <span class="n">cases</span><span class="s2">&quot; width=&quot;</span><span class="mi">611</span><span class="s2">&quot; height=&quot;</span><span class="mi">120</span><span class="s2">&quot; class=&quot;</span><span class="n">size</span><span class="o">-</span><span class="n">full</span> <span class="n">wp</span><span class="o">-</span><span class="n">image</span><span class="o">-</span><span class="mi">357</span><span class="s2">&quot; /&gt;&lt;/a&gt;[/caption]</span>
-
-
-<span class="s2">With all these test cases in place, we can be fairly certain that our implementation is correct and the any future bugs that may be introduced will be caught. Note that each test case only makes 1 assertion. While this is not entirely necessary, it is good practice. If a test case fails to pass, then there is no doubt as to which assertion failed. By placing 10 assertions into a test case &#39;test_buffer&#39; it  becomes much more difficult to find the exact cause of the failure as the name &#39;test_buffer&#39; failing tells us nothing and what was tested. If multiple assertions are made in the same test case, either one or more of them is redundant, or the test cases should be separated into multiple separate cases. </span>
-
-<span class="s2">Hopefully these examples give you an understanding of how to use the Ruby Unit Testing Framework, as well as how to test synchronised and multi-threaded classes. As always, please leave a comment or send me an email with any feedback, criticisms, questions or comments.</span></pre></div>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
   </td>
 </tr>
 

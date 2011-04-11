@@ -6,86 +6,176 @@ layout: post
     <div class="pilwrap">
       <a class="pilcrow" href="#section-1">&#182;</a>
     </div>
-    
+    <p><img src="http://upload.wikimedia.org/wikipedia/commons/8/89/WACsOperateTeletype.jpg" alt="Teletypwriter" /></p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-2'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-2">&#182;</a>
+    </div>
+    <p>I left the 30 day to Ruby series with a rather abrupt and unfinished ending. This post is the next in the hopeful continuation and completion of the series.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-3'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-3">&#182;</a>
+    </div>
+    <p>Without further ado then, Input/Output (IO)! For any operations involving sending or receiving data (be it to a file, or another computer), you&rsquo;re going to need some way of telling the operating system what to do. Any modern OS has a set of system calls that are used to interact with the computer&rsquo;s hardware, while ensuring nothing untoward happens to it. For writing to a file, we might call fwrite in the C standard library. By passing in a file name and some data, the library will instruct the OS to put the given data in the given file. We can also instruct the OS to send and receive data to things other than files however, a process, for example.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-4'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-4">&#182;</a>
+    </div>
+    <p>Let&rsquo;s look at an example to make the explanations easier.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="nb">puts</span> <span class="no">IO</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span> <span class="c1"># Sat Jan 22 22:01:35 NZDT 2011</span></pre></div>
+  </td>
+</tr>
+<tr id='section-5'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-5">&#182;</a>
+    </div>
+    <p>We can see that the output of the above line was today&rsquo;s date and time, exactly as if we were to open the terminal and type in the UNIX &lsquo;date&rsquo; command. Note that we are calling the read command on the object we&rsquo;ve created, exactly as if we were reading from a file. What&rsquo;s going on here? popen, or process open, is a function in the Ruby IO library that instructs the OS to fire up a process with the given command (date, in this case). A process is similar to a file in that it can receive inputs and produce outputs, and so Ruby ensures theses two ends are available for use, just as if a file had been opened. The advantage of the IO library is that the API is fixed for whatever IO object you&rsquo;re actually using. Be it a process, file, socket, pipe et al, the commands required for sending/receiving data are always the same. It can be seen then that after popen runs the date command, we are simply reading the output of this command, retrieving today&rsquo;s date.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-6'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-6">&#182;</a>
+    </div>
+    <p>Let&rsquo;s take another example, but to do so we must install a rather neat program called <a href="https://github.com/drewcrawford/Phone-Pipe">phonepipe</a>. You could run a similar example without this, a notifo account and a smart phone with push capabilities, but it&rsquo;s rather satisfying to do it this way. Keep reading once you&rsquo;ve got it set up and working.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-7'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-7">&#182;</a>
+    </div>
+    <p>What we want to do is have Ruby send some text to our phone. A simple solution would be to simply have Ruby call &lsquo;echo hello | phone&rsquo;, which can be achieved using the shorthand %x syntax:
+This simply has Ruby drop out the commands contained into a shell, causing the word hello to be sent to your phone. This doesn&rsquo;t fit nicely with our IO examples however so let&rsquo;s try something else.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="sx">%x{ echo hello | phone}</span> 
+
+<span class="no">IO</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s1">&#39;phone&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">puts</span> <span class="s1">&#39;Hello from process &#39;</span> <span class="o">+</span> <span class="no">Process</span><span class="o">.</span><span class="n">pid</span><span class="o">.</span><span class="n">to_s</span>
+<span class="k">end</span></pre></div>
+  </td>
+</tr>
+<tr id='section-8'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-8">&#182;</a>
+    </div>
+    <p>Just as we opened up a process for date, we&rsquo;re opening up a process for the phone command. The difference is that we&rsquo;re specifying that we want to be able to write to it, just as we would write to a file. By passing it a block, we can do things with the returned process handle. Inside the block, we&rsquo;re simply using puts to send our message to the phone process. You should see a message along the lines of &ldquo;Hello from process &mdash;&mdash;&rdquo; appear on your phone, where &mdash;&mdash; is any number. While this is purely a contrived example, you can see just how easy it is to read and write to processes in Ruby. To show the flexibility of these, take a look at this example which opens up an interactive Ruby prompt inside the process and has it execute Ruby code:</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="no">IO</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s1">&#39;irb&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
+   <span class="n">f</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;puts &#39;hello&#39;&quot;</span>
+<span class="k">end</span></pre></div>
+  </td>
+</tr>
+<tr id='section-9'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-9">&#182;</a>
+    </div>
+    <p>We&rsquo;re opening an irb process, and feeding it &ldquo;puts &lsquo;hello&rsquo;&rdquo; which gets run by irb and executed. <br /><em>Note: if someone can turn this into a <a href="http://en.wikipedia.org/wiki/Quine_(computing)" title="Quine (computing) - Wikipedia, the free encyclopedia">quine</a>, it would be awesome to see in the comments! Here&rsquo;s a start:</em></p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="no">IO</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s1">&#39;irb&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
+   <span class="n">f</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot; IO.popen(&#39;irb&#39;, &#39;w&#39;) do |f|</span>
+<span class="s2">       f.puts </span><span class="se">\&quot;</span><span class="s2">puts &#39;hello&#39;</span><span class="se">\&quot;</span><span class="s2"></span>
+<span class="s2">    end&quot;</span>
+<span class="k">end</span></pre></div>
+  </td>
+</tr>
+<tr id='section-10'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-10">&#182;</a>
+    </div>
+    <p>Hopefully this brief foray into the world of Ruby::IO has piqued your interested, but before I TTYL we must look at the TTY. In times past, there was the Teletypewriter (TTY): A magical device that would take digital input and type output onto physical paper via a typewriter. This name, tty, has stuck around in UNIX, such that any terminal window you open is named something along the lines of ttyn where n is the index nth terminal window you&rsquo;ve opened (the first window would be tty0, and so on). While nothing to do with typewriters, the idea of printing text to a screen is somewhat similar to this, so if you don&rsquo;t think about it too much it makes sense. On a typical OSX or Linux system, the tty interfaces appear as simple files on the filesystem, allowing us to read and write to them. I happen to be running OSX, and I know that the first tty lives at /dev/ttys001, so if I open this up and write to it, the data will be displayed on the first terminal window I have open.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/dev/ttys001&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">puts</span> <span class="s1">&#39;Hello from Ruby!&#39;</span>
+<span class="k">end</span></pre></div>
+  </td>
+</tr>
+<tr id='section-11'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-11">&#182;</a>
+    </div>
+    <p>We&rsquo;re using the File class in this case, not IO, to open up the tty file, but everything functions identically. If you have a terminal window up, you can check it&rsquo;s tty file by viewing the terminal window&rsquo;s properties. If it is indeed ttys001, you should see &lsquo;Hello from Ruby!&rsquo; appear on it. If it&rsquo;s something else, replace the file name and similar results should occur.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-12'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-12">&#182;</a>
+    </div>
+    <p>This is all well and good, but what can you do with it? Well, here&rsquo;s a feeble attempt and what could be the beginnings of a game of pong:</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="n">width</span> <span class="o">=</span> <span class="mi">80</span>
+<span class="n">height</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="n">length</span> <span class="o">=</span> <span class="mi">160</span>
+<span class="n">fps</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/dev/ttys001&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
+   <span class="n">row</span> <span class="o">=</span> <span class="mi">0</span>
+   <span class="n">increment</span> <span class="o">=</span> <span class="mi">1</span>
+   <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.length</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+      <span class="nb">sleep</span><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">to_f</span><span class="o">/</span><span class="n">fps</span><span class="p">)</span>
+      <span class="n">f</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;</span><span class="se">\e</span><span class="s2">[2J</span><span class="se">\e</span><span class="s2">[f&quot;</span> <span class="c1"># clear screen character</span>
+      <span class="n">f</span><span class="o">.</span><span class="n">puts</span>  <span class="s2">&quot;&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">*</span> <span class="n">row</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="n">width</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;o&quot;</span>
+      
+      <span class="n">row</span> <span class="o">+=</span> <span class="n">increment</span>
+      <span class="k">if</span> <span class="n">row</span> <span class="o">&gt;</span> <span class="n">height</span>
+          <span class="n">increment</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+      <span class="k">elsif</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="mi">1</span> 
+          <span class="n">increment</span> <span class="o">=</span> <span class="mi">1</span>
+      <span class="k">end</span>
+   <span class="k">end</span>
+<span class="k">end</span></pre></div>
+  </td>
+</tr>
+<tr id='section-13'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-13">&#182;</a>
+    </div>
+    <p>That&rsquo;s all for now, but give it a whirl, and be sure to post any cool uses/examples you have in the comments!</pre></p>
 
   </td>
   <td class=code>
-    <div class='highlight'><pre><span class="o">[</span><span class="n">caption</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;alignright&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;234&quot;</span> <span class="n">caption</span><span class="o">=</span><span class="s2">&quot;&amp;#039;The Women&amp;#039;s Army Corps: A Commemoration of World War II Service&amp;#039;&amp;#039; By Judith A. Bellafaire. CMH Publication 72-15&quot;</span><span class="o">]&lt;</span><span class="n">img</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;http://upload.wikimedia.org/wikipedia/commons/8/89/WACsOperateTeletype.jpg&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Teletypewriter&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;234&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;224&quot;</span><span class="sr"> /&gt;[/</span><span class="n">caption</span><span class="o">]</span>
-<span class="n">I</span> <span class="n">left</span> <span class="n">the</span> <span class="mi">30</span> <span class="n">day</span> <span class="n">to</span> <span class="no">Ruby</span> <span class="n">series</span> <span class="n">with</span> <span class="n">a</span> <span class="n">rather</span> <span class="n">abrupt</span> <span class="ow">and</span> <span class="n">unfinished</span> <span class="n">ending</span><span class="o">.</span> <span class="no">This</span> <span class="n">post</span> <span class="n">is</span> <span class="n">the</span> <span class="k">next</span> <span class="k">in</span> <span class="n">the</span> <span class="n">hopeful</span> <span class="n">continuation</span> <span class="ow">and</span> <span class="n">completion</span> <span class="n">of</span> <span class="n">the</span> <span class="n">series</span><span class="o">.</span>
-
-<span class="no">Without</span> <span class="n">further</span> <span class="n">ado</span> <span class="k">then</span><span class="p">,</span> <span class="no">Input</span><span class="o">/</span><span class="no">Output</span> <span class="p">(</span><span class="no">IO</span><span class="p">)</span><span class="o">!</span> <span class="no">For</span> <span class="n">any</span> <span class="n">operations</span> <span class="n">involving</span> <span class="n">sending</span> <span class="ow">or</span> <span class="n">receiving</span> <span class="n">data</span> <span class="p">(</span><span class="n">be</span> <span class="n">it</span> <span class="n">to</span> <span class="n">a</span> <span class="n">file</span><span class="p">,</span> <span class="ow">or</span> <span class="n">another</span> <span class="n">computer</span><span class="p">),</span> <span class="n">you</span><span class="s1">&#39;re going to need some way of telling the operating system what to do. Any modern OS has a set of system calls that are used to interact with the computer&#39;</span><span class="n">s</span> <span class="n">hardware</span><span class="p">,</span> <span class="k">while</span> <span class="n">ensuring</span> <span class="n">nothing</span> <span class="n">untoward</span> <span class="n">happens</span> <span class="n">to</span> <span class="n">it</span><span class="o">.</span> <span class="no">For</span> <span class="n">writing</span> <span class="n">to</span> <span class="n">a</span> <span class="n">file</span><span class="p">,</span> <span class="n">we</span> <span class="n">might</span> <span class="n">call</span> <span class="n">fwrite</span> <span class="k">in</span> <span class="n">the</span> <span class="n">C</span> <span class="n">standard</span> <span class="n">library</span><span class="o">.</span> <span class="no">By</span> <span class="n">passing</span> <span class="k">in</span> <span class="n">a</span> <span class="n">file</span> <span class="nb">name</span> <span class="ow">and</span> <span class="n">some</span> <span class="n">data</span><span class="p">,</span> <span class="n">the</span> <span class="n">library</span> <span class="n">will</span> <span class="n">instruct</span> <span class="n">the</span> <span class="no">OS</span> <span class="n">to</span> <span class="n">put</span> <span class="n">the</span> <span class="n">given</span> <span class="n">data</span> <span class="k">in</span> <span class="n">the</span> <span class="n">given</span> <span class="n">file</span><span class="o">.</span> <span class="no">We</span> <span class="n">can</span> <span class="n">also</span> <span class="n">instruct</span> <span class="n">the</span> <span class="no">OS</span> <span class="n">to</span> <span class="nb">send</span> <span class="ow">and</span> <span class="n">receive</span> <span class="n">data</span> <span class="n">to</span> <span class="n">things</span> <span class="n">other</span> <span class="n">than</span> <span class="n">files</span> <span class="n">however</span><span class="p">,</span> <span class="n">a</span> <span class="n">process</span><span class="p">,</span> <span class="k">for</span> <span class="n">example</span><span class="o">.</span>
-
-<span class="no">Let</span><span class="s1">&#39;s look at an example to make the explanations easier.</span>
-<span class="s1">&lt;pre class=&#39;</span><span class="n">brush</span><span class="ss">:ruby</span><span class="s1">&#39;&gt;</span>
-<span class="s1">puts IO.popen(&#39;</span><span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">read</span>
-<span class="no">Sat</span> <span class="no">Jan</span> <span class="mi">22</span> <span class="mi">22</span><span class="p">:</span><span class="mo">01</span><span class="p">:</span><span class="mi">35</span> <span class="no">NZDT</span> <span class="mi">2011</span>
-<span class="o">&lt;</span><span class="sr">/pre&gt;</span>
-
-<span class="sr">We can see that the output of the above line was today&#39;s date and time, exactly as if we were to open the terminal and type in the UNIX &#39;date&#39; command. Note that we are calling the read command on the object we&#39;ve created, exactly as if we were reading from a file. What&#39;s going on here? popen, or process open, is a function in the Ruby IO library that instructs the OS to fire up a process with the given command (date, in this case). A process is similar to a file in that it can receive inputs and produce outputs, and so Ruby ensures theses two ends are available for use, just as if a file had been opened. The advantage of the IO library is that the API is fixed for whatever IO object you&#39;re actually using. Be it a process, file, socket, pipe et al, the commands required for sending/</span><span class="n">receiving</span> <span class="n">data</span> <span class="n">are</span> <span class="n">always</span> <span class="n">the</span> <span class="n">same</span><span class="o">.</span> <span class="no">It</span> <span class="n">can</span> <span class="n">be</span> <span class="n">seen</span> <span class="k">then</span> <span class="n">that</span> <span class="n">after</span> <span class="n">popen</span> <span class="n">runs</span> <span class="n">the</span> <span class="n">date</span> <span class="n">command</span><span class="p">,</span> <span class="n">we</span> <span class="n">are</span> <span class="n">simply</span> <span class="n">reading</span> <span class="n">the</span> <span class="n">output</span> <span class="n">of</span> <span class="n">this</span> <span class="n">command</span><span class="p">,</span> <span class="n">retrieving</span> <span class="n">today</span><span class="s1">&#39;s date.</span>
-
-<span class="s1">Let&#39;</span><span class="n">s</span> <span class="n">take</span> <span class="n">another</span> <span class="n">example</span><span class="p">,</span> <span class="n">but</span> <span class="n">to</span> <span class="k">do</span> <span class="n">so</span> <span class="n">we</span> <span class="n">must</span> <span class="n">install</span> <span class="n">a</span> <span class="n">rather</span> <span class="n">neat</span> <span class="n">program</span> <span class="n">called</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;https://github.com/drewcrawford/Phone-Pipe&quot;</span><span class="o">&gt;</span><span class="n">phonepipe</span><span class="o">&lt;</span><span class="sr">/a&gt;. You could run a similar example without this, a notifo account and a smart phone with push capabilities, but it&#39;s rather satisfying to do it this way. Keep reading once you&#39;ve got it set up and working.</span>
-
-<span class="sr">What we want to do is have Ruby send some text to our phone. A simple solution would be to simply have Ruby call &#39;echo hello | phone&#39;, which can be achieved using the shorthand %x syntax:</span>
-<span class="sr">&lt;pre class=&#39;brush:ruby&#39;&gt;</span>
-<span class="sr">%x{ echo hello | phone} </span>
-<span class="sr">&lt;/</span><span class="n">pre</span><span class="o">&gt;</span> 
-<span class="no">This</span> <span class="n">simply</span> <span class="n">has</span> <span class="no">Ruby</span> <span class="n">drop</span> <span class="n">out</span> <span class="n">the</span> <span class="n">commands</span> <span class="n">contained</span> <span class="n">into</span> <span class="n">a</span> <span class="n">shell</span><span class="p">,</span> <span class="n">causing</span> <span class="n">the</span> <span class="n">word</span> <span class="n">hello</span> <span class="n">to</span> <span class="n">be</span> <span class="n">sent</span> <span class="n">to</span> <span class="n">your</span> <span class="n">phone</span><span class="o">.</span> <span class="no">This</span> <span class="n">doesn</span><span class="s1">&#39;t fit nicely with our IO examples however so let&#39;</span><span class="n">s</span> <span class="n">try</span> <span class="n">something</span> <span class="k">else</span><span class="o">.</span>
-
-<span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;brush:ruby&#39;</span><span class="o">&gt;</span>
-<span class="no">IO</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s1">&#39;phone&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">puts</span> <span class="s1">&#39;Hello from process &#39;</span> <span class="o">+</span> <span class="no">Process</span><span class="o">.</span><span class="n">pid</span><span class="o">.</span><span class="n">to_s</span>
-<span class="k">end</span>
-<span class="o">&lt;</span><span class="sr">/pre&gt;</span>
-
-<span class="sr">Just as we opened up a process for date, we&#39;re opening up a process for the phone command. The difference is that we&#39;re specifying that we want to be able to write to it, just as we would write to a file. By passing it a block, we can do things with the returned process handle. Inside the block, we&#39;re simply using puts to send our message to the phone process. You should see a message along the lines of &quot;Hello from process ----&quot; appear on your phone, where ---- is any number. While this is purely a contrived example, you can see just how easy it is to read and write to processes in Ruby. To show the flexibility of these, take a look at this example which opens up an interactive Ruby prompt inside the process and has it execute Ruby code:</span>
-<span class="sr">&lt;pre class=&#39;brush:ruby&#39;&gt;</span>
-<span class="sr">IO.popen(&#39;irb&#39;, &#39;w&#39;) do |f|</span>
-<span class="sr">   f.puts &quot;puts &#39;hello&#39;&quot;</span>
-<span class="sr">end</span>
-<span class="sr">&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-<span class="no">We</span><span class="s1">&#39;re opening an irb process, and feeding it &quot;puts &#39;</span><span class="n">hello</span><span class="s1">&#39;&quot; which gets run by irb and executed. &lt;br /&gt;&lt;em&gt;Note: if someone can turn this into a &lt;a href=&quot;http://en.wikipedia.org/wiki/Quine_(computing)&quot; title=&quot;Quine (computing) - Wikipedia, the free encyclopedia&quot;&gt;quine&lt;/a&gt;, it would be awesome to see in the comments! Here&#39;</span><span class="n">s</span> <span class="n">a</span> <span class="n">start</span><span class="p">:</span><span class="o">&lt;</span><span class="sr">/em&gt;</span>
-<span class="sr">&lt;pre class=&#39;brush:ruby&#39;&gt;</span>
-<span class="sr">IO.popen(&#39;irb&#39;, &#39;w&#39;) do |f|</span>
-<span class="sr">   f.puts &quot; IO.popen(&#39;irb&#39;, &#39;w&#39;) do |f|</span>
-<span class="sr">       f.puts \&quot;puts &#39;hello&#39;\&quot;</span>
-<span class="sr">    end&quot;</span>
-<span class="sr">end</span>
-<span class="sr">&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-
-<span class="no">Hopefully</span> <span class="n">this</span> <span class="n">brief</span> <span class="n">foray</span> <span class="n">into</span> <span class="n">the</span> <span class="n">world</span> <span class="n">of</span> <span class="no">Ruby</span><span class="o">::</span><span class="no">IO</span> <span class="n">has</span> <span class="n">piqued</span> <span class="n">your</span> <span class="n">interested</span><span class="p">,</span> <span class="n">but</span> <span class="n">before</span> <span class="n">I</span> <span class="no">TTYL</span> <span class="n">we</span> <span class="n">must</span> <span class="n">look</span> <span class="n">at</span> <span class="n">the</span> <span class="no">TTY</span><span class="o">.</span> <span class="no">In</span> <span class="n">times</span> <span class="n">past</span><span class="p">,</span> <span class="n">there</span> <span class="n">was</span> <span class="n">the</span> <span class="no">Teletypewriter</span> <span class="p">(</span><span class="no">TTY</span><span class="p">):</span> <span class="n">A</span> <span class="n">magical</span> <span class="n">device</span> <span class="n">that</span> <span class="n">would</span> <span class="n">take</span> <span class="n">digital</span> <span class="n">input</span> <span class="ow">and</span> <span class="nb">type</span> <span class="n">output</span> <span class="n">onto</span> <span class="n">physical</span> <span class="n">paper</span> <span class="n">via</span> <span class="n">a</span> <span class="n">typewriter</span><span class="o">.</span> <span class="no">This</span> <span class="nb">name</span><span class="p">,</span> <span class="n">tty</span><span class="p">,</span> <span class="n">has</span> <span class="n">stuck</span> <span class="n">around</span> <span class="k">in</span> <span class="no">UNIX</span><span class="p">,</span> <span class="n">such</span> <span class="n">that</span> <span class="n">any</span> <span class="n">terminal</span> <span class="n">window</span> <span class="n">you</span> <span class="nb">open</span> <span class="n">is</span> <span class="n">named</span> <span class="n">something</span> <span class="n">along</span> <span class="n">the</span> <span class="n">lines</span> <span class="n">of</span> <span class="n">ttyn</span> <span class="n">where</span> <span class="n">n</span> <span class="n">is</span> <span class="n">the</span> <span class="n">index</span> <span class="n">nth</span> <span class="n">terminal</span> <span class="n">window</span> <span class="n">you</span><span class="s1">&#39;ve opened (the first window would be tty0, and so on). While nothing to do with typewriters, the idea of printing text to a screen is somewhat similar to this, so if you don&#39;</span><span class="n">t</span> <span class="n">think</span> <span class="n">about</span> <span class="n">it</span> <span class="n">too</span> <span class="n">much</span> <span class="n">it</span> <span class="n">makes</span> <span class="n">sense</span><span class="o">.</span> <span class="no">On</span> <span class="n">a</span> <span class="n">typical</span> <span class="no">OSX</span> <span class="ow">or</span> <span class="no">Linux</span> <span class="nb">system</span><span class="p">,</span> <span class="n">the</span> <span class="n">tty</span> <span class="n">interfaces</span> <span class="n">appear</span> <span class="n">as</span> <span class="n">simple</span> <span class="n">files</span> <span class="n">on</span> <span class="n">the</span> <span class="n">filesystem</span><span class="p">,</span> <span class="n">allowing</span> <span class="n">us</span> <span class="n">to</span> <span class="n">read</span> <span class="ow">and</span> <span class="n">write</span> <span class="n">to</span> <span class="n">them</span><span class="o">.</span> <span class="n">I</span> <span class="n">happen</span> <span class="n">to</span> <span class="n">be</span> <span class="n">running</span> <span class="no">OSX</span><span class="p">,</span> <span class="ow">and</span> <span class="n">I</span> <span class="n">know</span> <span class="n">that</span> <span class="n">the</span> <span class="n">first</span> <span class="n">tty</span> <span class="n">lives</span> <span class="n">at</span><span class="sr"> /dev/</span><span class="n">ttys001</span><span class="p">,</span> <span class="n">so</span> <span class="k">if</span> <span class="n">I</span> <span class="nb">open</span> <span class="n">this</span> <span class="n">up</span> <span class="ow">and</span> <span class="n">write</span> <span class="n">to</span> <span class="n">it</span><span class="p">,</span> <span class="n">the</span> <span class="n">data</span> <span class="n">will</span> <span class="n">be</span> <span class="n">displayed</span> <span class="n">on</span> <span class="n">the</span> <span class="n">first</span> <span class="n">terminal</span> <span class="n">window</span> <span class="n">I</span> <span class="n">have</span> <span class="nb">open</span><span class="o">.</span> 
-<span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;brush:ruby&#39;</span><span class="o">&gt;</span>
-<span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/dev/ttys001&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">puts</span> <span class="s1">&#39;Hello from Ruby!&#39;</span>
-<span class="k">end</span>
-<span class="o">&lt;</span><span class="sr">/pre&gt;</span>
-<span class="sr">We&#39;re using the File class in this case, not IO, to open up the tty file, but everything functions identically. If you have a terminal window up, you can check it&#39;s tty file by viewing the terminal window&#39;s properties. If it is indeed ttys001, you should see &#39;Hello from Ruby!&#39; appear on it. If it&#39;s something else, replace the file name and similar results should occur.</span>
-
-<span class="sr">This is all well and good, but what can you do with it? Well, here&#39;s a feeble attempt and what could be the beginnings of a game of pong:</span>
-<span class="sr">&lt;pre class=&#39;brush:ruby&#39;&gt;</span>
-<span class="sr">width = 80</span>
-<span class="sr">height = 20</span>
-
-<span class="sr">length = 160</span>
-<span class="sr">fps = 30</span>
-
-<span class="sr">File.open(&quot;/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttys001</span><span class="s2">&quot;, &#39;w&#39;) do |f|</span>
-<span class="s2">   row = 0</span>
-<span class="s2">   increment = 1</span>
-<span class="s2">   (1..length).each do |i|</span>
-<span class="s2">      sleep(1.to_f/fps)</span>
-<span class="s2">      f.puts &quot;</span><span class="p">\</span><span class="n">e</span><span class="o">[</span><span class="mi">2</span><span class="n">J</span><span class="p">\</span><span class="n">e</span><span class="o">[</span><span class="n">f</span><span class="s2">&quot; # clear screen character</span>
-<span class="s2">      f.puts  &quot;&quot; + (&quot;</span><span class="p">\</span><span class="n">n</span><span class="s2">&quot; * row) + (&quot;</span> <span class="s2">&quot; * (i % width)) + &quot;</span><span class="n">o</span><span class="s2">&quot;</span>
-<span class="s2">      </span>
-<span class="s2">      row += increment</span>
-<span class="s2">      if row &gt; height</span>
-<span class="s2">          increment = -1</span>
-<span class="s2">      elsif row &lt; 1 </span>
-<span class="s2">          increment = 1</span>
-<span class="s2">      end</span>
-<span class="s2">   end</span>
-<span class="s2">end</span>
-<span class="s2">&lt;/pre&gt;</span>
-
-<span class="s2">That&#39;s all for now, but give it a whirl, and be sure to post any cool uses/examples you have in the comments!&lt;/pre&gt;</span></pre></div>
+    <div class='highlight'><pre></pre></div>
   </td>
 </tr>

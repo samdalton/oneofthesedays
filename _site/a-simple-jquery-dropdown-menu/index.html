@@ -28,96 +28,171 @@
     <div class="pilwrap">
       <a class="pilcrow" href="#section-1">&#182;</a>
     </div>
-    
-
+    <p>A while ago I wrote about a <a href="http://www.oneofthesedaysblog.com/pure-css-dropdown-for-firefox/" title="Pure CSS Dropdown for Firefox | One Of These Days">bare bones CSS dropdown</a>. Given the widespread adoption of jQuery since then, there&rsquo;s little reason to go for the CSS only approach (although it is perhaps more elegant). <a href="http://twitter.com/#!/tedawebguy" title="">@tedawebguy</a> suggested I write a post about a more modern version, so let&rsquo;s go!</p>
   </td>
   <td class=code>
-    <div class='highlight'><pre><span class="n">A</span> <span class="k">while</span> <span class="n">ago</span> <span class="n">I</span> <span class="n">wrote</span> <span class="n">about</span> <span class="n">a</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;http://www.oneofthesedaysblog.com/pure-css-dropdown-for-firefox/&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Pure CSS Dropdown for Firefox | One Of These Days&quot;</span><span class="o">&gt;</span><span class="n">bare</span> <span class="n">bones</span> <span class="no">CSS</span> <span class="n">dropdown</span><span class="o">&lt;</span><span class="sr">/a&gt;. Given the widespread adoption of jQuery since then, there&#39;s little reason to go for the CSS only approach (although it is perhaps more elegant). &lt;a href=&quot;http:/</span><span class="o">/</span><span class="n">twitter</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="c1">#!/tedawebguy&quot; title=&quot;&quot;&gt;@tedawebguy&lt;/a&gt; suggested I write a post about a more modern version, so let&#39;s go!</span>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-2'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-2">&#182;</a>
+    </div>
+    <p>(Note: This should work in all browsers, although I&rsquo;ve only tested it in Firefox and Chrome on OSX. Any problems with it will be simple styling issues.)</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-3'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-3">&#182;</a>
+    </div>
+    <p>Here&rsquo;s the HTML we require:</p>
 
-<span class="p">(</span><span class="no">Note</span><span class="p">:</span> <span class="no">This</span> <span class="n">should</span> <span class="n">work</span> <span class="k">in</span> <span class="n">all</span> <span class="n">browsers</span><span class="p">,</span> <span class="n">although</span> <span class="n">I</span><span class="s1">&#39;ve only tested it in Firefox and Chrome on OSX. Any problems with it will be simple styling issues.)</span>
+<ul id="nav">
+<li>
+Home
+<ul>
+<li>Link 1</li>
+<li>Link 2</li>
+</ul>
+</li>
+<li>About</li>
+<li>
+Blog
+<ul>
+<li>Blog 1</li>
+<li>Blog 2</li>
+</ul>
+</li>
+<li>Contact</li>
+</ul>
 
-<span class="s1">Here&#39;</span><span class="n">s</span> <span class="n">the</span> <span class="no">HTML</span> <span class="n">we</span> <span class="nb">require</span><span class="p">:</span>
-<span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;brush:javascript&#39;</span><span class="o">&gt;</span>
-     <span class="o">&lt;</span><span class="n">ul</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;nav&quot;</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span>
-                <span class="no">Home</span>
-                <span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
-                    <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="no">Link</span> <span class="mi">1</span><span class="o">&lt;</span><span class="sr">/li&gt;</span>
-<span class="sr">                    &lt;li&gt;Link 2&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
-                <span class="o">&lt;</span><span class="sr">/ul&gt;</span>
-<span class="sr">            &lt;/</span><span class="n">li</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="no">About</span><span class="o">&lt;</span><span class="sr">/li&gt;</span>
-<span class="sr">            &lt;li&gt;</span>
-<span class="sr">                Blog</span>
-<span class="sr">                &lt;ul&gt;</span>
-<span class="sr">                    &lt;li&gt;Blog 1&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
-                    <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="no">Blog</span> <span class="mi">2</span><span class="o">&lt;</span><span class="sr">/li&gt;</span>
-<span class="sr">                &lt;/u</span><span class="n">l</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="sr">/li&gt;</span>
-<span class="sr">            &lt;li&gt;Contact&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="sr">/ul&gt;</span>
-<span class="sr">&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-<span class="no">This</span> <span class="n">is</span> <span class="n">a</span> <span class="n">simple</span> <span class="n">nested</span> <span class="n">list</span> <span class="n">with</span> <span class="mi">4</span> <span class="n">top</span> <span class="n">level</span> <span class="n">links</span> <span class="p">:</span> <span class="no">Home</span><span class="p">,</span> <span class="no">About</span><span class="p">,</span> <span class="no">Blog</span> <span class="ow">and</span> <span class="no">Contact</span><span class="o">.</span> <span class="no">Home</span> <span class="ow">and</span> <span class="no">Blog</span> <span class="n">have</span> <span class="mi">2</span> <span class="n">sublists</span> <span class="n">that</span> <span class="n">we</span> <span class="n">want</span> <span class="n">hidden</span> <span class="n">normally</span><span class="p">,</span> <span class="n">but</span> <span class="n">visible</span> <span class="k">when</span> <span class="n">their</span> <span class="n">parent</span> <span class="n">list</span> <span class="n">element</span> <span class="n">is</span> <span class="n">hovered</span> <span class="n">over</span><span class="o">.</span> <span class="no">We</span> <span class="n">can</span> <span class="n">have</span> <span class="n">an</span> <span class="n">arbitrary</span> <span class="n">number</span> <span class="n">of</span> <span class="n">links</span><span class="p">,</span> <span class="n">but</span> <span class="n">the</span> <span class="n">current</span> <span class="p">(</span><span class="n">read</span><span class="p">:</span> <span class="n">lazy</span><span class="p">)</span> <span class="n">version</span> <span class="n">only</span> <span class="n">allows</span> <span class="n">nesting</span> <span class="mi">1</span> <span class="n">level</span> <span class="n">deep</span><span class="o">.</span>
 
-<span class="no">The</span> <span class="n">styling</span> <span class="n">we</span> <span class="n">will</span> <span class="n">need</span> <span class="n">is</span> <span class="n">fairly</span> <span class="n">straight</span> <span class="n">forward</span><span class="p">:</span>
-<span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;brush:css&#39;</span><span class="o">&gt;</span>
-    <span class="n">ul</span> <span class="p">{</span>
+<p>This is a simple nested list with 4 top level links : Home, About, Blog and Contact. Home and Blog have 2 sublists that we want hidden normally, but visible when their parent list element is hovered over. We can have an arbitrary number of links, but the current (read: lazy) version only allows nesting 1 level deep.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-4'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-4">&#182;</a>
+    </div>
+    <p>The styling we will need is fairly straight forward:
+The first style removes the bullets from our list, gives it a reasonable height and padding to ensure that the hover area is user-friendly enough.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre>    <span class="n">ul</span> <span class="p">{</span>
         <span class="n">list</span><span class="o">-</span><span class="n">style</span><span class="o">-</span><span class="nb">type</span><span class="ss">:none</span><span class="p">;</span>
         <span class="n">height</span><span class="p">:</span><span class="mi">30</span><span class="n">px</span><span class="p">;</span>
         <span class="n">padding</span><span class="p">:</span><span class="mi">10</span><span class="n">px</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="o">&lt;</span><span class="sr">/pre&gt;</span>
-<span class="sr">The first style removes the bullets from our list, gives it a reasonable height and padding to ensure that the hover area is user-friendly enough.</span>
-
-<span class="sr">&lt;pre class=&#39;brush:css&#39;&gt;</span>
-<span class="sr">    ul li {</span>
-<span class="sr">        display:inline;</span>
-<span class="sr">        padding:4px 50px;</span>
-<span class="sr">        border:1px solid #555555;</span>
-<span class="sr">        cursor:pointer;</span>
-<span class="sr">        margin:2px;</span>
-<span class="sr">        position:relative;</span>
-<span class="sr">    </span>
-<span class="sr">    }</span>
-<span class="sr">&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-<span class="no">Next</span> <span class="n">we</span><span class="s1">&#39;re styling the list elements, making them display inline and giving them a bit of padding and spacing. The border and cursor is not essential, but it makes it easier to see where to hover. Lastly, we&#39;</span><span class="n">re</span> <span class="n">giving</span> <span class="n">it</span> <span class="n">a</span> <span class="n">relative</span> <span class="n">position</span> <span class="n">so</span> <span class="n">that</span> <span class="n">the</span> <span class="n">child</span> <span class="n">lists</span> <span class="n">will</span> <span class="n">be</span> <span class="n">position</span> <span class="n">relative</span> <span class="n">to</span> <span class="n">where</span> <span class="n">this</span> <span class="n">element</span> <span class="n">is</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="n">directly</span> <span class="n">below</span> <span class="n">the</span> <span class="n">element</span> <span class="n">you</span> <span class="n">are</span> <span class="n">hovering</span> <span class="n">over</span><span class="o">.</span>
-
-<span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;brush:css&#39;</span><span class="o">&gt;</span>
-    <span class="n">ul</span> <span class="n">li</span> <span class="n">ul</span> <span class="p">{</span>
+    <span class="p">}</span></pre></div>
+  </td>
+</tr>
+<tr id='section-5'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-5">&#182;</a>
+    </div>
+    <p>Next we&rsquo;re styling the list elements, making them display inline and giving them a bit of padding and spacing. The border and cursor is not essential, but it makes it easier to see where to hover. Lastly, we&rsquo;re giving it a relative position so that the child lists will be position relative to where this element is i.e. directly below the element you are hovering over.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre>    <span class="n">ul</span> <span class="n">li</span> <span class="p">{</span>
+        <span class="nb">display</span><span class="ss">:inline</span><span class="p">;</span>
+        <span class="n">padding</span><span class="p">:</span><span class="mi">4</span><span class="n">px</span> <span class="mi">50</span><span class="n">px</span><span class="p">;</span>
+        <span class="n">border</span><span class="p">:</span><span class="mi">1</span><span class="n">px</span> <span class="n">solid</span> <span class="c1">#555555;</span>
+        <span class="n">cursor</span><span class="ss">:pointer</span><span class="p">;</span>
+        <span class="n">margin</span><span class="p">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
+        <span class="n">position</span><span class="ss">:relative</span><span class="p">;</span>
+    
+    <span class="p">}</span></pre></div>
+  </td>
+</tr>
+<tr id='section-6'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-6">&#182;</a>
+    </div>
+    <p>To finish our CSS, we&rsquo;re styling the second level list. It&rsquo;s hidden to start with, and given an absolute position just below the top level list. The negative left position may cause some alignment problems in IE, but it&rsquo;s there to offset the indent that browsers put on list elements.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre>    <span class="n">ul</span> <span class="n">li</span> <span class="n">ul</span> <span class="p">{</span>
         <span class="nb">display</span><span class="ss">:none</span><span class="p">;</span>
         <span class="n">position</span><span class="ss">:absolute</span><span class="p">;</span>
         <span class="n">top</span><span class="p">:</span> <span class="mi">26</span><span class="n">px</span><span class="p">;</span>
         <span class="n">left</span><span class="ss">:-</span><span class="mi">15</span><span class="n">px</span><span class="p">;</span>
         <span class="n">width</span><span class="p">:</span> <span class="mi">600</span><span class="n">px</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="o">&lt;</span><span class="sr">/pre&gt;</span>
-<span class="sr">To finish our CSS, we&#39;re styling the second level list. It&#39;s hidden to start with, and given an absolute position just below the top level list. The negative left position may cause some alignment problems in IE, but it&#39;s there to offset the indent that browsers put on list elements. </span>
+    <span class="p">}</span></pre></div>
+  </td>
+</tr>
+<tr id='section-7'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-7">&#182;</a>
+    </div>
+    <p>Now that we&rsquo;ve structured and styled our navigation menu, we can sprinkle some javascript over it.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre>        <span class="err">$</span><span class="p">(</span><span class="n">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="err">$</span><span class="p">(</span><span class="s2">&quot;#nav li&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">hover</span><span class="p">(</span>
+                <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
+                    <span class="err">$</span><span class="p">(</span><span class="n">this</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fadeIn</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+                <span class="p">},</span> 
+                <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
+                    <span class="err">$</span><span class="p">(</span><span class="n">this</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fadeOut</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+                <span class="p">});</span>
+            <span class="p">});</span></pre></div>
+  </td>
+</tr>
+<tr id='section-8'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-8">&#182;</a>
+    </div>
+    <p>We&rsquo;re including the Google hosted jQuery library as per best practices, and then kicking off with the usual document.ready shortcut that jQuery gives us. We&rsquo;re then setting up a hover event listener on each list element in the top level list. This takes 2 callbacks, one for mouse over and one for mouse out. On mouse over, we&rsquo;re finding any list that may reside inside of the current element and subsequently showing it. The reverse happens on mouse out. Fading was used to make it a bit easier on the eyes, while also allowing the mouse pointer to leave the list area for a few milliseconds. This increases the usability as the user does not have to be quite as accurate when moving the mouse from top-level to sub-list elements.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-9'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-9">&#182;</a>
+    </div>
+    <p>Plugging these 3 components together gives us the following 2 states:</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-10'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-10">&#182;</a>
+    </div>
+    <p><img src="/uploads/2010/12/Screen-shot-2010-12-20-at-5.27.58-PM.png" alt="Sample 1" />
+<img src="/uploads/2010/12/Screen-shot-2010-12-20-at-5.29.59-PM.png" alt="Sample 2" /></p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-11'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-11">&#182;</a>
+    </div>
+    <p>If you want a more flexible solution, there&rsquo;s a <a href="http://www.1stwebdesigner.com/freebies/38-jquery-and-css-drop-down-multi-level-menu-solutions/" title="38 jQuery And CSS Drop Down Multi Level Menu Solutions">silly amount of libraries</a> to be found on the web. Hopefully however, this post shows just how simple they are to construct, and may even be useful if you&rsquo;re looking for a lightweight solution.</p>
 
-<span class="sr">Now that we&#39;ve structured and styled our navigation menu, we can sprinkle some javascript over it. </span>
-
-<span class="sr">&lt;pre class=&#39;brush:javascript&#39;&gt;</span>
-<span class="sr">    &lt;script src=&#39;https:/</span><span class="o">/</span><span class="n">ajax</span><span class="o">.</span><span class="n">googleapis</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ajax</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">jquery</span><span class="o">/</span><span class="mi">1</span><span class="o">.</span><span class="mi">4</span><span class="o">.</span><span class="mi">4</span><span class="o">/</span><span class="n">jquery</span><span class="o">.</span><span class="n">min</span><span class="o">.</span><span class="n">js</span><span class="s1">&#39;&gt;&lt;/script&gt;</span>
-<span class="s1">    &lt;script&gt;</span>
-<span class="s1">        $(function() {</span>
-<span class="s1">            $(&quot;#nav li&quot;).hover(</span>
-<span class="s1">                function() {</span>
-<span class="s1">                    $(this).find(&quot;ul&quot;).fadeIn(100);</span>
-<span class="s1">                }, </span>
-<span class="s1">                function() {</span>
-<span class="s1">                    $(this).find(&quot;ul&quot;).fadeOut(100);</span>
-<span class="s1">                });</span>
-<span class="s1">            });</span>
-<span class="s1">    &lt;/script&gt;</span>
-<span class="s1">&lt;/pre&gt;</span>
-
-<span class="s1">We&#39;</span><span class="n">re</span> <span class="n">including</span> <span class="n">the</span> <span class="no">Google</span> <span class="n">hosted</span> <span class="n">jQuery</span> <span class="n">library</span> <span class="n">as</span> <span class="n">per</span> <span class="n">best</span> <span class="n">practices</span><span class="p">,</span> <span class="ow">and</span> <span class="k">then</span> <span class="n">kicking</span> <span class="n">off</span> <span class="n">with</span> <span class="n">the</span> <span class="n">usual</span> <span class="n">document</span><span class="o">.</span><span class="n">ready</span> <span class="n">shortcut</span> <span class="n">that</span> <span class="n">jQuery</span> <span class="n">gives</span> <span class="n">us</span><span class="o">.</span> <span class="no">We</span><span class="s1">&#39;re then setting up a hover event listener on each list element in the top level list. This takes 2 callbacks, one for mouse over and one for mouse out. On mouse over, we&#39;</span><span class="n">re</span> <span class="n">finding</span> <span class="n">any</span> <span class="n">list</span> <span class="n">that</span> <span class="n">may</span> <span class="n">reside</span> <span class="n">inside</span> <span class="n">of</span> <span class="n">the</span> <span class="n">current</span> <span class="n">element</span> <span class="ow">and</span> <span class="n">subsequently</span> <span class="n">showing</span> <span class="n">it</span><span class="o">.</span> <span class="no">The</span> <span class="n">reverse</span> <span class="n">happens</span> <span class="n">on</span> <span class="n">mouse</span> <span class="n">out</span><span class="o">.</span> <span class="no">Fading</span> <span class="n">was</span> <span class="n">used</span> <span class="n">to</span> <span class="n">make</span> <span class="n">it</span> <span class="n">a</span> <span class="n">bit</span> <span class="n">easier</span> <span class="n">on</span> <span class="n">the</span> <span class="n">eyes</span><span class="p">,</span> <span class="k">while</span> <span class="n">also</span> <span class="n">allowing</span> <span class="n">the</span> <span class="n">mouse</span> <span class="n">pointer</span> <span class="n">to</span> <span class="n">leave</span> <span class="n">the</span> <span class="n">list</span> <span class="n">area</span> <span class="k">for</span> <span class="n">a</span> <span class="n">few</span> <span class="n">milliseconds</span><span class="o">.</span> <span class="no">This</span> <span class="n">increases</span> <span class="n">the</span> <span class="n">usability</span> <span class="n">as</span> <span class="n">the</span> <span class="n">user</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">have</span> <span class="n">to</span> <span class="n">be</span> <span class="n">quite</span> <span class="n">as</span> <span class="n">accurate</span> <span class="k">when</span> <span class="n">moving</span> <span class="n">the</span> <span class="n">mouse</span> <span class="n">from</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">to</span> <span class="nb">sub</span><span class="o">-</span><span class="n">list</span> <span class="n">elements</span><span class="o">.</span> 
-
-<span class="no">Plugging</span> <span class="n">these</span> <span class="mi">3</span> <span class="n">components</span> <span class="n">together</span> <span class="n">gives</span> <span class="n">us</span> <span class="n">the</span> <span class="n">following</span> <span class="mi">2</span> <span class="n">states</span><span class="p">:</span>
-
-<span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;http://www.oneofthesedaysblog.com/wp-content/uploads/2010/12/Screen-shot-2010-12-20-at-5.27.58-PM.png&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;http://www.oneofthesedaysblog.com/wp-content/uploads/2010/12/Screen-shot-2010-12-20-at-5.27.58-PM.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Dropdown pre-hover&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Dropdown pre-hover&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;619&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;89&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;aligncenter size-full wp-image-402&quot;</span><span class="sr"> /&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;http://www.oneofthesedaysblog.com/wp-content/uploads/2010/12/Screen-shot-2010-12-20-at-5.29.59-PM.png&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;http://www.oneofthesedaysblog.com/wp-content/uploads/2010/12/Screen-shot-2010-12-20-at-5.29.59-PM.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Dropdown post-hover&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Dropdown post-hover&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;611&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;83&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;aligncenter size-full wp-image-403&quot;</span><span class="sr"> /&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
-
-<span class="no">If</span> <span class="n">you</span> <span class="n">want</span> <span class="n">a</span> <span class="n">more</span> <span class="n">flexible</span> <span class="n">solution</span><span class="p">,</span> <span class="n">there</span><span class="s1">&#39;s a &lt;a href=&quot;http://www.1stwebdesigner.com/freebies/38-jquery-and-css-drop-down-multi-level-menu-solutions/&quot; title=&quot;38 jQuery And CSS Drop Down Multi Level Menu Solutions&quot;&gt;silly amount of libraries&lt;/a&gt; to be found on the web. Hopefully however, this post shows just how simple they are to construct, and may even be useful if you&#39;</span><span class="n">re</span> <span class="n">looking</span> <span class="k">for</span> <span class="n">a</span> <span class="n">lightweight</span> <span class="n">solution</span><span class="o">.</span></pre></div>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
   </td>
 </tr>
 

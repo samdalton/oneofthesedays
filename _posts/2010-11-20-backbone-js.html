@@ -6,104 +6,237 @@ layout: post
     <div class="pilwrap">
       <a class="pilcrow" href="#section-1">&#182;</a>
     </div>
-    
+    <p><img src="/uploads/2010/11/Screen-shot-2010-11-20-at-7.13.37-PM.png" title="" alt="Backbone.js" /></p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-2'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-2">&#182;</a>
+    </div>
+    <p>Backbone.js is a simple, very lightweight MVC framework built on jQuery and <a href="http://documentcloud.github.com/underscore/" title="Underscore.js">Underscore.js</a>, a &ldquo;utility belt for Javascript&rdquo;. As with any MVC framework, the core premise of Backbone is to separate an application&rsquo;s representation and storage of data, from the presentation of it. 2 main classes provide this functionality, Backbone.Model and Backbone.View. The neat thing is that when you associate a view with a model, any changes to the model will be reflected in the view without you having to write any linking code.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-3'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-3">&#182;</a>
+    </div>
+    <p>This sounds all well and good, but is it really that useful? Yes. Keen to get my teeth into it, I rewrote <a href="http://vitalgiftsapp.com" title="Vital Gifts - Good Gifts for Great People">Vital Gifts</a> app with it. The process took less time than the initial version, and the end result was a marginally larger Javascript file that executed faster while saving a large proportion of my sanity. The reason for this usefulness stems from the modularity it lends to your application; you can easily create self contained visual elements that have all of the data persistence and manipulation they need, and place them onto the page with one line. To illustrate this modularity, let&rsquo;s create a simple friend selector that could be easily fitted out to use the Facebook Graph API.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-4'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-4">&#182;</a>
+    </div>
+    <p>This creates an empty model that we can use to store information about the selected friend. Note that we&rsquo;re not specifying any attributes such as name or photo. This is because the Backbone model is just a JSON object, and so no schema is necessary &ndash; we can add and fetch attributes however we see fit.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="n">window</span><span class="o">.</span><span class="n">User</span> <span class="o">=</span> <span class="no">Backbone</span><span class="o">.</span><span class="n">Model</span><span class="o">.</span><span class="n">extend</span><span class="p">({});</span></pre></div>
+  </td>
+</tr>
+<tr id='section-5'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-5">&#182;</a>
+    </div>
+    <p>In a typical MVC setup, the view would contain a template with rudimentary data manipulations. Any events received by the view are sent to the controller for processing, and then results are sent back to the view. Backbone &lsquo;breaks&rsquo; this model slightly by binding changes to the model directly with the view object. The results are still passable however, with the use of a template framework such as <a href="http://mustache.github.com/" title="&#123;&#123; mustache }}">Mustache</a>. We can use the Backbone view object for controller style logic, and keep the presentation in a template.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="n">window</span><span class="o">.</span><span class="n">UserView</span> <span class="o">=</span> <span class="no">Backbone</span><span class="o">.</span><span class="n">View</span><span class="o">.</span><span class="n">extend</span><span class="p">({</span></pre></div>
+  </td>
+</tr>
+<tr id='section-6'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-6">&#182;</a>
+    </div>
+    <p>create a new model to store the selected user</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre>    <span class="n">model</span> <span class="p">:</span> <span class="kp">new</span> <span class="no">User</span><span class="p">,</span>  </pre></div>
+  </td>
+</tr>
+<tr id='section-7'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-7">&#182;</a>
+    </div>
+    <p>the text field we&rsquo;re using for the selector</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre>    <span class="n">el</span> <span class="p">:</span> <span class="err">$</span><span class="p">(</span><span class="s2">&quot;#friend-selector&quot;</span><span class="p">),</span> </pre></div>
+  </td>
+</tr>
+<tr id='section-8'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-8">&#182;</a>
+    </div>
+    <p>we want to listen for 2 events on the text field</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre>    <span class="n">events</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;focus&quot;</span>     <span class="p">:</span> <span class="s2">&quot;selectInput&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;keyup&quot;</span>  <span class="p">:</span> <span class="s2">&quot;friendSelected&quot;</span><span class="p">,</span>
+    <span class="p">},</span></pre></div>
+  </td>
+</tr>
+<tr id='section-9'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-9">&#182;</a>
+    </div>
+    <p>This first section is all we need to get our view up and running. We tell the view what model it represents, what DOM element it is going to use, and we define a set of event/callback pairs to handle user interaction. To do the actual autocompletion we will use the <a href="http://bassistance.de/jquery-plugins/jquery-plugin-autocomplete/" title="bassistance.de &raquo; jQuery plugin: Autocomplete">jQuery autocomplete library</a>.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre>    <span class="kp">initialize</span> <span class="p">:</span> <span class="n">function</span><span class="p">(</span><span class="n">friends</span><span class="p">)</span> <span class="p">{</span></pre></div>
+  </td>
+</tr>
+<tr id='section-10'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-10">&#182;</a>
+    </div>
+    <p>set up autocomplete</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre>        <span class="n">this</span><span class="o">.</span><span class="n">el</span><span class="o">.</span><span class="n">autocomplete</span><span class="p">(</span><span class="n">friends</span><span class="p">,</span> <span class="p">{</span>
+            <span class="n">minChars</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="n">width</span><span class="p">:</span> <span class="mi">310</span><span class="p">,</span>
+            <span class="n">matchContains</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+            <span class="n">autoFill</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+            <span class="n">formatItem</span><span class="p">:</span> <span class="n">function</span> <span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">max</span><span class="p">)</span> <span class="p">{</span>
+               <span class="n">img</span> <span class="o">=</span> <span class="s2">&quot;&lt;img src=&#39;&quot;</span> <span class="o">+</span> <span class="n">row</span><span class="o">.</span><span class="n">picture</span> <span class="o">+</span> <span class="s2">&quot;&#39; width=&#39;50&#39; height=&#39;50&#39; alt=&#39;friend-picture&#39; /&gt;&quot;</span><span class="p">;</span>
+               <span class="k">return</span> <span class="n">img</span> <span class="o">+</span> <span class="n">row</span><span class="o">.</span><span class="n">name</span><span class="p">;</span>
+            <span class="p">},</span>
+            <span class="n">formatMatch</span><span class="p">:</span> <span class="n">function</span> <span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">max</span><span class="p">)</span> <span class="p">{</span>
+               <span class="k">return</span> <span class="n">row</span><span class="o">.</span><span class="n">name</span><span class="p">;</span>
+            <span class="p">},</span>
+            <span class="n">formatResult</span><span class="p">:</span> <span class="n">function</span> <span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="p">{</span>
+               <span class="k">return</span> <span class="n">row</span><span class="o">.</span><span class="n">name</span><span class="p">;</span>
+            <span class="p">}</span>
+       <span class="p">});</span></pre></div>
+  </td>
+</tr>
+<tr id='section-11'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-11">&#182;</a>
+    </div>
+    <p>bind this object to the form, so we can access it from the result event</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre>        <span class="n">this</span><span class="o">.</span><span class="n">el</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="s1">&#39;scope&#39;</span><span class="p">,</span> <span class="n">this</span><span class="p">);</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">el</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">formatted</span><span class="p">)</span> <span class="p">{</span>
+            <span class="err">$</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">target</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="s1">&#39;scope&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">autocompleteSelected</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">},</span></pre></div>
+  </td>
+</tr>
+<tr id='section-12'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-12">&#182;</a>
+    </div>
+    <p>I won&rsquo;t go into detail about the autocomplete library, as the documentation on it is fairly comprehensive. We are using the initialize method to take in an array of friends that we want to be searchable in the element &ndash; this functions exactly as a typical object constructor. The caveat with this however is the last section, which is unfortunately an ugly solution. The callback for the autocomplete plugin is set with the &lsquo;result&rsquo; method. From within this, we need to be able to call a method on the view object so that the model can be updated. The view won&rsquo;t be in the scope of the autocomplete plugin however, so we are using the data property of the text field to store a reference to the view object. Both the autocomplete and the view model are attached to the same element so the data property acts like a form of shared memory.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre>    <span class="n">selectInput</span> <span class="p">:</span> <span class="n">function</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="err">$</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">target</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">();</span>
+    <span class="p">},</span>
+
+    <span class="n">autocompleteSelected</span> <span class="p">:</span> <span class="n">function</span><span class="p">(</span><span class="n">friend</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">friend</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">this</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">set</span><span class="p">({</span>
+                <span class="nb">name</span> <span class="p">:</span> <span class="n">friend</span><span class="o">.</span><span class="n">name</span>
+            <span class="p">});</span> 
+        <span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="n">friendSelected</span> <span class="p">:</span> <span class="n">function</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">set</span><span class="p">({</span>
+            <span class="nb">name</span> <span class="p">:</span> <span class="n">this</span><span class="o">.</span><span class="n">el</span><span class="o">.</span><span class="n">val</span><span class="p">(),</span>
+        <span class="p">});</span>
+    </pre></div>
+  </td>
+</tr>
+<tr id='section-13'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-13">&#182;</a>
+    </div>
+    <p>see if they typed in a correct name</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre>     <span class="n">this</span><span class="o">.</span><span class="n">el</span><span class="o">.</span><span class="n">search</span><span class="p">();</span>  
+    <span class="p">}</span>
+<span class="p">});</span></pre></div>
+  </td>
+</tr>
+<tr id='section-14'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-14">&#182;</a>
+    </div>
+    <p>selectInput is purely a convenience for the user. It will result in the contents of the text field becoming highlighted when clicked on, making it easy to type in a new friend. It should save the user 1 click on average.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-15'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-15">&#182;</a>
+    </div>
+    <p>autocompleteSelected is called when the user selects a friend that has been autocompleted. It calls &lsquo;set&rsquo; on the model and sets the name parameter to be the chosen friend&rsquo;s name.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-16'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-16">&#182;</a>
+    </div>
+    <p>friendSelected is called on the keyUp event. It is required in case the user wants to type in a friend that is not registered in the autocomplete. If this were to happen, the autocomplete plugin would never match it, and so the result callback would never be fired. This would leave the user model empty, even though the user has typed in a name. When the event is triggered, the model is set to be the current value of the text field, and &lsquo;search&rsquo; is called on the text field. Search is a method that comes from the autocomplete plugin, and it simply forces the plugin to see if the current value is in its list. If it can&rsquo;t find it, we have already updated the model, keeping it consistent, and if it does find it, autocompleteSelected will be called and the model will still have the friend&rsquo;s name.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-17'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-17">&#182;</a>
+    </div>
+    <p>The 2 objects above are all that we need to have a self contained friend selector. To render it on the page, we simply create a new UserView object and pass in a list of friends, assumed for this example to exist as a global variable called &lsquo;friends&rsquo;.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="n">user</span> <span class="o">=</span> <span class="kp">new</span> <span class="no">UserView</span><span class="p">(</span><span class="n">window</span><span class="o">.</span><span class="n">friends</span><span class="p">);</span></pre></div>
+  </td>
+</tr>
+<tr id='section-18'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-18">&#182;</a>
+    </div>
+    <p>That&rsquo;s it!</p>
 
   </td>
   <td class=code>
-    <div class='highlight'><pre><span class="o">[</span><span class="n">caption</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;attachment_395&quot;</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;alignright&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;441&quot;</span> <span class="n">caption</span><span class="o">=</span><span class="s2">&quot;Would you like extra spine with that?&quot;</span><span class="o">]&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;http://www.oneofthesedaysblog.com/wp-content/uploads/2010/11/Screen-shot-2010-11-20-at-7.13.37-PM.png&quot;</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;http://www.oneofthesedaysblog.com/wp-content/uploads/2010/11/Screen-shot-2010-11-20-at-7.13.37-PM.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Backbone JS&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Backbone JS&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;441&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;154&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;size-full wp-image-395&quot;</span><span class="sr"> /&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;[/</span><span class="n">caption</span><span class="o">]</span><span class="no">Since</span> <span class="n">the</span> <span class="n">arrival</span> <span class="n">of</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;http://jquery.com/&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;jQuery: The Write Less, Do More, JavaScript Library&quot;</span><span class="o">&gt;</span><span class="n">jQuery</span><span class="o">&lt;</span><span class="sr">/a&gt; some years ago, there hasn&#39;t been much else in the Javascript development landscape that has made things &lt;a href=&quot;http:/</span><span class="o">/</span><span class="n">www</span><span class="o">.</span><span class="n">zurb</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">playground</span><span class="o">/</span><span class="n">jquery</span><span class="o">-</span><span class="n">raptorize</span><span class="s2">&quot; title=&quot;</span><span class="no">Raptorize</span><span class="p">:</span> <span class="no">An</span> <span class="n">awesome</span> <span class="n">jQuery</span> <span class="n">plugin</span> <span class="n">that</span> <span class="n">unleahes</span> <span class="n">a</span> <span class="no">Raptor</span> <span class="o">-</span> <span class="no">ZURB</span> <span class="no">Playground</span> <span class="o">-</span> <span class="no">ZURB</span><span class="o">.</span><span class="n">com</span><span class="s2">&quot;&gt;more fun&lt;/a&gt;. &lt;a href=&quot;</span><span class="n">http</span><span class="ss">:/</span><span class="o">/</span><span class="n">documentcloud</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">backbone</span><span class="o">/</span><span class="s2">&quot; title=&quot;</span><span class="no">Backbone</span><span class="o">.</span><span class="n">js</span><span class="s2">&quot;&gt;Backbone.js&lt;/a&gt; is a pleasant break from this period however, making JS work positively thrilling.</span>
-
-<span class="s2">Backbone.js is a simple, very lightweight MVC framework built on jQuery and &lt;a href=&quot;</span><span class="n">http</span><span class="ss">:/</span><span class="o">/</span><span class="n">documentcloud</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">underscore</span><span class="o">/</span><span class="s2">&quot; title=&quot;</span><span class="no">Underscore</span><span class="o">.</span><span class="n">js</span><span class="s2">&quot;&gt;Underscore.js&lt;/a&gt;, a &quot;</span><span class="n">utility</span> <span class="n">belt</span> <span class="k">for</span> <span class="no">Javascript</span><span class="s2">&quot;. As with any MVC framework, the core premise of Backbone is to separate an application&#39;s representation and storage of data, from the presentation of it. 2 main classes provide this functionality, Backbone.Model and Backbone.View. The neat thing is that when you associate a view with a model, any changes to the model will be reflected in the view without you having to write any linking code. </span>
-
-<span class="s2">This sounds all well and good, but is it really that useful? Yes. Keen to get my teeth into it, I rewrote &lt;a href=&quot;</span><span class="n">http</span><span class="ss">:/</span><span class="o">/</span><span class="n">vitalgiftsapp</span><span class="o">.</span><span class="n">com</span><span class="s2">&quot; title=&quot;</span><span class="no">Vital</span> <span class="no">Gifts</span> <span class="o">-</span> <span class="no">Good</span> <span class="no">Gifts</span> <span class="k">for</span> <span class="no">Great</span> <span class="no">People</span><span class="s2">&quot;&gt;Vital Gifts&lt;/a&gt; app with it. The process took less time than the initial version, and the end result was a marginally larger Javascript file that executed faster while saving a large proportion of my sanity. The reason for this usefulness stems from the modularity it lends to your application; you can easily create self contained visual elements that have all of the data persistence and manipulation they need, and place them onto the page with one line. To illustrate this modularity, let&#39;s create a simple friend selector that could be easily fitted out to use the Facebook Graph API.</span>
-
-<span class="s2">&lt;pre class=&#39;brush:javascript&#39;&gt;</span>
-<span class="s2">window.User = Backbone.Model.extend({});</span>
-<span class="s2">&lt;/pre&gt;</span>
-<span class="s2">This creates an empty model that we can use to store information about the selected friend. Note that we&#39;re not specifying any attributes such as name or photo. This is because the Backbone model is just a JSON object, and so no schema is necessary - we can add and fetch attributes however we see fit.</span>
-
-<span class="s2">In a typical MVC setup, the view would contain a template with rudimentary data manipulations. Any events received by the view are sent to the controller for processing, and then results are sent back to the view. Backbone &#39;breaks&#39; this model slightly by binding changes to the model directly with the view object. The results are still passable however, with the use of a template framework such as &lt;a href=&quot;</span><span class="n">http</span><span class="ss">:/</span><span class="o">/</span><span class="n">mustache</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="s2">&quot; title=&quot;</span><span class="o">&amp;</span><span class="c1">#123;&amp;#123; mustache }}&quot;&gt;Mustache&lt;/a&gt;. We can use the Backbone view object for controller style logic, and keep the presentation in a template.</span>
-
-<span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;brush:javascript&#39;</span><span class="o">&gt;</span>
-<span class="n">window</span><span class="o">.</span><span class="n">UserView</span> <span class="o">=</span> <span class="no">Backbone</span><span class="o">.</span><span class="n">View</span><span class="o">.</span><span class="n">extend</span><span class="p">({</span>
-
-    <span class="n">model</span> <span class="p">:</span> <span class="kp">new</span> <span class="no">User</span><span class="p">,</span><span class="sr"> // create a new model to store the selected user</span>
-
-<span class="sr">    el : $(&quot;#friend-selector&quot;), /</span><span class="o">/</span> <span class="n">the</span> <span class="n">text</span> <span class="n">field</span> <span class="n">we</span><span class="s1">&#39;re using for the selector</span>
-
-<span class="s1">    // we want to listen for 2 events on the text field</span>
-<span class="s1">    events : {</span>
-<span class="s1">        &quot;focus&quot;     : &quot;selectInput&quot;,</span>
-<span class="s1">        &quot;keyup&quot;  : &quot;friendSelected&quot;,</span>
-<span class="s1">    },</span>
-
-<span class="s1">&lt;/pre&gt;</span>
-<span class="s1">This first section is all we need to get our view up and running. We tell the view what model it represents, what DOM element it is going to use, and we define a set of event/callback pairs to handle user interaction. To do the actual autocompletion we will use the &lt;a href=&quot;http://bassistance.de/jquery-plugins/jquery-plugin-autocomplete/&quot; title=&quot;bassistance.de &amp;raquo; jQuery plugin: Autocomplete&quot;&gt;jQuery autocomplete library&lt;/a&gt;.</span>
-
-<span class="s1">&lt;pre class=&#39;</span><span class="n">brush</span><span class="ss">:javascript</span><span class="s1">&#39;&gt;</span>
-<span class="s1">    initialize : function(friends) {</span>
-<span class="s1">        // set up autocomplete</span>
-<span class="s1">        this.el.autocomplete(friends, {</span>
-<span class="s1">            minChars: 0,</span>
-<span class="s1">            width: 310,</span>
-<span class="s1">            matchContains: false,</span>
-<span class="s1">            autoFill: false,</span>
-<span class="s1">            formatItem: function (row, i, max) {</span>
-<span class="s1">               img = &quot;&lt;img src=&#39;</span><span class="s2">&quot; + row.picture + &quot;</span><span class="s1">&#39; width=&#39;</span><span class="mi">50</span><span class="s1">&#39; height=&#39;</span><span class="mi">50</span><span class="s1">&#39; alt=&#39;</span><span class="n">friend</span><span class="o">-</span><span class="n">picture</span><span class="s1">&#39; /&gt;&quot;;</span>
-<span class="s1">               return img + row.name;</span>
-<span class="s1">            },</span>
-<span class="s1">            formatMatch: function (row, i, max) {</span>
-<span class="s1">               return row.name;</span>
-<span class="s1">            },</span>
-<span class="s1">            formatResult: function (row) {</span>
-<span class="s1">               return row.name;</span>
-<span class="s1">            }</span>
-<span class="s1">       });</span>
-
-<span class="s1">        // bind this object to the form, so we can access it from the result event</span>
-<span class="s1">        this.el.data(&#39;</span><span class="n">scope</span><span class="s1">&#39;, this);</span>
-<span class="s1">        this.el.result(function(e, data, formatted) {</span>
-<span class="s1">            $(e.target).data(&#39;</span><span class="n">scope</span><span class="s1">&#39;).autocompleteSelected(data);</span>
-<span class="s1">        });</span>
-<span class="s1">    },</span>
-<span class="s1">&lt;/pre&gt;</span>
-
-<span class="s1">I won&#39;</span><span class="n">t</span> <span class="n">go</span> <span class="n">into</span> <span class="n">detail</span> <span class="n">about</span> <span class="n">the</span> <span class="n">autocomplete</span> <span class="n">library</span><span class="p">,</span> <span class="n">as</span> <span class="n">the</span> <span class="n">documentation</span> <span class="n">on</span> <span class="n">it</span> <span class="n">is</span> <span class="n">fairly</span> <span class="n">comprehensive</span><span class="o">.</span> <span class="no">We</span> <span class="n">are</span> <span class="n">using</span> <span class="n">the</span> <span class="kp">initialize</span> <span class="nb">method</span> <span class="n">to</span> <span class="n">take</span> <span class="k">in</span> <span class="n">an</span> <span class="n">array</span> <span class="n">of</span> <span class="n">friends</span> <span class="n">that</span> <span class="n">we</span> <span class="n">want</span> <span class="n">to</span> <span class="n">be</span> <span class="n">searchable</span> <span class="k">in</span> <span class="n">the</span> <span class="n">element</span> <span class="o">-</span> <span class="n">this</span> <span class="n">functions</span> <span class="n">exactly</span> <span class="n">as</span> <span class="n">a</span> <span class="n">typical</span> <span class="n">object</span> <span class="n">constructor</span><span class="o">.</span> <span class="no">The</span> <span class="n">caveat</span> <span class="n">with</span> <span class="n">this</span> <span class="n">however</span> <span class="n">is</span> <span class="n">the</span> <span class="n">last</span> <span class="n">section</span><span class="p">,</span> <span class="n">which</span> <span class="n">is</span> <span class="n">unfortunately</span> <span class="n">an</span> <span class="n">ugly</span> <span class="n">solution</span><span class="o">.</span> <span class="no">The</span> <span class="n">callback</span> <span class="k">for</span> <span class="n">the</span> <span class="n">autocomplete</span> <span class="n">plugin</span> <span class="n">is</span> <span class="n">set</span> <span class="n">with</span> <span class="n">the</span> <span class="s1">&#39;result&#39;</span> <span class="nb">method</span><span class="o">.</span> <span class="no">From</span> <span class="n">within</span> <span class="n">this</span><span class="p">,</span> <span class="n">we</span> <span class="n">need</span> <span class="n">to</span> <span class="n">be</span> <span class="n">able</span> <span class="n">to</span> <span class="n">call</span> <span class="n">a</span> <span class="nb">method</span> <span class="n">on</span> <span class="n">the</span> <span class="n">view</span> <span class="n">object</span> <span class="n">so</span> <span class="n">that</span> <span class="n">the</span> <span class="n">model</span> <span class="n">can</span> <span class="n">be</span> <span class="n">updated</span><span class="o">.</span> <span class="no">The</span> <span class="n">view</span> <span class="n">won</span><span class="s1">&#39;t be in the scope of the autocomplete plugin however, so we are using the data property of the text field to store a reference to the view object. Both the autocomplete and the view model are attached to the same element so the data property acts like a form of shared memory.</span>
-
-<span class="s1">&lt;pre class=&#39;</span><span class="n">brush</span><span class="ss">:javascript</span><span class="s1">&#39;&gt;</span>
-<span class="s1">    selectInput : function(e) {</span>
-<span class="s1">        $(e.target).select();</span>
-<span class="s1">    },</span>
-
-<span class="s1">    autocompleteSelected : function(friend) {</span>
-<span class="s1">        if (friend != null) {</span>
-<span class="s1">            this.model.set({</span>
-<span class="s1">                name : friend.name</span>
-<span class="s1">            }); </span>
-<span class="s1">        }</span>
-<span class="s1">    },</span>
-
-<span class="s1">    friendSelected : function(e) {</span>
-<span class="s1">        this.model.set({</span>
-<span class="s1">            name : this.el.val(),</span>
-<span class="s1">        });</span>
-<span class="s1">    </span>
-<span class="s1">        this.el.search(); // see if they typed in a correct name</span>
-<span class="s1">    }</span>
-<span class="s1">});</span>
-<span class="s1">&lt;/pre&gt;</span>
-
-<span class="s1">selectInput is purely a convenience for the user. It will result in the contents of the text field becoming highlighted when clicked on, making it easy to type in a new friend. It should save the user 1 click on average.</span>
-
-<span class="s1">autocompleteSelected is called when the user selects a friend that has been autocompleted. It calls &#39;</span><span class="n">set</span><span class="s1">&#39; on the model and sets the name parameter to be the chosen friend&#39;</span><span class="n">s</span> <span class="nb">name</span><span class="o">.</span>
-
-<span class="n">friendSelected</span> <span class="n">is</span> <span class="n">called</span> <span class="n">on</span> <span class="n">the</span> <span class="n">keyUp</span> <span class="n">event</span><span class="o">.</span> <span class="no">It</span> <span class="n">is</span> <span class="n">required</span> <span class="k">in</span> <span class="k">case</span> <span class="n">the</span> <span class="n">user</span> <span class="n">wants</span> <span class="n">to</span> <span class="nb">type</span> <span class="k">in</span> <span class="n">a</span> <span class="n">friend</span> <span class="n">that</span> <span class="n">is</span> <span class="ow">not</span> <span class="n">registered</span> <span class="k">in</span> <span class="n">the</span> <span class="n">autocomplete</span><span class="o">.</span> <span class="no">If</span> <span class="n">this</span> <span class="n">were</span> <span class="n">to</span> <span class="n">happen</span><span class="p">,</span> <span class="n">the</span> <span class="n">autocomplete</span> <span class="n">plugin</span> <span class="n">would</span> <span class="n">never</span> <span class="n">match</span> <span class="n">it</span><span class="p">,</span> <span class="ow">and</span> <span class="n">so</span> <span class="n">the</span> <span class="n">result</span> <span class="n">callback</span> <span class="n">would</span> <span class="n">never</span> <span class="n">be</span> <span class="n">fired</span><span class="o">.</span> <span class="no">This</span> <span class="n">would</span> <span class="n">leave</span> <span class="n">the</span> <span class="n">user</span> <span class="n">model</span> <span class="n">empty</span><span class="p">,</span> <span class="n">even</span> <span class="n">though</span> <span class="n">the</span> <span class="n">user</span> <span class="n">has</span> <span class="n">typed</span> <span class="k">in</span> <span class="n">a</span> <span class="nb">name</span><span class="o">.</span> <span class="no">When</span> <span class="n">the</span> <span class="n">event</span> <span class="n">is</span> <span class="n">triggered</span><span class="p">,</span> <span class="n">the</span> <span class="n">model</span> <span class="n">is</span> <span class="n">set</span> <span class="n">to</span> <span class="n">be</span> <span class="n">the</span> <span class="n">current</span> <span class="n">value</span> <span class="n">of</span> <span class="n">the</span> <span class="n">text</span> <span class="n">field</span><span class="p">,</span> <span class="ow">and</span> <span class="s1">&#39;search&#39;</span> <span class="n">is</span> <span class="n">called</span> <span class="n">on</span> <span class="n">the</span> <span class="n">text</span> <span class="n">field</span><span class="o">.</span> <span class="no">Search</span> <span class="n">is</span> <span class="n">a</span> <span class="nb">method</span> <span class="n">that</span> <span class="n">comes</span> <span class="n">from</span> <span class="n">the</span> <span class="n">autocomplete</span> <span class="n">plugin</span><span class="p">,</span> <span class="ow">and</span> <span class="n">it</span> <span class="n">simply</span> <span class="n">forces</span> <span class="n">the</span> <span class="n">plugin</span> <span class="n">to</span> <span class="n">see</span> <span class="k">if</span> <span class="n">the</span> <span class="n">current</span> <span class="n">value</span> <span class="n">is</span> <span class="k">in</span> <span class="n">its</span> <span class="n">list</span><span class="o">.</span> <span class="no">If</span> <span class="n">it</span> <span class="n">can</span><span class="s1">&#39;t find it, we have already updated the model, keeping it consistent, and if it does find it, autocompleteSelected will be called and the model will still have the friend&#39;</span><span class="n">s</span> <span class="nb">name</span><span class="o">.</span>
-
-<span class="no">The</span> <span class="mi">2</span> <span class="n">objects</span> <span class="n">above</span> <span class="n">are</span> <span class="n">all</span> <span class="n">that</span> <span class="n">we</span> <span class="n">need</span> <span class="n">to</span> <span class="n">have</span> <span class="n">a</span> <span class="nb">self</span> <span class="n">contained</span> <span class="n">friend</span> <span class="n">selector</span><span class="o">.</span> <span class="no">To</span> <span class="n">render</span> <span class="n">it</span> <span class="n">on</span> <span class="n">the</span> <span class="n">page</span><span class="p">,</span> <span class="n">we</span> <span class="n">simply</span> <span class="n">create</span> <span class="n">a</span> <span class="kp">new</span> <span class="no">UserView</span> <span class="n">object</span> <span class="ow">and</span> <span class="n">pass</span> <span class="k">in</span> <span class="n">a</span> <span class="n">list</span> <span class="n">of</span> <span class="n">friends</span><span class="p">,</span> <span class="n">assumed</span> <span class="k">for</span> <span class="n">this</span> <span class="n">example</span> <span class="n">to</span> <span class="n">exist</span> <span class="n">as</span> <span class="n">a</span> <span class="n">global</span> <span class="n">variable</span> <span class="n">called</span> <span class="s1">&#39;friends&#39;</span><span class="o">.</span>
-
-<span class="o">&lt;</span><span class="n">pre</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;brush:javascript&#39;</span><span class="o">&gt;</span>
-<span class="n">user</span> <span class="o">=</span> <span class="kp">new</span> <span class="no">UserView</span><span class="p">(</span><span class="n">window</span><span class="o">.</span><span class="n">friends</span><span class="p">);</span>
-<span class="o">&lt;</span><span class="sr">/pre&gt;</span>
-
-<span class="sr">That&#39;s it!</span></pre></div>
+    <div class='highlight'><pre></pre></div>
   </td>
 </tr>
