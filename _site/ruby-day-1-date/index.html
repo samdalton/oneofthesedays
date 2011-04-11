@@ -64,8 +64,7 @@
     <p>One of the major differences between the Ruby date library and the PHP date library is the epoch used. PHP uses the date &lsquo;January 1 1970 00:00:00 GMT&rsquo;, the beginning of UNIX, as a reference point. Time is defined as the number of seconds after or before this time. Ruby uses January 1, 4713 BC as its reference point. This is known as the Julian Date, with any date defined by the number of days before or after this reference point. But this is a programming tutorial, not a history lesson, so let&rsquo;s see some code.</p>
   </td>
   <td class=code>
-    <div class='highlight'><pre><span class="n">d</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>   
-<span class="nb">puts</span> <span class="n">d</span>                      <span class="c1"># 2010-06-22</span></pre></div>
+    <div class='highlight'><pre></pre></div>
   </td>
 </tr>
 <tr id='section-5'>
@@ -76,7 +75,8 @@
     <p>Great! We can create a new date object by providing the year, month and day. (Date.new and Date::new seems to function identically). By printing it to the console with puts, we can see that, indeed, this Date object contains the date we specified.</p>
   </td>
   <td class=code>
-    <div class='highlight'><pre></pre></div>
+    <div class='highlight'><pre><span class="n">d</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>   
+<span class="nb">puts</span> <span class="n">d</span>                      <span class="c1"># 2010-06-22</span></pre></div>
   </td>
 </tr>
 <tr id='section-6'>
@@ -222,9 +222,7 @@ The &ndash; operator should return a date that is n days earlier than the curren
     <div class="pilwrap">
       <a class="pilcrow" href="#section-18">&#182;</a>
     </div>
-    <ul>
-<li>adds days in the same way</li>
-</ul>
+    <p>+ adds days in the same way</p>
   </td>
   <td class=code>
     <div class='highlight'><pre></pre></div>
@@ -248,7 +246,7 @@ The &lt;&lt; operator should return a date that is n months earlier than the cur
     <div class="pilwrap">
       <a class="pilcrow" href="#section-20">&#182;</a>
     </div>
-    <blockquote><blockquote><p>adds months in the same way</p></blockquote></blockquote>
+    <p>&gt;&gt; adds months in the same way</p>
   </td>
   <td class=code>
     <div class='highlight'><pre></pre></div>

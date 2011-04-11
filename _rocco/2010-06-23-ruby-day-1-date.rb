@@ -55,7 +55,7 @@ puts Date.valid_time?(25,0,0)   # nil
 d = Date.today
 puts d - 3  # 2010-03-19
 
-# + adds days in the same way
+# \+ adds days in the same way
 
 # <strong><<</strong>
 # The << operator should return a date that is n months earlier than the current one

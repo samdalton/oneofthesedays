@@ -4,7 +4,7 @@
  <title>One of These Days</title>
  <link href="http://oneofthesedaysblog.com/feed/" rel="self"/>
  <link href="http://oneofthesedaysblog.com/"/>
- <updated>2011-04-09T18:28:59+12:00</updated>
+ <updated>2011-04-11T12:35:42+12:00</updated>
  <id>http://oneofthesedaysblog.com/</id>
  <author>
    <name>Sam Dalton</name>
@@ -1294,58 +1294,7 @@ I&amp;rsquo;m also hoping that the easiser method of posting (git push heroku ma
    <link href="http://oneofthesedaysblog.com/ruby-day-6-sockets-and-tcp"/>
    <updated>2010-06-28T00:00:00+12:00</updated>
    <id>http://oneofthesedaysblog.com/ruby-day-6-sockets-and-tcp</id>
-   <content type="html">&lt;tr id='section-1'&gt;
-  &lt;td class=docs&gt;
-    &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-1&quot;&gt;&amp;#182;&lt;/a&gt;
-    &lt;/div&gt;
-    
-
-  &lt;/td&gt;
-  &lt;td class=code&gt;
-    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;no&quot;&gt;To&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kick&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;off&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;series&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;we&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;ll create a server which, at it&amp;#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;simplest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;consists&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;just&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lines&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Ruby&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;It&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;called&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;an&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;does&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;just&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;that&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;back&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;you&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;whatever&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;you&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;send&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Find&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;large&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;empty&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;yell&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Ruby is awesome&amp;quot;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;you&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;ll hear it repeated (this also works in a small room filled with Ruby developers). If you&amp;#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;re&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fond&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;going&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outside&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socialising&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;however&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;you&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;an&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;achieve&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;same&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;effect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Send&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Ruby is awesome&amp;quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;will&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reply&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;same&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-
-&lt;span class=&quot;no&quot;&gt;This&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;simple&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;example&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;expresses&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;concept&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fundamental&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;how&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;any&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;works&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;They&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listen&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;something&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sometimes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;send&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;something&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;back&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listening&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;load&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;particular&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;back&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;contents&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mail&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listens&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;download&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mail&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;messages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;latest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;As&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;most&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;servers&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;follow&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;basic&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pattern&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;standards&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;have&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;been&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;developed&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;adopted&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;describe&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;what&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;responses&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;should&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Warning&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;You&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;are&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;now&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;entering&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;world&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;acronyms&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-
-&lt;span class=&quot;no&quot;&gt;TCP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;UDP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HTTP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;STMP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;NTS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;FTP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ARP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SSH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;IMAP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DNS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DHCP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;IRC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;but&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;few&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;are&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;protocols&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;describe&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;responses&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Today&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;we&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;will&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Transmission&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Control&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Protocol&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;TCP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;implement&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;our&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;simple&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;To&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;describe&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TCP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;we&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;look&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;s simpler cousin: the Universal Datagram Packet (UDP). UDP is a protocol that specifies how data should be broken up into chunks, in order to send over a network. It also specifies how that data knows where it has to go. By pairing up a packet with an Internet Protocol (IP) address, network hardware will (all things going well) be able to send a packet it receives to the correct destination. The packet also contains the IP address of the sending machine, so that the receiver knows where to send its response. TCP does exactly what UDP does, except it does a few extra things to ensure that packets sent do actually arrive correctly. This includes error checking and correction, as well as ensuring that the sender isn&amp;#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sending&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;more&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;packets&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;receiver&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handle&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;once&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; 
-
-&lt;span class=&quot;no&quot;&gt;If&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;we&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;want&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;an&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;echo&amp;#39;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;we&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;will&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;need&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listen&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;packets&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;are&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;us&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;via&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TCP&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;protocol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;When&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;we&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;receive&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;one&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;we&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;need&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;extract&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;send&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;back&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;again&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Here&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;s the server:&lt;/span&gt;
-
-&lt;span class=&quot;s1&quot;&gt;&amp;lt;pre class=&amp;#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;brush&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:ruby&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;require &amp;#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;
-
-&lt;span class=&quot;s1&quot;&gt;server = TCPServer.new(&amp;#39;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;127&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;, &amp;#39;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8080&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;)&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;socket = server.accept&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;socket.puts socket.readline&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;s1&quot;&gt;Firstly, we&amp;#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;re&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;creating&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TCPServer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;will&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listen&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;IP&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;127&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8080&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;127&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;an&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;IP&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reserved&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;represent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;local&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;machine&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;If&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;operating&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;asked&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;send&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;packet&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;realises&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;actually&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;same&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;machine&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;so&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;good&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;way&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;testing&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;without&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requiring&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;computers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Port&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8080&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;common&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;used&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alternative&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;servers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;which&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;we&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;will&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;creating&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;eventually&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;so&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;we&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;may&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;well&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;As&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;network&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;card&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;receives&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;packets&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;entire&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;operating&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;specific&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;programs&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mail&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;chat&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;etc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;program&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;must&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;associate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;itself&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;The&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;operating&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;look&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;received&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;packet&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;determine&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;which&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;program&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;should&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;go&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Packets&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;21&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;will&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;your&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;FTP&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;110&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;packets&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;will&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;go&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;your&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mail&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;We&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;want&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;packets&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8080&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;our&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Ruby&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;program&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;To&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ensure&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;there&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;no&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confusion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;only&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;one&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;program&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;take&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;one&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;so&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;you&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;receive&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;an&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;about&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8080&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;being&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;you&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;may&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;have&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;another&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;program&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;already&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;attached&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-
-&lt;span class=&quot;no&quot;&gt;When&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;you&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;program&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nothing&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;will&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;happen&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;The&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;program&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;will&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;continue&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;running&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forever&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nothing&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;will&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;displayed&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;screen&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Why&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;doesn&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;t the program end? The answer is in the second line, server.accept. Accept is a method which causes the program to pause until the TCPServer object receives a packet. As soon as it does, it returns a Socket object which contains the received packet and information on the machine who sent it. This socket acts as our end of the connection created between us and them, &amp;lt;a href=&amp;#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:/&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;www&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;youtube&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;watch?v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f99PcP0aFNE&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;gt;a tube of the internet&amp;lt;/a&amp;gt;, if you will allow the analogy. Whatever is sent down this tube, we will eventually receive, and vice versa. Therefore, to create our echo, we come to the third line. &lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;&amp;lt;pre class=&amp;#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;brush&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:ruby&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;socket.puts socket.readline&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;We read the socket, which will contain the message they sent, and we use &amp;#39;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39; to sent it straight back. To see this in action, we can use telnet to connect to our running server and send it a message.&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;&amp;lt;pre class=&amp;#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;brush&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:ruby&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;telnet 127.0.0.1 8080&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;The screencast below will show it working.&lt;/span&gt;
-
-&lt;span class=&quot;s1&quot;&gt;&amp;lt;object width=&amp;quot;600&amp;quot; height=&amp;quot;450&amp;quot;&amp;gt;&amp;lt;param name=&amp;quot;allowfullscreen&amp;quot; value=&amp;quot;true&amp;quot; /&amp;gt;&amp;lt;param name=&amp;quot;allowscriptaccess&amp;quot; value=&amp;quot;always&amp;quot; /&amp;gt;&amp;lt;param name=&amp;quot;movie&amp;quot; value=&amp;quot;http://vimeo.com/moogaloop.swf?clip_id=12910541&amp;amp;amp;server=vimeo.com&amp;amp;amp;show_title=1&amp;amp;amp;show_byline=1&amp;amp;amp;show_portrait=0&amp;amp;amp;color=00ADEF&amp;amp;amp;fullscreen=1&amp;quot; /&amp;gt;&amp;lt;embed src=&amp;quot;http://vimeo.com/moogaloop.swf?clip_id=12910541&amp;amp;amp;server=vimeo.com&amp;amp;amp;show_title=1&amp;amp;amp;show_byline=1&amp;amp;amp;show_portrait=0&amp;amp;amp;color=00ADEF&amp;amp;amp;fullscreen=1&amp;quot; type=&amp;quot;application/x-shockwave-flash&amp;quot; allowfullscreen=&amp;quot;true&amp;quot; allowscriptaccess=&amp;quot;always&amp;quot; width=&amp;quot;600&amp;quot; height=&amp;quot;450&amp;quot;&amp;gt;&amp;lt;/embed&amp;gt;&amp;lt;/object&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://vimeo.com/12910541&amp;quot;&amp;gt;A Simple TCP Echo Server in Ruby&amp;lt;/a&amp;gt; from &amp;lt;a href=&amp;quot;http://vimeo.com/user4148440&amp;quot;&amp;gt;Sam Dalton&amp;lt;/a&amp;gt; on &amp;lt;a href=&amp;quot;http://vimeo.com&amp;quot;&amp;gt;Vimeo&amp;lt;/a&amp;gt;.&amp;lt;/p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;s1&quot;&gt;Voila! Hopefully you managed to get it working, and understood why it works as well. While this is a server in just 3 lines, it&amp;#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;particularly&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;useful&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Once&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;someone&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;connects&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;programs&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ends&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;closes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;To&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;indefinitely&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;we&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;will&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;need&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;some&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;infinite&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;loop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pre&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;brush:ruby&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;accept&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readline&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/pre&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;sr&quot;&gt;In Ruby, every operation returns something, even variable assignment. The returned value will be equal to whatever value was set. So in this case, when server.accept detects a connection and returns a socket object, the while loop will see that an object was returned. An object is not regarded as false, and so the loops is entered. When the loop ends, server.accept is called once more, and the process repeats indefinitely. The program will never end because server.accept will always wait until it gets a connection, and hence will always return a non-nil value to the while loop condition. Just as with files, we also have to close the socket. We didn&amp;#39;t do this in the first example because the program exited straight afterwards so there wasn&amp;#39;t much need. &lt;/span&gt;
-
-&lt;span class=&quot;sr&quot;&gt;So there you have it, a 3 (or 4) line echo server that uses the TCP protocol.&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
-  &lt;/td&gt;
-&lt;/tr&gt;
-</content>
+   <content type="html"></content>
  </entry>
  
  <entry>
@@ -1358,13 +1307,22 @@ I&amp;rsquo;m also hoping that the easiser method of posting (git push heroku ma
     &lt;div class=&quot;pilwrap&quot;&gt;
       &lt;a class=&quot;pilcrow&quot; href=&quot;#section-1&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
-    
+    &lt;p&gt;Looking through the upcoming topics that I plan to cover, I noticed a connection: they all cover important aspects of a web server. Threads let us handle multiple requests simultaneously, queues let us store pending requests and a mutex ensures that it won&amp;rsquo;t become corrupted from multiple threads accessing it. We also need a way of logging requests, interpreting URLs, and certainly, we&amp;rsquo;d like to test it to be sure it all works. So instead of covering the remaining topics in my proposed order, I will instead create sections of the web server that each focus on a different part of the Ruby API. Not only will this provide a more hands-on and relevant example, but it will also serve as a basic tutorial on how the HTTP protocol and web servers work. The resulting server will by no means be any competition to existing Ruby servers such as &lt;a href='http://github.com/fauna/mongrel'&gt;Mongrel&lt;/a&gt; or &lt;a href='http://code.macournoyer.com/thin/'&gt;Thin&lt;/a&gt;, but it will serve us well for the purposes of teaching.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-2'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-2&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;First up will be sockets, as with out that we have no hope of communicating with anyone.&lt;/p&gt;
 
   &lt;/td&gt;
   &lt;td class=code&gt;
-    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;no&quot;&gt;Looking&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;through&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;upcoming&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;topics&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plan&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cover&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;noticed&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;they&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cover&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;important&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;aspects&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Threads&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;us&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handle&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;multiple&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;simultaneously&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;queues&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;us&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;store&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pending&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mutex&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ensures&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;won&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;t become corrupted from multiple threads accessing it. We also need a way of logging requests, interpreting URLs, and certainly, we&amp;#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;like&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sure&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;works&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;So&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instead&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;covering&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;remaining&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;topics&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;proposed&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;will&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instead&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sections&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;focus&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;different&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;part&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Ruby&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;API&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;only&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;will&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;provide&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;more&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hands&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;relevant&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;but&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;will&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;also&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serve&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;basic&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tutorial&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;how&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HTTP&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;protocol&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;servers&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;work&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;The&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resulting&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;will&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;no&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;means&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;any&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;competition&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;existing&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Ruby&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;servers&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;such&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://github.com/fauna/mongrel&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Mongrel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/a&amp;gt; or &amp;lt;a href=&amp;#39;http:/&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;macournoyer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;thin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Thin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/a&amp;gt;, but it will serve us well for the purposes of teaching. &lt;/span&gt;
-
-&lt;span class=&quot;sr&quot;&gt;First up will be sockets, as with out that we have no hope of communicating with anyone.&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
 </content>
@@ -1375,7 +1333,200 @@ I&amp;rsquo;m also hoping that the easiser method of posting (git push heroku ma
    <link href="http://oneofthesedaysblog.com/ruby-day-4-forwardable"/>
    <updated>2010-06-26T00:00:00+12:00</updated>
    <id>http://oneofthesedaysblog.com/ruby-day-4-forwardable</id>
-   <content type="html"></content>
+   <content type="html">&lt;tr id='section-1'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-1&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Today&amp;rsquo;s topic is a favourite of upper management: delegation. Delegation is when you make someone else do something for you, but you still get the credit for it. The &lt;a href='http://ruby-doc.org/core/classes/Forwardable.html'&gt;Forwardable&lt;/a&gt; class in Ruby does much the same thing. It lets an object call methods on another object, but appearing to the user like the first object is actually doing the work. To see the advantage of forwardable, we can look at an example where it&amp;rsquo;s not used. We will create two classes, one called MarsExplorer and a second called MissionControl. We want to be able to control the mars robot in a more suitable, oxygen filled environment, which would be Mission Control.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt;   &lt;span class=&quot;nc&quot;&gt;MarsExplorer&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;forward&lt;/span&gt;
+       &lt;span class=&quot;vi&quot;&gt;@speed&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+       &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@speed&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; 
+
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;backwards&lt;/span&gt;
+       &lt;span class=&quot;vi&quot;&gt;@speed&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+       &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@speed&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;stop&lt;/span&gt;
+       &lt;span class=&quot;vi&quot;&gt;@speed&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+       &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@speed&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-2'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-2&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Our robot can move forwards, backwards, and it can stop. After each action we ask it to print out the speed, so we can keep track of when the methods are called.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MissionControl&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;
+        &lt;span class=&quot;vi&quot;&gt;@robot&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MarsExplorer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;forward&lt;/span&gt;
+        &lt;span class=&quot;vi&quot;&gt;@robot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forward&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; 
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;backwards&lt;/span&gt;
+        &lt;span class=&quot;vi&quot;&gt;@robot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;backwards&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;stop&lt;/span&gt;
+        &lt;span class=&quot;vi&quot;&gt;@robot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stop&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-3'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-3&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Phew, that was a lot of typing! Too much, in my opinion. For each method in MarsExplorer, we have had to write the same method definition in MissionControl. If we ever change our robot class to have a turn method, or we change &amp;lsquo;stop&amp;rsquo; to &amp;lsquo;brake&amp;rsquo;, then we will have quite a few changes to make in our MissionControl class. In addition, MissionControl is now very cluttered with method definitions that aren&amp;rsquo;t directly related to the class. It would be better if we could simply let MissionControl respond to the methods of MarsExplorer, in a simple and unobtrusive way. We can achieve this by using Forwardable, as you can see in our updated MissionControl.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;forwardable&amp;#39;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MissionControl&lt;/span&gt;
+    &lt;span class=&quot;kp&quot;&gt;extend&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Forwardable&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;def_delegators&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@robot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:forward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:backwards&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:stop&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;def_delegator&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@robot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:brake&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;
+        &lt;span class=&quot;vi&quot;&gt;@robot&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MarsExplorer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;      
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-4'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-4&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Notice that all of the method definitions are gone, with the exception of initialize, which hasn&amp;rsquo;t changed. Firstly, we have said that we want to make MissionControl extend Forwardable&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;kp&quot;&gt;extend&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Forwardable&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-5'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-5&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;This gives us access to the methods in Forwardable that follow, def_delegators and def_delegator. When we want to provide access to multiple methods, and we don&amp;rsquo;t mind calling them by the same name, we can use def_delegators. The syntax is explained below.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-6'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-6&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;def_delegators :theObject, :method1, :method2, :method3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;def_delegators&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@robot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:forward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:backwards&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:stop&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-7'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-7&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;We are saying that MissionControl should respond to the methods forward, backwards, and stop, and it should respond by calling the method of the same name on the robot object. Instead of 3 method definitions, we only need one line stating which object to delegate to, and what methods it should allow delegation of. If we want to change the apparent name of the method, we can use def_delegator.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;  &lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-8'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-8&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;def_delegator :@theObject, :methodName, :desiredMethodName&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;def_delegator&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@robot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:brake&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-9'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-9&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Now we can call the method &amp;lsquo;brake&amp;rsquo; from MissionControl which will call the &amp;lsquo;stop&amp;rsquo; method on our MarsExplorer. Neat! Let&amp;rsquo;s take it for a spin.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;control&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MissionControl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;control&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forward&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;control&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;backwards&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# -1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;control&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stop&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 0&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;control&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;brake&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 0&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-10'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-10&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Now, not all of us are engineers at NASA, so where might you use Forwardable in a real life? It is useful anywhere you find yourself writing methods similar to the ones in the first MissionControl implementation, simple wrapping of another object&amp;rsquo;s methods. It can also be used as a form of adapter. By defining your own class that delegates to another object, and only calling the methods on this class, the delegate object can be set to anything. For example, if you are writing an application that will be using a database, but you&amp;rsquo;re not sure if it will be MySQL, MSSQL, or PostgreSQL, you can create a wrapper class that has def_delegator set for each method you want to be able to call. Your implementation will use this wrapper class for all database access, with the method calls being delegated to whichever object you have set. If the underlying database object has different method names, you only need to update your def_delegator definitions, and all of your implementation code will remain the same. Here&amp;rsquo;s a contrived example to demonstrate this.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyDatabase&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;extend&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Forwardabble&lt;/span&gt;
+  
+  &lt;span class=&quot;n&quot;&gt;def_delegator&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:newMySQL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:new&lt;/span&gt;
+  
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@db&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MySQL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;	
+
+&lt;span class=&quot;n&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyDatabase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-11'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-11&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Suppose that there exists a &amp;lsquo;MySQL&amp;rsquo; class, which provides the method &amp;lsquo;newMySQL&amp;rsquo; to create a new database. If we build our implementation on the MyDatabase class instead of the MySQL class, we will be able to switch to PostgreSQL in the future by simply changing the def_delegator&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;def_delegator&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@db&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:newPostgreSQL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:new&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-12'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-12&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Our implementation code remains untouched, and we have only made one small change. While this example is entirely fictional, it shows how you can create a level of abstraction with Forwardable.&lt;/p&gt;
+
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+</content>
  </entry>
  
  <entry>
@@ -1383,7 +1534,192 @@ I&amp;rsquo;m also hoping that the easiser method of posting (git push heroku ma
    <link href="http://oneofthesedaysblog.com/ruby-day-3-files"/>
    <updated>2010-06-25T00:00:00+12:00</updated>
    <id>http://oneofthesedaysblog.com/ruby-day-3-files</id>
-   <content type="html"></content>
+   <content type="html">&lt;tr id='section-1'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-1&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;The importance of &lt;a href='http://ruby-doc.org/core/classes/File.html'&gt;files&lt;/a&gt; goes without saying, so let&amp;rsquo;s get straight into it.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-Creating_a_File'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-Creating_a_File&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;h2&gt;Creating a File&lt;/h2&gt;
+
+
+&lt;p&gt;This command will first look for a file in the current directory called myFile, creating it if it can&amp;rsquo;t be found. The &amp;lsquo;w&amp;rsquo; tells ruby that we want to write to it. We can then write to the file by using the &amp;lsquo;write&amp;rsquo; method.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;myFile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myFile&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;myFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;my awesome story&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;myFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-3'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-3&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;When a file is opened the operating system records which program opened it. If we don&amp;rsquo;t tell the operating system that we have finished with the file, it will keep this information until the program exits. While this may not cause a problem in a simple example, it could lead to errors with a large number of files, or multiple programs accessing the same file. Calling &amp;lsquo;close&amp;rsquo; on the file will take care of this. Whenever you open a file, you must close it when you are finished.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-4'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-4&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;You can probably guess how to read from the file&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;myFile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myFile&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;myFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# my awesome story&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-5'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-5&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Identical to the first example, but instead of a &amp;lsquo;w&amp;rsquo; for writing to the file, we use an &amp;lsquo;r&amp;rsquo; for reading from the file. The letter &amp;lsquo;a&amp;rsquo; can be used if we want to open a file, and append content to the end of it.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-Reading_From_a_File'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-Reading_From_a_File&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;h2&gt;Reading From a File&lt;/h2&gt;
+
+
+&lt;p&gt;For those of you coming from a PHP background, this code below should look familiar&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;vg&quot;&gt;$fp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fopen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myFile&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;eof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vg&quot;&gt;$fp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;fread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vg&quot;&gt;$fp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;fclose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vg&quot;&gt;$fp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-7'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-7&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;which simply opens a file and reads each line of it until it reaches the end. This is rather ugly, to be honest. We have to create a file pointer, check that we haven&amp;rsquo;t reached the end, read from it, and then close it. That&amp;rsquo;s 4 Steps, but we can do it in just 1 line in Ruby.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myFile&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-8'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-8&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;By placing a block at the end, we can catch the opened file, and loop over each line in the file. When the block ends, Ruby will automatically close the file for us. The block method of file handling is preferred as you won&amp;rsquo;t run the risk of forgetting to close a file.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-Peculiarities'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-Peculiarities&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;h3&gt;Peculiarities&lt;/h3&gt;
+
+
+&lt;p&gt;If you try writing a new line to a file with the typical \n character, you may find that it does not work.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;line 1 \n line 2&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# line 1 \n line 2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-10'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-10&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;The \n character is stored as a \ character followed by the letter n. Not quite what we wanted. So how can you create a new line in your file? If we use &amp;lsquo;puts&amp;rsquo; instead of &amp;lsquo;write&amp;rsquo;, then Ruby will automatically place a real newline character at the end, once for each time we call puts.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;line 1&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;line 2&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-11'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-11&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;line 1
+line 2
+The file clearly has &amp;lsquo;line 1&amp;rsquo; and &amp;lsquo;line 2&amp;rsquo; on separate lines so we have succeeded.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-File_Methods'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-File_Methods&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;h2&gt;File Methods&lt;/h2&gt;
+
+
+&lt;p&gt;If you are familiar with UNIX, bash in particular, then you will feel right at home with the File class. It offers just about every bash file operation, calling them by the same names and accepting the same arguments. For example, you can use &amp;lsquo;chmod&amp;rsquo; and &amp;lsquo;chown&amp;rsquo; to change permissions, or set who owns the file. Copy, move, delete, rename, stat, and more, are all available. Have a look at this &lt;a href='http://www.doc.ic.ac.uk/~wjk/UnixIntro/Lecture2.html'&gt;UNIX tutorial&lt;/a&gt; if you want to learn about file operations.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-End'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-End&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;h2&gt;End&lt;/h2&gt;
+
+
+&lt;p&gt;Hopefully you now have some familiarity with the way Ruby handles files.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-14'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-14&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;
+&lt;em&gt;I clearly was not familiar enough with blocks at the time of writing this post, as David pointed out in the comments. I had an incorrect statement stating that a file handler passed into a block can only be used once. The post has been updated to reflect this.&lt;/em&gt;&lt;/p&gt;
+
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+</content>
  </entry>
  
  <entry>
@@ -1391,7 +1727,505 @@ I&amp;rsquo;m also hoping that the easiser method of posting (git push heroku ma
    <link href="http://oneofthesedaysblog.com/ruby-day-2-array-enumerable"/>
    <updated>2010-06-24T00:00:00+12:00</updated>
    <id>http://oneofthesedaysblog.com/ruby-day-2-array-enumerable</id>
-   <content type="html"></content>
+   <content type="html">&lt;tr id='section-1'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-1&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Without the array, programming would be terribly difficult. To store 10 items, you would need 10 different variable names, and any more than this makes things hopelessly inefficient. The array lets us store a number of items under a single variable name. We can reference a specific item simply by saying which variable it&amp;rsquo;s stored in, and in what position it lies. Like in C and PHP, Ruby starts indexing at 0. myArray[0] will give you the first element. In C, if you tried to access myArray[-1] you would meet a nasty runtime error. In Ruby, however, a negative index is treated as an index relative to the end of the array. Thus -1 becomes the last element, -2 the second to last, and so on.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-2'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-2&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;&lt;a href='http://ruby-doc.org/core/classes/Array.html'&gt;Ruby&amp;rsquo;s Array class&lt;/a&gt; has a lot of methods, so let&amp;rsquo;s get right in to it and explore some of what it has to offer.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-Creation'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-Creation&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;h3&gt;Creation&lt;/h3&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-4'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-4&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;=&gt;1
+=&gt;2
+=&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-5'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-5&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;That&amp;rsquo;s all it takes! The square brackets let Ruby know that we want to create a new array, with the elements set to be the contents of the brackets. This syntax is an alias of the actual method, [].&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-6'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-6&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;=&gt;1
+=&gt;2
+=&gt;3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-7'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-7&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;If we want to create an array, but we don&amp;rsquo;t have anything to store in it yet, we can use the &amp;lsquo;new&amp;rsquo; method.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-8'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-8&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;If we know that we want to store n items, we can create the array with a capacity.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-9'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-9&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;=&gt;10&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-10'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-10&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Size is a method of array which returns the number of elements. We created an empty array with space for 10 elements, and that is the size of the array.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-Generation'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-Generation&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;h3&gt;Generation&lt;/h3&gt;
+
+
+&lt;p&gt;The Array class gives us a powerful way of generating elements using a block.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;even&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;even&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 0 2 4 6 8&lt;/span&gt;
+    &lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-12'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-12&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;We have created an array called &amp;lsquo;even&amp;rsquo; that contains the first 5 even numbers. Firstly, we stated that we wanted a new array of size 5&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+ &lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-13'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-13&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Secondly, we put a block at the end of it.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-14'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-14&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;This could also be written as&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-15'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-15&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;What is this voodoo magic, do I hear you ask? Well, the block is taking a number, i, and returning the sum of i with itself. The value of i that is passed is the index into each element created. Thus for an array of size 5, we will have the indices 0, 1, 2, 3, and 4. Working this out the long way gives us&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;even&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;even&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;even&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;even&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;even&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;even&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-16'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-16&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Using a block lets us define each element programatically, based on the the index of that element. Nifty!&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-Interesting_Methods'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-Interesting_Methods&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;h3&gt;Interesting Methods&lt;/h3&gt;
+
+
+&lt;p&gt;There are a lot of methods in the API, and most of them have some sample code to go with them. Therefore, I will look at some of the more interesting ones.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-*'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-*&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;h4&gt;*&lt;/h4&gt;
+
+
+&lt;p&gt;While this method can be used to duplicate an array n times, like so&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;echo&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# echo echo echo&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-19'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-19&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;the more interesting usage is as a join operator. PHP offers the join() method which, given an array and a character will return a string consisting of each array element, followed by the given character. Ruby also has a join method, but the * operator is a great shortcut.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;c&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;s&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;v&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# c,s,v&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-abbrev'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-abbrev&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;h4&gt;abbrev&lt;/h4&gt;
+
+
+&lt;p&gt;The API states that this method &amp;lsquo;calculates the set of unambiguous abbreviations for the strings in self&amp;rsquo;. The example given, while sensible, doesn&amp;rsquo;t relate to a particularly useful application.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;abbrev&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;sx&quot;&gt;%w{ car cone }&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;abbrev&lt;/span&gt;   
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;ca&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;car&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;car&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;car&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;co&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;cone&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;con&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;cone&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;cone&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;cone&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-21'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-21&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Note that this method isn&amp;rsquo;t part of the core API, and so it needs to be explicitly included&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-22'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-22&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;So why is this useful? The main application I can see for this is auto-completion. Given a set of names or commands, what are the fewest characters I can type to identify one in particular? Consider a lazy person using twitter. If I want to send a message someone, I don&amp;rsquo;t really want to type out their whole user id. Given an array of people I follow, abbrev can generate a list of possible abbreviations such that each abbreviation will only reference one person.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;tweeps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;jeff&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;steve&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;frank&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;james&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;stephen&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tweeps&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;abbrev&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;frank&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;frank&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&amp;quot;stephe&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;stephen&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&amp;quot;jam&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;james&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&amp;quot;jef&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;jeff&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&amp;quot;steve&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;steve&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&amp;quot;step&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;stephen&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&amp;quot;ja&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;james&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&amp;quot;fr&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;frank&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&amp;quot;je&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;jeff&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&amp;quot;jame&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;james&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&amp;quot;f&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;frank&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&amp;quot;stephen&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;stephen&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&amp;quot;jeff&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;jeff&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&amp;quot;fran&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;frank&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&amp;quot;stev&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;steve&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&amp;quot;james&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;james&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&amp;quot;steph&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;stephen&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&amp;quot;fra&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;frank&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-23'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-23&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Steve and Stephen have the same first 3 characters, and so you can see that the shortest abbreviation for each is stev and step. You may have noticed that I used &amp;lsquo;p&amp;rsquo; and not &amp;lsquo;puts&amp;rsquo;. This is because abbrev doesn&amp;rsquo;t return an array, but a hash of &amp;lsquo;abbreviation&amp;rsquo; =&gt; &amp;lsquo;originalString&amp;rsquo; pairs.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-collect'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-collect&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;h4&gt;collect&lt;/h4&gt;
+
+
+&lt;p&gt;This method is similar to the element generation described above. Given an array, place a block at the end which takes each element of the array. In this case, instead of the index being passed in, the actual element is passed in. The resulting value can either be stored back in the array, or placed into a new array.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;collect&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;compact&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# [2, 4, 6, 8]&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-25'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-25&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;By checking if each number is divisible by 2, we can create a new array containing only the even numbers. &amp;lsquo;compact&amp;rsquo; is used to remove elements that are &amp;lsquo;nil&amp;rsquo;. As collect will create a new array of the same size, when the number is odd no value will be returned and so that element will be empty. To overwrite the array instead of creating a new one, use the exclamation mark.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;collect!&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-uniq'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-uniq&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;h4&gt;uniq&lt;/h4&gt;
+
+
+&lt;p&gt;By using uniq you can quickly make your array behave like a set.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uniq&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# [1, 2, 3, 4]&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-Enumerable'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-Enumerable&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;h2&gt;Enumerable&lt;/h2&gt;
+
+
+&lt;p&gt;Now that we have a basic understanding of Array, let&amp;rsquo;s take a look at it&amp;rsquo;s cousin class: Enumerable. Enumerable is all about iterating. The collect method that we have just seen is an example of an Enumerable function. Collect lets you perform some operation on each element of an array. Sorting is another example of what you can do with Enumerable. The key difference between Array and Enumerable however, is that while you may create an array, you don&amp;rsquo;t create an enumerable. Rather, by defining certain methods, a class can behave like an enumerable object. Before we look at how to do that, let&amp;rsquo;s see some of the methods available.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-inject'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-inject&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;h4&gt;inject&lt;/h4&gt;
+
+
+&lt;p&gt;The inject method is similar to collect, but an extra value is sent to the block at each iteration containing the result of the previous iteration. This lets us compute the factorial of a number in a neat way:&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# 10&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-sort'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-sort&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;h4&gt;sort&lt;/h4&gt;
+
+
+&lt;p&gt;When we have an array of elements, we quite often want to sort them. It they are names, we&amp;rsquo;d like to sort them alphabetically; if they are numbers, well, numerically would make sense. The sort method gives us great flexibility when it comes to sorting by letting us define the sorting comparator as a block.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;sx&quot;&gt;%w{a c b}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sort&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# [&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;]&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-30'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-30&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;%w{a c b} is a short way of saying [&amp;lsquo;a&amp;rsquo;, &amp;lsquo;c&amp;rsquo;, &amp;lsquo;b&amp;rsquo;]. If each element of your array is a single word, then the shorthand will be quicker as you don&amp;rsquo;t have to worry about typing in quotes. So, given our array, [&amp;lsquo;a&amp;rsquo;, &amp;lsquo;c&amp;rsquo;, &amp;lsquo;b&amp;rsquo;] and our block, { |a,b| a &amp;lt; =&gt; b }, we see that they have become alphabetically sorted. The block operates on a pair of values, and compares them with the &amp;lt; =&gt; operator. &amp;lt; =&gt; returns -1 if the left value is lesser, 0 if they are equal, and +1 if the left value is greater. If we want to sort the array in reverse order, we simply swap the order of the values in our block.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;sx&quot;&gt;%w{a c b}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sort&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# [&amp;quot;c&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;a&amp;quot;]&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-Custom_Enumerable_Classes'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-Custom_Enumerable_Classes&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;h3&gt;Custom Enumerable Classes&lt;/h3&gt;
+
+
+&lt;p&gt;If you have your own class, you may want to do things with it as if it were an array. For example, let&amp;rsquo;s say we have a BookShelf class that maintains records of various books we own. One thing we may like to do is print out our books sorted by their author. If we include Enumerable into our BookShelf class, and define the method &amp;lsquo;each&amp;rsquo;, we will be able to write code that might look like the following.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bookShelf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sort&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;author&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;author&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;title&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Great Expectations&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;author&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Dickens, C.&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;title&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Linchpin&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;author&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Godin, S.&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;title&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Frankenstien&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;author&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Shelly, M.&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-32'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-32&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;As you can see, we have an array of hashes, containing an author and a title. They are ordered by the author&amp;rsquo;s name. Here&amp;rsquo;s the BookShelf class that lets us do this.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BookShelf&lt;/span&gt;
+    &lt;span class=&quot;kp&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Enumerable&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;
+        &lt;span class=&quot;vi&quot;&gt;@titles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt;
+        &lt;span class=&quot;vi&quot;&gt;@authors&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bookTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bookAuthor&lt;/span&gt;
+        &lt;span class=&quot;vi&quot;&gt;@titles&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bookTitle&lt;/span&gt;
+        &lt;span class=&quot;vi&quot;&gt;@authors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bookAuthor&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt;
+       &lt;span class=&quot;vi&quot;&gt;@authors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;each_with_index&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;author&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;title&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@titles&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;    
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-33'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-33&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;We are including the Enumerable class, which means that if we define the method, &amp;lsquo;each&amp;rsquo;, we can call any Enumerable method on the BookShelf class.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-34'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-34&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;The each method is defined as&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;vi&quot;&gt;@authors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;each_with_index&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;author&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;title&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@titles&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-35'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-35&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;In English, this says &amp;lsquo;For each author, get me the name of the author and the index. Then I&amp;rsquo;m going to stop (yield) and return the name of the author, and the title of the book that appears in the same position in the titles array&amp;rsquo;. As you can see, it is &amp;lsquo;yield&amp;rsquo; that is doing the magic here. It essentially stops the loop (each_with_index) and spits out the result of the statements that follow it.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-36'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-36&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;If you want to try it out yourself, you could add some books to the BookShelf like so&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;bookShelf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BookShelf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;bookShelf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Great Expectations&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Dickens, C.&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;bookShelf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Frankenstien&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Shelly, M.&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;bookShelf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Linchpin&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Godin, S.&amp;#39;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-End'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-End&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;h2&gt;End&lt;/h2&gt;
+
+
+&lt;p&gt;Phew! That was a lot to take in. Hopefully you&amp;rsquo;ve seen some of the neat methods that the Array class provides, particularly &amp;lsquo;abbrev&amp;rsquo;, as well as how we can make our own classes behave like Enumerable objects. Let me know if you have any questions, comments, and especially criticisms.&lt;/p&gt;
+
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+</content>
  </entry>
  
  <entry>
@@ -1440,8 +2274,7 @@ I&amp;rsquo;m also hoping that the easiser method of posting (git push heroku ma
     &lt;p&gt;One of the major differences between the Ruby date library and the PHP date library is the epoch used. PHP uses the date &amp;lsquo;January 1 1970 00:00:00 GMT&amp;rsquo;, the beginning of UNIX, as a reference point. Time is defined as the number of seconds after or before this time. Ruby uses January 1, 4713 BC as its reference point. This is known as the Julian Date, with any date defined by the number of days before or after this reference point. But this is a programming tutorial, not a history lesson, so let&amp;rsquo;s see some code.&lt;/p&gt;
   &lt;/td&gt;
   &lt;td class=code&gt;
-    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2010&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   
-&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;                      &lt;span class=&quot;c1&quot;&gt;# 2010-06-22&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr id='section-5'&gt;
@@ -1452,7 +2285,8 @@ I&amp;rsquo;m also hoping that the easiser method of posting (git push heroku ma
     &lt;p&gt;Great! We can create a new date object by providing the year, month and day. (Date.new and Date::new seems to function identically). By printing it to the console with puts, we can see that, indeed, this Date object contains the date we specified.&lt;/p&gt;
   &lt;/td&gt;
   &lt;td class=code&gt;
-    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2010&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;                      &lt;span class=&quot;c1&quot;&gt;# 2010-06-22&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr id='section-6'&gt;
@@ -1598,9 +2432,7 @@ The &amp;ndash; operator should return a date that is n days earlier than the cu
     &lt;div class=&quot;pilwrap&quot;&gt;
       &lt;a class=&quot;pilcrow&quot; href=&quot;#section-18&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
-    &lt;ul&gt;
-&lt;li&gt;adds days in the same way&lt;/li&gt;
-&lt;/ul&gt;
+    &lt;p&gt;+ adds days in the same way&lt;/p&gt;
   &lt;/td&gt;
   &lt;td class=code&gt;
     &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -1624,7 +2456,7 @@ The &amp;lt;&amp;lt; operator should return a date that is n months earlier than
     &lt;div class=&quot;pilwrap&quot;&gt;
       &lt;a class=&quot;pilcrow&quot; href=&quot;#section-20&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
-    &lt;blockquote&gt;&lt;blockquote&gt;&lt;p&gt;adds months in the same way&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+    &lt;p&gt;&amp;gt;&amp;gt; adds months in the same way&lt;/p&gt;
   &lt;/td&gt;
   &lt;td class=code&gt;
     &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
