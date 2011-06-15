@@ -4,13 +4,113 @@
  <title>One of These Days</title>
  <link href="http://oneofthesedaysblog.com/feed/" rel="self"/>
  <link href="http://oneofthesedaysblog.com/"/>
- <updated>2011-04-19T21:37:38+12:00</updated>
+ <updated>2011-06-15T22:16:50+12:00</updated>
  <id>http://oneofthesedaysblog.com/</id>
  <author>
    <name>Sam Dalton</name>
    <email>mail@samdalton.co.nz</email>
  </author>
 
+ 
+ <entry>
+   <title>Instance Evil?</title>
+   <link href="http://oneofthesedaysblog.com/Instance-Evil%3F"/>
+   <updated>2011-06-15T00:00:00+12:00</updated>
+   <id>http://oneofthesedaysblog.com/Instance-Evil?</id>
+   <content type="html">&lt;tr id='section-1'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-1&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Some playing with dynamic methods in a Ruby class led me into an interesting problem. &amp;lsquo;instance_eval&amp;rsquo; was being used to allow for dynamic getting and setting of various attributes. This worked great, until the objects needed to be cached in Rails.
+An error was being thrown, &amp;ldquo;TypeError: singleton can&amp;rsquo;t be dumped&amp;rdquo;, which didn&amp;rsquo;t make immediate sense. Some digging and playing however led to the answer that Marshal cannot serialize objects that have had instance_eval used on them, which is probably
+fair enough as Marshall would have no way of knowing how to redo the eval when the object is loaded back again.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-2'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-2&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;We can add an instance_eval block to add in an instance method, to demonstrate.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance_eval&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;unleash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;what&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+         &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;what&lt;/span&gt; 
+      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unleash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;the hounds&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# the hounds&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-3'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-3&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;However, we are not able to serialize the object ):&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Marshal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dump&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#&amp;gt; TypeError: singleton can&amp;#39;t be dumped&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-4'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-4&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;The solution was to use the magical method_missing; we get the same result, but we&amp;rsquo;re also able to serialize the object.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;method_missing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;)&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;  
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unleash&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# unleash([])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unleash&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;the hounds&amp;#39;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# unleash=([&amp;quot;the hounds&amp;quot;])&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Marshal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dump&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# o:A&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-5'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-5&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Happily marshaled (:&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-6'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-6&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;&lt;em&gt;(Reverse smilies inspired from &lt;a href=&quot;http://blog.frankchimero.com/post/6358013062/ten-more-things&quot;&gt;Frank Chimero&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
+
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Phonegap With Jquery Mobile And Backbone Js</title>
@@ -85,19 +185,26 @@
     &lt;p&gt;base is a global reference to our main DOM object. This was required to make jQuery mobile work a bit nicer, and we&amp;rsquo;ll get to it soon.&lt;/p&gt;
   &lt;/td&gt;
   &lt;td class=code&gt;
-    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;_Note&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;would&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;normally&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;extend&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;backbone&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;I&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;m buidling, to ensure that multiple backbone apps in a page won&amp;#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;interfere&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;other&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;
-
-&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    
-    &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;#base&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr id='section-7'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
       &lt;a class=&quot;pilcrow&quot; href=&quot;#section-7&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;&lt;em&gt;Note: I would normally extend the backbone namespace with the name of the app I&amp;rsquo;m buidling, to ensure that multiple backbone apps in a page won&amp;rsquo;t interfere with each other.&lt;/em&gt;&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;#base&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-8'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-8&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;Launch the app, setting our view, and passing in page_data which contains our parsed JSON file.&lt;/p&gt;
   &lt;/td&gt;
@@ -113,6 +220,8 @@
       &lt;a class=&quot;pilcrow&quot; href=&quot;#section-views/Application.js&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;h2&gt;views/Application.js&lt;/h2&gt;
+
+&lt;p&gt;This is the first view that kicks off everything. If you&amp;rsquo;re coming from the iPhone world, consider this to be the (Home|Root)ViewController&lt;/p&gt;
   &lt;/td&gt;
   &lt;td class=code&gt;
     &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -121,35 +230,35 @@
         &lt;span class=&quot;kp&quot;&gt;initialize&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;                &lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr id='section-9'&gt;
-  &lt;td class=docs&gt;
-    &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-9&quot;&gt;&amp;#182;&lt;/a&gt;
-    &lt;/div&gt;
-    &lt;p&gt;Remember the pages variable we passed in during instantiation? We&amp;rsquo;re grabbing it here, and using one of underscore.js' enumerator methods to iterate over each page object. _.map is going to return an array with values equal to what we return in the closure, for each value in args.pages.&lt;/p&gt;
-  &lt;/td&gt;
-  &lt;td class=code&gt;
-    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pages&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
-  &lt;/td&gt;
-&lt;/tr&gt;
 &lt;tr id='section-10'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
       &lt;a class=&quot;pilcrow&quot; href=&quot;#section-10&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
-    &lt;p&gt;We&amp;rsquo;re creating a new Page view, and passing in the page data that _.map has given us.&lt;/p&gt;
+    &lt;p&gt;Remember the pages variable we passed in during instantiation? We&amp;rsquo;re grabbing it here, and using one of underscore.js' enumerator methods to iterate over each page object. _.map is going to return an array with values equal to what we return in the closure, for each value in args.pages.&lt;/p&gt;
   &lt;/td&gt;
   &lt;td class=code&gt;
-    &lt;div class='highlight'&gt;&lt;pre&gt;                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;backbone&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;views&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-                    &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;            &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pages&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr id='section-11'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
       &lt;a class=&quot;pilcrow&quot; href=&quot;#section-11&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;We&amp;rsquo;re creating a new Page view, and passing in the page data that _.map has given us.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;backbone&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;views&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-12'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-12&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;Now we have a backbone view for each page to be navigated, so we can call render to kick things off.&lt;/p&gt;
   &lt;/td&gt;
@@ -160,10 +269,10 @@
         &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr id='section-12'&gt;
+&lt;tr id='section-13'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-12&quot;&gt;&amp;#182;&lt;/a&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-13&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;Just as iPhone apps have screen titles when you traverse content hierarchies, we want to be able to give each page a unique title. We need these titles to display on the main screen, so we can show the user what pages are available for them to navigate to. That&amp;rsquo;s why we&amp;rsquo;re collecting them here.&lt;/p&gt;
   &lt;/td&gt;
@@ -171,32 +280,32 @@
     &lt;div class='highlight'&gt;&lt;pre&gt;            &lt;span class=&quot;n&quot;&gt;page_titles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr id='section-13'&gt;
-  &lt;td class=docs&gt;
-    &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-13&quot;&gt;&amp;#182;&lt;/a&gt;
-    &lt;/div&gt;
-    &lt;p&gt;&lt;em&gt;.each functions much the same as &lt;/em&gt;.map, except it doesn&amp;rsquo;t return anything.&lt;/p&gt;
-  &lt;/td&gt;
-  &lt;td class=code&gt;
-    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
-  &lt;/td&gt;
-&lt;/tr&gt;
 &lt;tr id='section-14'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
       &lt;a class=&quot;pilcrow&quot; href=&quot;#section-14&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
-    &lt;p&gt;Remember that each page is a backbone view, so we&amp;rsquo;re calling render to get the HTML content that makes up the view, and appending it to our view element. As we set our el to be equal to base, we&amp;rsquo;re appending everything to the $(&amp;ldquo;#base&amp;rdquo;) element.&lt;/p&gt;
+    &lt;p&gt;_.each functions much the same as _.map, except it doesn&amp;rsquo;t return anything.&lt;/p&gt;
   &lt;/td&gt;
   &lt;td class=code&gt;
-    &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;/pre&gt;&lt;/div&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;            &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr id='section-15'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
       &lt;a class=&quot;pilcrow&quot; href=&quot;#section-15&quot;&gt;&amp;#182;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Remember that each page is a backbone view, so we&amp;rsquo;re calling render to get the HTML content that makes up the view, and appending it to our view element. As we set our el to be equal to base, we&amp;rsquo;re appending everything to the $(&amp;ldquo;#base&amp;rdquo;) element.&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td class=code&gt;
+    &lt;div class='highlight'&gt;&lt;pre&gt;                &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;/pre&gt;&lt;/div&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr id='section-16'&gt;
+  &lt;td class=docs&gt;
+    &lt;div class=&quot;pilwrap&quot;&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-16&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
     &lt;p&gt;Grab the title and put it in the array, along with a unique id. The id is required for jQuery Mobile, which we will get to shortly.&lt;/p&gt;
   &lt;/td&gt;
@@ -205,12 +314,12 @@
             &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr id='section-16'&gt;
+&lt;tr id='section-17'&gt;
   &lt;td class=docs&gt;
     &lt;div class=&quot;pilwrap&quot;&gt;
-      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-16&quot;&gt;&amp;#182;&lt;/a&gt;
+      &lt;a class=&quot;pilcrow&quot; href=&quot;#section-17&quot;&gt;&amp;#182;&lt;/a&gt;
     &lt;/div&gt;
-    &lt;p&gt;Using icanhazjs, we render the home template, passing in the array of page titles&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&quot;http://icanhazjs.com/&quot;&gt;icanhazjs&lt;/a&gt;, we render the home template, passing in the array of page titles&lt;/p&gt;
 
   &lt;/td&gt;
   &lt;td class=code&gt;

@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">	
+	<head>
+            <title>One of These Days</title>
+            <style>@import url('/main.css'); </style>
+	</head>
+	<body>
+             <header>
+                 <h1><a href='/'>One of These Days</a></h1>
+            </header>
+            <section>
+                   <div id='background'></div>
+    <div id='container'>
+        <table cellspacing=0 cellpadding=0>
+  <thead>
+    <tr>
+        <th class=docs>
+            <h2>Instance Evil?</h2>
+            <h5>15 Jun 2011</h5>
+        </th>
+      <th class=code></th>
+    </tr>
+</thead>
+<tbody>
+    <tr id='section-1'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-1">&#182;</a>
+    </div>
+    <p>Some playing with dynamic methods in a Ruby class led me into an interesting problem. &lsquo;instance_eval&rsquo; was being used to allow for dynamic getting and setting of various attributes. This worked great, until the objects needed to be cached in Rails.
+An error was being thrown, &ldquo;TypeError: singleton can&rsquo;t be dumped&rdquo;, which didn&rsquo;t make immediate sense. Some digging and playing however led to the answer that Marshal cannot serialize objects that have had instance_eval used on them, which is probably
+fair enough as Marshall would have no way of knowing how to redo the eval when the object is loaded back again.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-2'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-2">&#182;</a>
+    </div>
+    <p>We can add an instance_eval block to add in an instance method, to demonstrate.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="k">class</span> <span class="nc">A</span>
+  <span class="k">def</span> <span class="nf">initialize</span>
+    <span class="nb">self</span><span class="o">.</span><span class="n">instance_eval</span> <span class="k">do</span>
+      <span class="k">def</span> <span class="nf">unleash</span><span class="p">(</span><span class="n">what</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">)</span>
+         <span class="nb">puts</span> <span class="n">what</span> 
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">new</span>
+<span class="n">a</span><span class="o">.</span><span class="n">unleash</span><span class="p">(</span><span class="s2">&quot;the hounds&quot;</span><span class="p">)</span> <span class="c1"># the hounds</span></pre></div>
+  </td>
+</tr>
+<tr id='section-3'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-3">&#182;</a>
+    </div>
+    <p>However, we are not able to serialize the object ):</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="nb">puts</span> <span class="no">Marshal</span><span class="o">::</span><span class="n">dump</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">#&gt; TypeError: singleton can&#39;t be dumped</span></pre></div>
+  </td>
+</tr>
+<tr id='section-4'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-4">&#182;</a>
+    </div>
+    <p>The solution was to use the magical method_missing; we get the same result, but we&rsquo;re also able to serialize the object.</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre><span class="k">class</span> <span class="nc">A</span>
+  <span class="k">def</span> <span class="nf">method_missing</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">m</span><span class="si">}</span><span class="s2">(</span><span class="si">#{</span><span class="n">args</span><span class="si">}</span><span class="s2">)&quot;</span>
+  <span class="k">end</span>  
+<span class="k">end</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">new</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">unleash</span> <span class="c1"># unleash([])</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">unleash</span> <span class="o">=</span> <span class="s1">&#39;the hounds&#39;</span> <span class="c1"># unleash=([&quot;the hounds&quot;])</span>
+
+<span class="nb">puts</span> <span class="no">Marshal</span><span class="o">::</span><span class="n">dump</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># o:A</span></pre></div>
+  </td>
+</tr>
+<tr id='section-5'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-5">&#182;</a>
+    </div>
+    <p>Happily marshaled (:</p>
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+<tr id='section-6'>
+  <td class=docs>
+    <div class="pilwrap">
+      <a class="pilcrow" href="#section-6">&#182;</a>
+    </div>
+    <p><em>(Reverse smilies inspired from <a href="http://blog.frankchimero.com/post/6358013062/ten-more-things">Frank Chimero</a>)</em></p>
+
+  </td>
+  <td class=code>
+    <div class='highlight'><pre></pre></div>
+  </td>
+</tr>
+
+</tbody>
+</table>
+    </div>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'oneofthesedaysblog'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    var disqus_identifier = '/Instance-Evil?';
+    var disqus_url = 'http://oneofthesedaysblog.com//Instance-Evil%3F';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+            </section>
+            <footer>
+                <h5>The thoughts and ramblings of Sam Dalton - Auckland, New Zealand</h5>
+                <ul>
+                    <li><a href='http://github.com/samdalton' target="_blank">fork me</a></li>
+                    <li><a href='http://twitter.com/spdalton' target="_blank">tweet me</a></li>
+                    <li><a href='mailto:samdalton.co.nz' target="_blank">e-mail me</a></li>
+                    <li><a href='http://last.fm/user/spdalton' target="_blank">let's rock</a></li>
+                    <li><a href='http://feeds.feedburner.com/feedburner/ootdb' target="_blank">rss</a></li>
+                </ul>
+            </footer>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16582890-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</body>
+</html>
