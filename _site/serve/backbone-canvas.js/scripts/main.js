@@ -1,3 +1,0 @@
-$(function() {                
-    myCannon = new CannonView();
-});
